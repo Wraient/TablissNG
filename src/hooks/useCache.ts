@@ -73,14 +73,18 @@ export function useRotatingCache<T>(
       Array.isArray(cache.items) &&
       cursor >= cache.items.length - 1
     ) {
-      // fetch more
-      fetch().then((items) =>
+      // fetch more; preserve up to the last 10 existing items
+      fetch().then((items) => {
+        const preserved = cache.items.slice(-10);
+        const newItems = [...preserved, ...items];
+        // place cursor on the last preserved item so the next rotation moves into new items
+        const newCursor = Math.max(0, preserved.length - 1);
         setCache({
           ...cache,
-          items: [...cache.items.slice(-10), ...items],
-          cursor: 9,
-        }),
-      );
+          items: newItems,
+          cursor: newCursor,
+        });
+      });
     }
   }, [cursor]);
 
@@ -94,7 +98,7 @@ export function useRotatingCache<T>(
   }, [...deps, cache]);
 
   if (!isValidCache) return undefined;
-  const items = cache.items;
+  const { items } = cache;
   if (!Array.isArray(items) || typeof cursor !== "number") return undefined;
   return items[cursor];
 }
