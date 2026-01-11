@@ -42,29 +42,37 @@ export function useRotatingCache<T>(
   timeout: number,
   deps: unknown[],
 ): T | undefined {
+  const isValidCache =
+    !!cache &&
+    Array.isArray(cache.items) &&
+    typeof cache.cursor === "number" &&
+    typeof cache.rotated === "number";
   // Find cursor
   const time = useTime("absolute").getTime();
   const boot = useRef(true);
   const cursor = useMemo(() => {
-    if (cache) {
-      if (
-        (timeout === 0 && boot.current) ||
-        (timeout !== 0 && time > cache.rotated + timeout)
-      ) {
-        const cursor = cache.cursor + 1;
-        setCache({ ...cache, cursor, rotated: Date.now() });
-        boot.current = false;
-        return cursor;
-      }
+    if (!isValidCache) return 0;
+
+    if (
+      (timeout === 0 && boot.current) ||
+      (timeout !== 0 && time > cache.rotated + timeout)
+    ) {
+      const cursor = cache.cursor + 1;
+      setCache({ ...cache, cursor, rotated: Date.now() });
       boot.current = false;
-      return cache.cursor;
+      return cursor;
     }
-    return 0;
+    boot.current = false;
+    return cache.cursor;
   }, [cache, time, timeout]);
 
   // Fetch more when cursor reaches end
   useEffect(() => {
-    if (cache && cursor >= cache.items.length - 1) {
+    if (
+      isValidCache &&
+      Array.isArray(cache.items) &&
+      cursor >= cache.items.length - 1
+    ) {
       // fetch more
       fetch().then((items) =>
         setCache({
@@ -78,14 +86,17 @@ export function useRotatingCache<T>(
 
   // Refresh of deps change
   useEffect(() => {
-    if (!cache || !areDepsEqual(deps, cache.deps)) {
+    if (!isValidCache || !areDepsEqual(deps, cache?.deps ?? [])) {
       fetch().then((items) =>
         setCache({ items, cursor: 0, rotated: Date.now(), deps }),
       );
     }
   }, [...deps, cache]);
 
-  return cache ? cache.items[cursor] : undefined;
+  if (!isValidCache) return undefined;
+  const items = cache.items;
+  if (!Array.isArray(items) || typeof cursor !== "number") return undefined;
+  return items[cursor];
 }
 
 /**
