@@ -23,6 +23,7 @@
   "backgrounds.giphy.description": "Ослепительно каждый раз при открытии вкладки.",
   "backgrounds.giphy.name": "GIPHY",
   "backgrounds.giphy.safeSearch": "Включать NSFW контент",
+  "backgrounds.giphy.showNewGif": "Show a new GIF",
   "backgrounds.giphy.tag": "Тег",
   "backgrounds.giphy.tag.info": "Разделяйте теги через запятую",
   "backgrounds.gradient.angle": "Угол (0-360)",

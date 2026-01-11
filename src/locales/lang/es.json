@@ -23,6 +23,7 @@
   "backgrounds.giphy.description": "Daña tus ojos en cada pestaña.",
   "backgrounds.giphy.name": "GIPHY",
   "backgrounds.giphy.safeSearch": "Incluir contenido NSFW",
+  "backgrounds.giphy.showNewGif": "Show a new GIF",
   "backgrounds.giphy.tag": "Etiqueta",
   "backgrounds.giphy.tag.info": "Separar multiples etiquetas con coma",
   "backgrounds.gradient.angle": "Ángulo (0-360)",

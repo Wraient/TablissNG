@@ -23,6 +23,7 @@
   "backgrounds.giphy.description": "Fira seus olhos em cada nova aba.",
   "backgrounds.giphy.name": "GIPHY",
   "backgrounds.giphy.safeSearch": "Incluir conteúdo NSFW",
+  "backgrounds.giphy.showNewGif": "Show a new GIF",
   "backgrounds.giphy.tag": "Tag",
   "backgrounds.giphy.tag.info": "Separe múltiplas tags com vírgula",
   "backgrounds.gradient.angle": "Ângulo (0-360)",

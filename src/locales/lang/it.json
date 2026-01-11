@@ -23,6 +23,7 @@
   "backgrounds.giphy.description": "Hurt your eyes in every new tab.",
   "backgrounds.giphy.name": "GIPHY",
   "backgrounds.giphy.safeSearch": "Include NSFW content",
+  "backgrounds.giphy.showNewGif": "Show a new GIF",
   "backgrounds.giphy.tag": "Tag",
   "backgrounds.giphy.tag.info": "Separare tag con virgole",
   "backgrounds.gradient.angle": "Angolo (0-360)",
