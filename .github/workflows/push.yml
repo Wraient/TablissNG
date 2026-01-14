@@ -58,7 +58,7 @@ jobs:
   deploy:
     name: Deploy to GitHub Pages
     needs: build
-    if: github.ref == 'refs/heads/main'  # Only deploy on main branch
+    if: github.ref == 'refs/heads/main' # Only deploy on main branch
     runs-on: ubuntu-latest
     permissions:
       pages: write

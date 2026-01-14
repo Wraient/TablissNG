@@ -13,13 +13,13 @@ import StoreError from "./shared/StoreError";
 import { db } from "../db/state";
 import { useSystemTheme } from "../hooks";
 
-function setHighlighting(){
-  const checked = db.cache.get('highlightingEnabled');
+function setHighlighting() {
+  const checked = db.cache.get("highlightingEnabled");
   const element = document.querySelector(".Widgets") as HTMLElement;
   if (element) {
     if (checked || checked === undefined) {
       element.style.userSelect = "auto";
-    } else{
+    } else {
       element.style.userSelect = "none";
     }
   }
@@ -47,8 +47,9 @@ const Root: React.FC = () => {
   const systemIsDark = useSystemTheme();
 
   React.useEffect(() => {
-    const isDark = themePreference === 'system' ? systemIsDark : themePreference === 'dark';
-    document.body.className = isDark ? 'dark' : '';
+    const isDark =
+      themePreference === "system" ? systemIsDark : themePreference === "dark";
+    document.body.className = isDark ? "dark" : "";
   }, [themePreference, systemIsDark]);
 
   const pushError = usePushError();
@@ -116,7 +117,7 @@ const Root: React.FC = () => {
     };
   }, []);
 
-  const { errors, settings, toggleErrors } = React.useContext(UiContext);
+  const { errors, settings, toggleErrors } = React.use(UiContext);
 
   return (
     <>

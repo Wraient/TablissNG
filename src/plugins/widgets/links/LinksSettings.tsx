@@ -6,20 +6,25 @@ import { addLink, removeLink, reorderLink, updateLink } from "./actions";
 import { reducer } from "./reducer";
 import { Data, Link, Props, defaultCache, defaultData } from "./types";
 
-const LinksSettings: FC<Props> = ({ data = defaultData, setData, cache = defaultCache, setCache }) => {
+const LinksSettings: FC<Props> = ({
+  data = defaultData,
+  setData,
+  cache = defaultCache,
+  setCache,
+}) => {
   const saveLinks = (links: Link[]) => setData({ ...data, links });
   const dispatch = useSavedReducer(reducer, data.links, saveLinks);
 
   const sortedLinks = useMemo(() => {
-    if (data.sortBy === 'none') return data.links;
+    if (data.sortBy === "none") return data.links;
 
     return [...data.links].sort((a, b) => {
       switch (data.sortBy) {
-        case 'name':
-          return (a.name || '').localeCompare(b.name || '');
-        case 'icon':
-          return (a.icon || '').localeCompare(b.icon || '');
-        case 'lastUsed': {
+        case "name":
+          return (a.name || "").localeCompare(b.name || "");
+        case "icon":
+          return (a.icon || "").localeCompare(b.icon || "");
+        case "lastUsed": {
           const bTime = b.lastUsed || 0;
           const aTime = a.lastUsed || 0;
           return bTime - aTime; // Most recent first
@@ -33,7 +38,7 @@ const LinksSettings: FC<Props> = ({ data = defaultData, setData, cache = default
   return (
     <div className="LinksSettings">
       <label>
-      <FormattedMessage
+        <FormattedMessage
           id="plugins.links.numberOfColumns"
           defaultMessage="Number of columns"
           description="Number of columns title"
@@ -102,7 +107,6 @@ const LinksSettings: FC<Props> = ({ data = defaultData, setData, cache = default
           defaultMessage="Links are always visible"
           description="Links are always visible title"
         />
-
       </label>
 
       <label>
@@ -137,7 +141,7 @@ const LinksSettings: FC<Props> = ({ data = defaultData, setData, cache = default
       <hr />
 
       {sortedLinks.map((link, index) => {
-        const originalIndex = data.links.findIndex(l => l.id === link.id);
+        const originalIndex = data.links.findIndex((l) => l.id === link.id);
         return (
           <Input
             {...link}
@@ -147,12 +151,12 @@ const LinksSettings: FC<Props> = ({ data = defaultData, setData, cache = default
               dispatch(updateLink(originalIndex, { ...link, ...values }))
             }
             onMoveUp={
-              data.sortBy === 'none' && index !== 0
+              data.sortBy === "none" && index !== 0
                 ? () => dispatch(reorderLink(originalIndex, originalIndex - 1))
                 : undefined
             }
             onMoveDown={
-              data.sortBy === 'none' && index !== data.links.length - 1
+              data.sortBy === "none" && index !== data.links.length - 1
                 ? () => dispatch(reorderLink(originalIndex, originalIndex + 1))
                 : undefined
             }
@@ -168,11 +172,10 @@ const LinksSettings: FC<Props> = ({ data = defaultData, setData, cache = default
           onClick={() => dispatch(addLink())}
         >
           <FormattedMessage
-          id="plugins.links.AddLink"
-          defaultMessage="Add link"
-          description="Add link title"
-        />
-
+            id="plugins.links.AddLink"
+            defaultMessage="Add link"
+            description="Add link title"
+          />
         </button>
       </p>
     </div>

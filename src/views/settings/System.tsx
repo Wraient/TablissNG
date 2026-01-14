@@ -28,11 +28,23 @@ const positions = [
 const System: React.FC = () => {
   const [locale, setLocale] = useKey(db, "locale");
   const [timeZone, setTimeZone] = useKey(db, "timeZone");
-  const [highlightingEnabled, setHighlightingEnabled] = useKey(db, "highlightingEnabled");
-  const [hideSettingsIcon, setHideSettingsIcon] = useKey(db, "hideSettingsIcon");
-  const [settingsIconPosition, setSettingsIconPosition] = useKey(db, "settingsIconPosition");
+  const [highlightingEnabled, setHighlightingEnabled] = useKey(
+    db,
+    "highlightingEnabled",
+  );
+  const [hideSettingsIcon, setHideSettingsIcon] = useKey(
+    db,
+    "hideSettingsIcon",
+  );
+  const [settingsIconPosition, setSettingsIconPosition] = useKey(
+    db,
+    "settingsIconPosition",
+  );
   const [themePreference, setThemePreference] = useKey(db, "themePreference");
-  const [autoHideSettings, setAutoHideSettings] = useKey(db, "autoHideSettings");
+  const [autoHideSettings, setAutoHideSettings] = useKey(
+    db,
+    "autoHideSettings",
+  );
   const systemIsDark = useSystemTheme();
 
   function setHighlighting(checked: boolean) {
@@ -47,10 +59,10 @@ const System: React.FC = () => {
     }
   }
 
-  const handleThemeChange = (value: 'light' | 'dark' | 'system') => {
+  const handleThemeChange = (value: "light" | "dark" | "system") => {
     setThemePreference(value);
-    const isDark = value === 'system' ? systemIsDark : value === 'dark';
-    document.body.className = isDark ? 'dark' : '';
+    const isDark = value === "system" ? systemIsDark : value === "dark";
+    document.body.className = isDark ? "dark" : "";
   };
 
   return (
@@ -73,11 +85,13 @@ const System: React.FC = () => {
           margin: 0,
         }}
       >
-        <span><FormattedMessage
-          id="language"
-          defaultMessage="Language"
-          description="Language title"
-        /></span>
+        <span>
+          <FormattedMessage
+            id="language"
+            defaultMessage="Language"
+            description="Language title"
+          />
+        </span>
         <select
           value={locale}
           onChange={(event) => setLocale(event.target.value)}
@@ -263,7 +277,9 @@ const System: React.FC = () => {
         </span>
         <select
           value={themePreference}
-          onChange={(e) => handleThemeChange(e.target.value as 'light' | 'dark' | 'system')}
+          onChange={(e) =>
+            handleThemeChange(e.target.value as "light" | "dark" | "system")
+          }
         >
           <option value="light">
             <FormattedMessage
@@ -379,7 +395,7 @@ const System: React.FC = () => {
         }}
       >
         <span>
-        <FormattedMessage
+          <FormattedMessage
             id="settings.hideMenu"
             defaultMessage="Auto-hide Settings Menu"
             description="Automaticaly hide settings label"
