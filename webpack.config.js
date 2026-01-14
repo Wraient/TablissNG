@@ -140,11 +140,64 @@ if (!isWeb) {
   );
 }
 
-if (isWeb && isProduction) {
+
+if (isProduction) {
   config.plugins.push(
     new workbox.GenerateSW({
-      cacheId: "tabliss-cache",
-      dontCacheBustURLsMatching: /\.\w{12}\./,
+      exclude: [/.*/],        // Disable precaching
+      disableDevLogs: true,   // Enable logging if required
+      runtimeCaching: [
+
+        // Cache for APIs (short term)
+        {
+          urlPattern: ({ url }) =>
+            url.hostname === "github-contributions-api.jogruber.de" ||
+            url.href.startsWith("https://api.github.com/repos/BookCatKid/tablissNG"),
+
+          handler: "CacheFirst",
+          options: {
+            cacheName: "tabliss-cache-apis",
+            expiration: {
+              maxAgeSeconds: 24 * 60 * 60, // 1 day
+            },
+          },
+        },
+
+        // Cache favicons (long term)
+        {
+          urlPattern: ({ url }) =>
+            url.href.startsWith("https://www.google.com/s2/favicons") ||
+            url.hostname === "icons.duckduckgo.com" ||
+            url.hostname === "favicone.com",
+            
+          handler: "StaleWhileRevalidate",
+          options: {
+            cacheName: "tabliss-cache-swr",
+            expiration: {
+              maxEntries: 50,
+              maxAgeSeconds: 365 * 24 * 60 * 60, // 1 year
+            },
+          },
+        },
+
+        // Cache images (long term)
+        {
+          urlPattern: ({ request }) =>
+            request.destination === "image",
+
+          handler: "CacheFirst",
+          options: {
+            cacheName: "tabliss-cache-images",
+            expiration: {
+              maxEntries: 10,
+              maxAgeSeconds: 365 * 24 * 60 * 60, // 1 year
+            },
+             cacheableResponse: {
+                statuses: [0, 200]   // allow opaque (0) responses to be cached
+            },
+          },
+        },
+      ],
     }),
   );
 }
