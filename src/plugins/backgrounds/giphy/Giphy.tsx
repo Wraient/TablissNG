@@ -2,7 +2,7 @@ import React from "react";
 import { useBackgroundRotation } from "../../../hooks";
 import BaseBackground from "../base/BaseBackground";
 import { getGifs } from "./api";
-import Credit from "./Credit";
+import giphyLogo from "./giphy-logo.png";
 import "./Giphy.sass";
 import { defaultData, Props } from "./types";
 
@@ -40,9 +40,20 @@ const Giphy: React.FC<Props> = ({
       onPause={handlePause}
       onPrev={go(-1)}
       onNext={go(1)}
-    >
-      <Credit link={item.link} />
-    </BaseBackground>
+      leftInfo={[
+        {
+          label: (
+            <img
+              src={giphyLogo}
+              alt="Powered by GIPHY"
+              width={101}
+              height={36}
+            />
+          ),
+          url: item.link || "https://giphy.com/",
+        },
+      ]}
+    />
   );
 };
 
