@@ -5,7 +5,7 @@ import "./BaseBackground.sass";
 
 interface CreditLink {
   label: React.ReactNode;
-  url: string;
+  url?: string;
 }
 
 interface Props {
@@ -17,6 +17,7 @@ interface Props {
   onPause?: () => void;
   onPrev?: (() => void) | null;
   onNext?: (() => void) | null;
+  showControls?: boolean;
   leftInfo?: CreditLink[];
   rightInfo?: CreditLink | null;
   children?: React.ReactNode;
@@ -31,6 +32,7 @@ const BaseBackground: React.FC<Props> = ({
   onPause = () => {},
   onPrev = null,
   onNext = null,
+  showControls = true,
   leftInfo = [],
   rightInfo = null,
   children,
@@ -44,33 +46,41 @@ const BaseBackground: React.FC<Props> = ({
 
     <div className="info-bar">
       <div className="left-info">
-        {leftInfo.map((info, index) => (
-          <React.Fragment key={info.url}>
-            {index > 0 && ", "}
-            <a href={info.url} rel="noopener noreferrer">
+        {leftInfo.map((info, index) => [
+          index > 0 && ", ",
+          info.url ? (
+            <a key={info.url} href={info.url} rel="noopener noreferrer">
               {info.label}
             </a>
-          </React.Fragment>
-        ))}
+          ) : (
+            <span key={index}>{info.label}</span>
+          ),
+        ])}
       </div>
 
-      <div className="controls">
-        <a className={onPrev ? "" : "hidden"} onClick={onPrev ?? undefined}>
-          <Icon icon="feather:arrow-left" />
-        </a>{" "}
-        <a onClick={onPause}>
-          <Icon icon={paused ? "feather:play" : "feather:pause"} />
-        </a>{" "}
-        <a className={onNext ? "" : "hidden"} onClick={onNext ?? undefined}>
-          <Icon icon="feather:arrow-right" />
-        </a>
-      </div>
+      {showControls && (
+        <div className="controls">
+          <a className={onPrev ? "" : "hidden"} onClick={onPrev ?? undefined}>
+            <Icon icon="feather:arrow-left" />
+          </a>{" "}
+          <a onClick={onPause}>
+            <Icon icon={paused ? "feather:play" : "feather:pause"} />
+          </a>{" "}
+          <a className={onNext ? "" : "hidden"} onClick={onNext ?? undefined}>
+            <Icon icon="feather:arrow-right" />
+          </a>
+        </div>
+      )}
 
       {rightInfo && (
         <div className="right-info">
-          <a href={rightInfo.url} target="_self" rel="noopener noreferrer">
-            {rightInfo.label}
-          </a>
+          {rightInfo.url ? (
+            <a href={rightInfo.url} target="_self" rel="noopener noreferrer">
+              {rightInfo.label}
+            </a>
+          ) : (
+            <span>{rightInfo.label}</span>
+          )}
         </div>
       )}
     </div>

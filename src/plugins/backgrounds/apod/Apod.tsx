@@ -1,10 +1,7 @@
 import React from "react";
-
-import Backdrop from "../../../views/shared/Backdrop";
-
 import { defaultData, Props } from "./types";
 import { getPicture } from "./api";
-import ApodTitle from "./ApodTitle";
+import BaseBackground from "../base/BaseBackground";
 import "./Apod.sass";
 
 const Apod: React.FC<Props> = ({
@@ -24,32 +21,48 @@ const Apod: React.FC<Props> = ({
 
   const extractYouTubeId = React.useCallback((url: string): string | null => {
     const match = url.match(
-      /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/
+      /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/,
     );
     return match ? match[1] : null;
   }, []);
 
-  const imageUrl = picture?.media_type === "image"
-    ? picture?.hdurl || picture?.url
-    : (() => {
-        const videoId = extractYouTubeId(picture?.url ?? "");
-        return videoId
-          ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
-          : picture?.thumbnail_url || "";
-    })();
+  const imageUrl =
+    picture?.media_type === "image"
+      ? picture?.hdurl || picture?.url
+      : (() => {
+          const videoId = extractYouTubeId(picture?.url ?? "");
+          return videoId
+            ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
+            : picture?.thumbnail_url || "";
+        })();
+
+  const leftInfo =
+    picture && picture.title && picture.date
+      ? [
+          {
+            label: picture.title,
+            url: `https://apod.nasa.gov/apod/ap${picture.date.toString().replace(/-/g, "").substring(2)}.html`,
+          },
+        ]
+      : [];
+
+  const rightInfo =
+    picture && picture.copyright
+      ? {
+          label: `© ${picture.copyright}`,
+          url: `https://www.google.com/search?q=${encodeURIComponent(picture.copyright)}`,
+        }
+      : null;
 
   return (
-    <div className="Apod fullscreen">
-      <Backdrop
-        className="picture fullscreen"
-        ready={!!imageUrl}
-        url={imageUrl}
-      >
-        {picture && data.showTitle && (
-          <ApodTitle title={picture.title} copyright={picture.copyright} />
-        )}
-      </Backdrop>
-    </div>
+    <BaseBackground
+      containerClassName="Apod fullscreen"
+      url={imageUrl ?? null}
+      ready={!!imageUrl}
+      showControls={false}
+      leftInfo={leftInfo}
+      rightInfo={rightInfo}
+    />
   );
 };
 
