@@ -35,7 +35,6 @@ const Apod: React.FC<Props> = ({
             ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
             : picture?.thumbnail_url || "";
         })();
-
   const leftInfo =
     picture && picture.title && picture.date
       ? [

@@ -5,7 +5,12 @@ export type Data = {
   maxWidth: number;
   maxHeight: number;
   wrap: boolean;
-  navigationStyle: "drill-down" | "expand-collapse" | "auto-expanded";
+  navigationStyle:
+    | "drill-down"
+    | "expand-collapse"
+    | "auto-expanded"
+    | "quick-links";
+  columns?: number;
   iconProvider:
     | "_default"
     | "_favicon_duckduckgo"
@@ -25,6 +30,7 @@ export const defaultData: Data = {
   maxHeight: 40,
   wrap: true,
   navigationStyle: "drill-down",
+  columns: 1,
   iconProvider: "_default",
   shortNames: false,
   maxTextLength: 0,
@@ -41,5 +47,5 @@ export type BookmarkTreeNode = {
   dateAdded?: number;
   dateGroupModified?: number;
   children?: BookmarkTreeNode[];
-  type?: 'bookmark' | 'folder' | 'separator';
+  type?: "bookmark" | "folder" | "separator";
 };

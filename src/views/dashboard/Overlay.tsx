@@ -38,39 +38,11 @@ const messages = defineMessages({
   },
 });
 
-type Position = "topLeft" | "topRight" | "bottomLeft" | "bottomRight";
-
-const mapping: Record<Position, React.CSSProperties> = {
-  topLeft: {
-    top: "0",
-    bottom: "auto",
-    left: "0",
-  },
-  topRight: {
-    top: "0",
-    right: "0",
-    left: "auto",
-    flexDirection: "row-reverse",
-  },
-  bottomLeft: {
-    bottom: "0",
-    top: "auto",
-    left: "0",
-  },
-  bottomRight: {
-    bottom: "0",
-    right: "0",
-    top: "auto",
-    left: "auto",
-    flexDirection: "row-reverse",
-  },
-};
-
 const Overlay: React.FC = () => {
   const intl = useIntl();
   const focus = useValue(db, "focus");
-  const { errors } = React.useContext(ErrorContext);
-  const { pending, toggleErrors, toggleSettings } = React.useContext(UiContext);
+  const { errors } = React.use(ErrorContext);
+  const { pending, toggleErrors, toggleSettings } = React.use(UiContext);
   const [hideSettingsIcon] = useKey(db, "hideSettingsIcon");
   const [settingsIconPosition] = useKey(db, "settingsIconPosition");
 
@@ -81,55 +53,8 @@ const Overlay: React.FC = () => {
   const [isFullscreen, handleToggleFullscreen] = useFullscreen();
   if (handleToggleFullscreen) useKeyPress(handleToggleFullscreen, ["f"]);
 
-  const leftInfoElement = document.querySelector(
-    ".info-bar .left-info",
-  ) as HTMLElement;
-  const rightInfoElement = document.querySelector(
-    ".info-bar .right-info",
-  ) as HTMLElement;
-  const wikimediaTitleCredit = document.querySelector(
-    ".wikimedia-credit-title",
-  ) as HTMLElement;
-  const wikimediaCopyrightCredit = document.querySelector(
-    ".wikimedia-credit-copyright",
-  ) as HTMLElement;
-  const giphyCreditElement = document.querySelector(
-    ".info-bar:has(.giphy-logo)",
-  ) as HTMLElement;
-  const apodCreditElement = document.querySelector(
-    ".apod-credit",
-  ) as HTMLElement;
-
-  if (leftInfoElement) {
-    leftInfoElement.style.transform =
-      settingsIconPosition === "bottomLeft" ? "translateY(-2.5em)" : "0";
-  }
-  if (rightInfoElement) {
-    rightInfoElement.style.transform =
-      settingsIconPosition === "bottomRight" ? "translateY(-2.5em)" : "0";
-  }
-  if (wikimediaTitleCredit) {
-    wikimediaTitleCredit.style.transform =
-      settingsIconPosition === "bottomLeft" ? "translateY(-2em)" : "0";
-  }
-  if (wikimediaCopyrightCredit) {
-    wikimediaCopyrightCredit.style.transform =
-      settingsIconPosition === "bottomRight" ? "translateY(-3em)" : "0";
-  }
-  if (giphyCreditElement) {
-    giphyCreditElement.style.transform =
-      settingsIconPosition === "bottomLeft" ? "translateY(-2em)" : "0";
-  }
-  if (apodCreditElement) {
-    apodCreditElement.style.transform =
-      settingsIconPosition === "bottomLeft" ? "translateY(-3em)" : "0";
-  }
-
   return (
-    <div
-      className={`Overlay ${settingsIconPosition}`}
-      style={mapping[settingsIconPosition as Position] || mapping.topLeft}
-    >
+    <div className={`Overlay ${settingsIconPosition}`}>
       <a
         onClick={toggleSettings}
         title={`${intl.formatMessage(messages.settingsHint)} (S)`}

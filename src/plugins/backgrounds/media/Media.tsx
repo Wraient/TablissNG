@@ -33,7 +33,7 @@ const Media: React.FC<Props> = ({
   const file = item;
   const url = useObjectUrl(file);
   const background = useValue(db, "background");
-  const { scale } = background.display;
+  const { scale, position } = background.display;
 
   if (!file || !url) return null;
 
@@ -59,6 +59,7 @@ const Media: React.FC<Props> = ({
           src={url}
           style={{
             objectFit: scale ? "cover" : "contain",
+            objectPosition: position,
           }}
         />
       )}

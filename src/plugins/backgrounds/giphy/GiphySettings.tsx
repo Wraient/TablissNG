@@ -16,7 +16,6 @@ const GiphySettings: FC<Props> = ({ data = defaultData, setData }) => (
         />
       }
     />
-
     <label>
       <FormattedMessage
         id="backgrounds.giphy.tag"
