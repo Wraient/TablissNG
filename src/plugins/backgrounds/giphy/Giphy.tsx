@@ -3,7 +3,6 @@ import { useBackgroundRotation } from "../../../hooks";
 import BaseBackground from "../base/BaseBackground";
 import { getGifs } from "./api";
 import giphyLogo from "./giphy-logo.png";
-import "./Giphy.sass";
 import { defaultData, Props } from "./types";
 
 const Giphy: React.FC<Props> = ({

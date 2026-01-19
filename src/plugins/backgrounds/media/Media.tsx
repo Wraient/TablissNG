@@ -3,7 +3,6 @@ import { useObjectUrl, useBackgroundRotation } from "../../../hooks";
 import { db } from "../../../db/state";
 import { useValue } from "../../../lib/db/react";
 import BaseBackground from "../base/BaseBackground";
-import "./Media.sass";
 import { defaultCache, defaultData, Props } from "./types";
 
 const Media: React.FC<Props> = ({

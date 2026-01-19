@@ -2,7 +2,6 @@ import React from "react";
 import { defaultData, Props } from "./types";
 import { getPicture } from "./api";
 import BaseBackground from "../base/BaseBackground";
-import "./Apod.sass";
 
 const Apod: React.FC<Props> = ({
   cache,

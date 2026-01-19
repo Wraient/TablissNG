@@ -1,12 +1,16 @@
 import React from "react";
-import Backdrop from "../../../views/shared/Backdrop";
-import "./Online.sass";
+import BaseBackground from "../base/BaseBackground";
 import { defaultData, Props } from "./types";
 
 const Online: React.FC<Props> = ({ data = defaultData }) => {
-  if (!data.url) return <div className="Online default fullscreen" />;
-
-  return <Backdrop className="Online fullscreen" url={data.url} />;
+  return (
+    <BaseBackground
+      containerClassName="Online fullscreen"
+      url={data.url ?? null}
+      ready={!!data.url}
+      showControls={false}
+    />
+  );
 };
 
 export default Online;

@@ -46,16 +46,18 @@ const BaseBackground: React.FC<Props> = ({
 
     <div className="info-bar">
       <div className="left-info">
-        {leftInfo.map((info, index) => [
-          index > 0 && ", ",
-          info.url ? (
-            <a key={info.url} href={info.url} rel="noopener noreferrer">
-              {info.label}
-            </a>
-          ) : (
-            <span key={index}>{info.label}</span>
-          ),
-        ])}
+        {leftInfo.map((info, index) => (
+          <React.Fragment key={index}>
+            {index > 0 && ", "}
+            {info.url ? (
+              <a href={info.url} rel="noopener noreferrer">
+                {info.label}
+              </a>
+            ) : (
+              <span>{info.label}</span>
+            )}
+          </React.Fragment>
+        ))}
       </div>
 
       {showControls && (

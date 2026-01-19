@@ -1,7 +1,6 @@
 import React from "react";
 import BaseBackground from "../base/BaseBackground";
 import { fetchFeaturedContent, formatDateForApi } from "./api";
-import "./Wikimedia.sass";
 import { defaultData, Props } from "./types";
 
 const Wikimedia: React.FC<Props> = ({

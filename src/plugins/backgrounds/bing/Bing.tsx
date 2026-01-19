@@ -1,9 +1,8 @@
 import React from "react";
-import Backdrop from "../../../views/shared/Backdrop";
+import BaseBackground from "../base/BaseBackground";
 import { getImage } from "./api";
 import { defaultData, Props } from "./types";
 import "./Bing.sass";
-import BingTitle from "./BingTitle";
 
 const Bing: React.FC<Props> = ({
   cache,
@@ -23,26 +22,32 @@ const Bing: React.FC<Props> = ({
     mounted.current = true;
   }, [data.locale, data.date, data.customDate]);
 
+  const leftInfo =
+    image?.title && data.showTitle
+      ? [
+          {
+            label: image.title,
+            url: `https://www.bing.com/search?q=${encodeURIComponent(image.title)}`,
+          },
+        ]
+      : [];
+
+  const rightInfo =
+    image?.copyright && data.showTitle
+      ? {
+          label: image.copyright,
+        }
+      : null;
+
   return (
-    <div className="Bing fullscreen">
-      <Backdrop
-        className="picture fullscreen"
-        ready={!!image?.url}
-        url={image?.url || ""}
-      >
-        {image && data.showTitle && (
-          <>
-            <div className="bing-credit title" style={{ lineHeight: 0 }}>
-              {image.title && <p>{image.title}</p>}
-              {image.copyright && (
-                <p style={{ textAlign: "right" }}>&copy; {image.copyright}</p>
-              )}
-            </div>
-            <BingTitle title={image.title} copyright={image.copyright} />
-          </>
-        )}
-      </Backdrop>
-    </div>
+    <BaseBackground
+      containerClassName="Bing fullscreen"
+      url={image?.url ?? null}
+      ready={!!image?.url}
+      showControls={false}
+      leftInfo={leftInfo}
+      rightInfo={rightInfo}
+    />
   );
 };
 
