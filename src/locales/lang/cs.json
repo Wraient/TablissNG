@@ -43,6 +43,7 @@
   "backgrounds.media.name": "Nahrát obrázky a videa",
   "backgrounds.media.performanceWarning": "Velká média mohou ovlivnit výkon.",
   "backgrounds.media.removeMedia": "Odebrat média",
+  "backgrounds.media.showNewMedia": "Show new media",
   "backgrounds.media.syncWarning": "Média se nesynchronizují mezi zařízeními.",
   "backgrounds.media.uploadCount": "Nahráno médií: {count}.",
   "backgrounds.online.description": "Zobrazit online obrázek",

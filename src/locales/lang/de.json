@@ -43,6 +43,7 @@
   "backgrounds.media.name": "Lade Fotos & Videos hoch",
   "backgrounds.media.performanceWarning": "Große Medien beinträchtigen die Leistung.",
   "backgrounds.media.removeMedia": "Entferne Medien",
+  "backgrounds.media.showNewMedia": "Show new media",
   "backgrounds.media.syncWarning": "Medien werden nicht zwischen Geräten synchronisiert",
   "backgrounds.media.uploadCount": "{count} Medien hochgeladen.",
   "backgrounds.online.description": "Zeige online Bilder",

@@ -43,6 +43,7 @@
   "backgrounds.media.name": "Upload Images & Videos",
   "backgrounds.media.performanceWarning": "Large media may affect performance.",
   "backgrounds.media.removeMedia": "Remove media",
+  "backgrounds.media.showNewMedia": "Show new media",
   "backgrounds.media.syncWarning": "Media does not sync between devices.",
   "backgrounds.media.uploadCount": "{count} media uploaded.",
   "backgrounds.online.description": "Show online image",

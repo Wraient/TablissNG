@@ -43,6 +43,7 @@
   "backgrounds.media.name": "Загрузка изображений и видео",
   "backgrounds.media.performanceWarning": "Большие медиа могут повлиять на производительность.",
   "backgrounds.media.removeMedia": "Убрать медиа",
+  "backgrounds.media.showNewMedia": "Show new media",
   "backgrounds.media.syncWarning": "Медиа не синхронизируется между устройствами.",
   "backgrounds.media.uploadCount": "Загружено {count} медиа",
   "backgrounds.online.description": "Показ изображения из интернета",
