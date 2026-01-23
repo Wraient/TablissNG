@@ -12,7 +12,6 @@ interface Props {
   containerClassName?: string;
   url: string | null;
   ready?: boolean;
-  title?: React.ReactNode;
   paused?: boolean;
   onPause?: () => void;
   onPrev?: (() => void) | null;
@@ -28,7 +27,6 @@ const BaseBackground: React.FC<Props> = ({
   containerClassName = "Unsplash fullscreen",
   url,
   ready = false,
-  title,
   paused = false,
   onPause = () => {},
   onPrev = null,
@@ -41,8 +39,6 @@ const BaseBackground: React.FC<Props> = ({
 }) => (
   <div className={`${containerClassName} bg-base`}>
     <Backdrop className="image fullscreen" ready={ready} url={url}>
-      {title ? <div className="background-title">{title}</div> : null}
-
       {children}
     </Backdrop>
 
