@@ -9,6 +9,7 @@ const Media: React.FC<Props> = ({
   cache = defaultCache,
   setCache,
   data = defaultData,
+  setData,
 }) => {
   const normalizedCache = React.useMemo(() => {
     if (Array.isArray(cache)) {
@@ -33,7 +34,7 @@ const Media: React.FC<Props> = ({
     fetch: () => Promise.resolve([]),
     cacheObj: { cache: normalizedCache, setCache },
     data,
-    setData: undefined,
+    setData,
     deps: [],
   });
 
