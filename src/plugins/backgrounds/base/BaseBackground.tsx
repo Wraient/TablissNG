@@ -77,7 +77,7 @@ const BaseBackground: React.FC<Props> = ({
         {showInfo && rightInfo && (
           <>
             {rightInfo.url ? (
-              <a href={rightInfo.url} target="_self" rel="noopener noreferrer">
+              <a href={rightInfo.url} rel="noopener noreferrer">
                 {rightInfo.label}
               </a>
             ) : (
