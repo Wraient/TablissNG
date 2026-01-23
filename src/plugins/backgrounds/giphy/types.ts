@@ -11,6 +11,7 @@ export type Data = {
   tag: string;
   paused?: boolean;
   timeout: number;
+  showTitle: boolean;
 };
 
 export type Cache = RotatingCache<Gif>;
@@ -22,4 +23,5 @@ export const defaultData: Data = {
   tag: "pattern",
   paused: false,
   timeout: 900,
+  showTitle: true,
 };

@@ -39,6 +39,7 @@ const Giphy: React.FC<Props> = ({
       onPause={handlePause}
       onPrev={go(-1)}
       onNext={go(1)}
+      showInfo={data.showTitle}
       leftInfo={[
         {
           label: (

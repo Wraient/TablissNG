@@ -98,6 +98,7 @@ const Unsplash: React.FC<Props> = ({
       containerClassName="Unsplash fullscreen"
       url={url}
       ready={url !== null}
+      showInfo={data.showTitle}
       leftInfo={credits}
       rightInfo={location}
       paused={data.paused ?? false}

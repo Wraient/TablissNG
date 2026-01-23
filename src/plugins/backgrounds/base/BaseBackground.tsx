@@ -18,6 +18,7 @@ interface Props {
   onPrev?: (() => void) | null;
   onNext?: (() => void) | null;
   showControls?: boolean;
+  showInfo?: boolean;
   leftInfo?: CreditLink[];
   rightInfo?: CreditLink | null;
   children?: React.ReactNode;
@@ -33,6 +34,7 @@ const BaseBackground: React.FC<Props> = ({
   onPrev = null,
   onNext = null,
   showControls = true,
+  showInfo = true,
   leftInfo = [],
   rightInfo = null,
   children,
@@ -46,18 +48,19 @@ const BaseBackground: React.FC<Props> = ({
 
     <div className="info-bar">
       <div className="left-info">
-        {leftInfo.map((info, index) => (
-          <React.Fragment key={index}>
-            {index > 0 && ", "}
-            {info.url ? (
-              <a href={info.url} rel="noopener noreferrer">
-                {info.label}
-              </a>
-            ) : (
-              <span>{info.label}</span>
-            )}
-          </React.Fragment>
-        ))}
+        {showInfo &&
+          leftInfo.map((info, index) => (
+            <React.Fragment key={index}>
+              {index > 0 && ", "}
+              {info.url ? (
+                <a href={info.url} rel="noopener noreferrer">
+                  {info.label}
+                </a>
+              ) : (
+                <span>{info.label}</span>
+              )}
+            </React.Fragment>
+          ))}
       </div>
 
       {showControls && (
@@ -74,17 +77,19 @@ const BaseBackground: React.FC<Props> = ({
         </div>
       )}
 
-      {rightInfo && (
-        <div className="right-info">
-          {rightInfo.url ? (
-            <a href={rightInfo.url} target="_self" rel="noopener noreferrer">
-              {rightInfo.label}
-            </a>
-          ) : (
-            <span>{rightInfo.label}</span>
-          )}
-        </div>
-      )}
+      <div className="right-info">
+        {showInfo && rightInfo && (
+          <>
+            {rightInfo.url ? (
+              <a href={rightInfo.url} target="_self" rel="noopener noreferrer">
+                {rightInfo.label}
+              </a>
+            ) : (
+              <span>{rightInfo.label}</span>
+            )}
+          </>
+        )}
+      </div>
     </div>
   </div>
 );

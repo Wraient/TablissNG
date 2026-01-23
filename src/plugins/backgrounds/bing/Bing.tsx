@@ -22,22 +22,20 @@ const Bing: React.FC<Props> = ({
     mounted.current = true;
   }, [data.locale, data.date, data.customDate]);
 
-  const leftInfo =
-    image?.title && data.showTitle
-      ? [
-          {
-            label: image.title,
-            url: `https://www.bing.com/search?q=${encodeURIComponent(image.title)}`,
-          },
-        ]
-      : [];
+  const leftInfo = image?.title
+    ? [
+        {
+          label: image.title,
+          url: `https://www.bing.com/search?q=${encodeURIComponent(image.title)}`,
+        },
+      ]
+    : [];
 
-  const rightInfo =
-    image?.copyright && data.showTitle
-      ? {
-          label: image.copyright,
-        }
-      : null;
+  const rightInfo = image?.copyright
+    ? {
+        label: image.copyright,
+      }
+    : null;
 
   return (
     <BaseBackground
@@ -45,6 +43,7 @@ const Bing: React.FC<Props> = ({
       url={image?.url ?? null}
       ready={!!image?.url}
       showControls={false}
+      showInfo={data.showTitle}
       leftInfo={leftInfo}
       rightInfo={rightInfo}
     />

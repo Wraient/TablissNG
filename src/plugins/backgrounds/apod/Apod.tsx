@@ -47,7 +47,7 @@ const Apod: React.FC<Props> = ({
   const rightInfo =
     picture && picture.copyright
       ? {
-          label: `© ${picture.copyright}`,
+          label: picture.copyright,
           url: `https://www.google.com/search?q=${encodeURIComponent(picture.copyright)}`,
         }
       : null;
@@ -58,6 +58,7 @@ const Apod: React.FC<Props> = ({
       url={imageUrl ?? null}
       ready={!!imageUrl}
       showControls={false}
+      showInfo={data.showTitle}
       leftInfo={leftInfo}
       rightInfo={rightInfo}
     />

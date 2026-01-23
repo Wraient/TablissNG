@@ -59,6 +59,7 @@ const Wikimedia: React.FC<Props> = ({
       url={picture?.image?.image?.source ?? null}
       ready={!!picture?.image?.image?.source}
       showControls={false}
+      showInfo={data.showTitle}
       leftInfo={leftInfo}
       rightInfo={rightInfo}
     />
