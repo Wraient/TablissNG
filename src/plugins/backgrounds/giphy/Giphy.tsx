@@ -14,10 +14,7 @@ const Giphy: React.FC<Props> = ({
 }) => {
   const { item, go, handlePause } = useBackgroundRotation({
     fetch: () => {
-      loader.push();
-      return getGifs({ tag: data.tag, nsfw: data.nsfw }, loader).finally(
-        loader.pop,
-      );
+      return getGifs({ tag: data.tag, nsfw: data.nsfw }, loader);
     },
     cacheObj: { cache, setCache },
     data,
