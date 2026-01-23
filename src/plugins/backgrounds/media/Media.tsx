@@ -10,20 +10,28 @@ const Media: React.FC<Props> = ({
   setCache,
   data = defaultData,
 }) => {
+  const normalizedCache = React.useMemo(() => {
+    if (Array.isArray(cache)) {
+      return {
+        items: cache as File[],
+        cursor: 0,
+        rotated: Date.now(),
+        deps: [],
+      };
+    }
+    return cache;
+  }, [cache]);
+
   // If legacy cache is an old File[] array, convert it to the new cache format
-  if (Array.isArray(cache)) {
-    cache = {
-      items: cache as File[],
-      cursor: 0,
-      rotated: Date.now(),
-      deps: [],
-    };
-    setCache?.(cache); // Without doing this, weird infinite loops are created (with multiple imgages). Idk why.
-  }
+  React.useEffect(() => {
+    if (Array.isArray(cache)) {
+      setCache?.(normalizedCache);
+    }
+  }, [cache, normalizedCache, setCache]);
 
   const { item, go, handlePause } = useBackgroundRotation({
     fetch: () => Promise.resolve([]),
-    cacheObj: { cache, setCache },
+    cacheObj: { cache: normalizedCache, setCache },
     data,
     setData: undefined,
     deps: [],
