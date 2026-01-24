@@ -38,6 +38,7 @@ const BaseBackground: React.FC<Props> = ({
   rightInfo = null,
   children,
 }) => {
+  // TODO: Consider passing display in via prop
   const focus = useValue(db, "focus");
   const background = useValue(db, "background");
   const {
