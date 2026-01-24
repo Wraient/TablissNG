@@ -50,7 +50,7 @@ const Media: React.FC<Props> = ({
   return (
     <BaseBackground
       containerClassName="Image fullscreen"
-      url={isVideo ? null : url}
+      url={url}
       ready={!!url}
       paused={data?.paused ?? false}
       onPause={handlePause}
@@ -63,7 +63,7 @@ const Media: React.FC<Props> = ({
           muted
           playsInline
           loop
-          className="video"
+          className="video fullscreen"
           src={url}
           style={{
             objectFit: scale ? "cover" : "contain",
