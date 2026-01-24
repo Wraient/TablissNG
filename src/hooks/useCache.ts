@@ -1,6 +1,7 @@
 import { EffectCallback, useEffect, useMemo, useRef } from "react";
 import { Cache } from "../plugins";
 import { useTime } from "./useTime";
+import { wrap } from "../utils";
 
 /**
  * A cached effect that automatically reruns after the expires time or on deps change.
@@ -75,6 +76,9 @@ export function useRotatingCache<T>(
     ) {
       // fetch more; preserve up to the last 10 existing items
       fetch().then((items) => {
+        if (items.length === 0) {
+          return;
+        }
         const preserved = cache.items.slice(-10);
         const newItems = [...preserved, ...items];
         // place cursor on the last preserved item so the next rotation moves into new items
@@ -100,7 +104,12 @@ export function useRotatingCache<T>(
   if (!isValidCache) return undefined;
   const { items } = cache;
   if (!Array.isArray(items) || typeof cursor !== "number") return undefined;
-  return items[cursor];
+
+  // Final safety check to ensure cursor is within bounds for the current render
+  if (items.length === 0) return undefined;
+  const safeCursor = wrap(cursor, items.length);
+
+  return items[safeCursor];
 }
 
 /**
