@@ -13,8 +13,11 @@ const Apod: React.FC<Props> = ({
   const mounted = React.useRef(false);
 
   React.useEffect(() => {
-    getPicture(data, loader).then(setCache);
-    if (mounted.current || !picture) getPicture(data, loader).then(setPicture);
+    const isUpdate = mounted.current;
+    getPicture(data, loader).then((result) => {
+      setCache(result);
+      if (isUpdate || !picture) setPicture(result);
+    });
     mounted.current = true;
   }, [data.customDate, data.date]);
 
