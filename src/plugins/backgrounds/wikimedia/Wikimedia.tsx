@@ -56,6 +56,7 @@ const Wikimedia: React.FC<Props> = ({
 
   return (
     <BaseBackground
+      containerClassName="Wikimedia fullscreen"
       url={picture?.image?.image?.source ?? null}
       ready={!!picture?.image?.image?.source}
       showControls={false}
