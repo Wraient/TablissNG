@@ -31,7 +31,6 @@ const Giphy: React.FC<Props> = ({
     <BaseBackground
       containerClassName="Giphy fullscreen"
       url={url}
-      ready={!!url}
       paused={data.paused ?? false}
       onPause={handlePause}
       onPrev={go(-1)}

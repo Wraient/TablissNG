@@ -14,7 +14,6 @@ interface CreditLink {
 interface Props {
   containerClassName?: string;
   url: string | null;
-  ready?: boolean;
   paused?: boolean;
   onPause?: () => void;
   onPrev?: (() => void) | null;
@@ -29,7 +28,6 @@ interface Props {
 const BaseBackground: React.FC<Props> = ({
   containerClassName = "Unsplash fullscreen",
   url,
-  ready = false,
   paused = false,
   onPause = () => {},
   onPrev = null,

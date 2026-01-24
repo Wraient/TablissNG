@@ -7,7 +7,6 @@ const Online: React.FC<Props> = ({ data = defaultData }) => {
     <BaseBackground
       containerClassName="Online fullscreen"
       url={data.url ?? null}
-      ready={!!data.url}
       showControls={false}
     />
   );

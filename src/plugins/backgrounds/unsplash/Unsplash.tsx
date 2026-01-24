@@ -97,7 +97,6 @@ const Unsplash: React.FC<Props> = ({
     <BaseBackground
       containerClassName="Unsplash fullscreen"
       url={url}
-      ready={url !== null}
       showInfo={data.showTitle}
       leftInfo={credits}
       rightInfo={location}

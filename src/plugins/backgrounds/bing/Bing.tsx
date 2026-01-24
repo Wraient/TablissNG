@@ -41,7 +41,6 @@ const Bing: React.FC<Props> = ({
     <BaseBackground
       containerClassName="Bing fullscreen"
       url={image?.url ?? null}
-      ready={!!image?.url}
       showControls={false}
       showInfo={data.showTitle}
       leftInfo={leftInfo}

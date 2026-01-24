@@ -56,7 +56,6 @@ const Apod: React.FC<Props> = ({
     <BaseBackground
       containerClassName="Apod fullscreen"
       url={imageUrl ?? null}
-      ready={!!imageUrl}
       showControls={false}
       showInfo={data.showTitle}
       leftInfo={leftInfo}

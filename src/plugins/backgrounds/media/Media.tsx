@@ -51,7 +51,6 @@ const Media: React.FC<Props> = ({
     <BaseBackground
       containerClassName="Image fullscreen"
       url={url}
-      ready={!!url}
       paused={data?.paused ?? false}
       onPause={handlePause}
       onPrev={go(-1)}
