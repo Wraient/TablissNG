@@ -90,7 +90,7 @@ export function useRotatingCache<T>(
         });
       });
     }
-  }, [cursor]);
+  }, [cursor, cache, setCache, isValidCache, fetch]);
 
   // Refresh of deps change
   useEffect(() => {
@@ -99,7 +99,7 @@ export function useRotatingCache<T>(
         setCache({ items, cursor: 0, rotated: Date.now(), deps }),
       );
     }
-  }, [...deps, cache]);
+  }, [fetch, setCache, cache?.deps, ...deps]);
 
   if (!isValidCache) return undefined;
   const { items } = cache;
