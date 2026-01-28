@@ -18,7 +18,7 @@ const config: Config = {
   url: 'https://bookcatkid.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/TablissNG/',
+  baseUrl: '/TablissNG/docs/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -56,7 +56,6 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
     navbar: {
       title: 'TablissNG',
       logo: {
@@ -71,9 +70,20 @@ const config: Config = {
           label: 'Documentation',
         },
         {
+          to: '/gallery',
+          label: 'Gallery',
+          position: 'left',
+        },
+        {
+          href: 'https://bookcatkid.github.io/TablissNG/',
+          label: 'Open Extension',
+          position: 'left',
+        },
+        {
           href: 'https://github.com/BookCatKid/TablissNG',
-          label: 'GitHub',
           position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'GitHub repository',
         },
       ],
     },
@@ -90,6 +100,14 @@ const config: Config = {
             {
               label: 'Features',
               to: '/docs/features',
+            },
+            {
+              label: 'Gallery',
+              to: '/gallery',
+            },
+            {
+              label: 'Open Extension',
+              href: 'https://bookcatkid.github.io/TablissNG/',
             },
           ],
         },
