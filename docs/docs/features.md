@@ -1,0 +1,72 @@
+---
+sidebar_position: 2
+---
+
+# Features Overview
+
+TablissNG transforms your new tab page into something beautiful and uniquely yours.
+
+![TablissNG Screenshot](/img/screenshots/screenshot_1.png)
+
+## Backgrounds
+
+Choose from millions of backgrounds to brighten your day:
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem', marginBottom: '2rem'}}>
+  <img src="/img/screenshots/screenshot_2.png" alt="Background Example" />
+  <img src="/img/screenshots/screenshot_3.png" alt="Background Example" />
+</div>
+
+- **Astronomy Picture of the Day**: Daily astronomy pictures with scientific descriptions from NASA.
+- **Bing Daily Wallpaper**: The iconic daily images from Bing.
+- **Colour Gradient**: Beautiful, customisable gradients.
+- **Custom Upload**: Use your own images or videos for a personal touch.
+- **GIPHY**: Endless animated GIFs for a dynamic new tab.
+- **Online Image**: Provide a URL to display any image from the web.
+- **Solid Color**: Simple, clean, and minimalist backgrounds.
+- **Unsplash Photos**: Millions of high-quality, curated photographs.
+- **Wikimedia Commons**: Daily image of the day from Wikimedia Commons.
+
+## Widgets
+
+Stay productive with a variety of useful widgets:
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem', marginBottom: '2rem'}}>
+  <img src="/img/screenshots/screenshot_4.png" alt="Widget Example" />
+  <img src="/img/screenshots/screenshot_5.png" alt="Widget Example" />
+</div>
+
+- **Binary Clock**: Display the current time in binary format.
+- **Bitcoin Mempool**: Get the current block height and network info.
+- **Bookmarks**: Access your browser bookmarks directly.
+- **Countdown**: Track time remaining until your important events.
+- **Custom CSS**: Advanced styling for your new tab page.
+- **Custom HTML**: Add your own static HTML elements.
+- **Custom Text**: Display random text or affirmations from a list.
+- **GitHub Calendar**: Keep track of your contribution activity.
+- **Greeting**: Personalised greetings based on the time of day.
+- **IP Info**: Display your current IP address and location.
+- **Jokes**: Start your day with a laugh.
+- **Literature Clock**: The time told through literary quotes.
+- **Notes**: A simple notepad for your thoughts and ideas.
+- **Quick Links**: Custom shortcuts to your most-visited sites.
+- **Quotes**: Inspirational quotes from various categories.
+- **Search**: Search the web using your favourite engine (including custom ones).
+- **Time Since**: See how much time has passed since a specific event.
+- **Time**: Current time in multiple formats and timezones.
+- **Todo**: A simple list to keep track of your tasks.
+- **Trello**: Integration with your Trello boards.
+- **Weather**: Real-time weather for your location.
+- **Work Hours**: Track your work progress and time remaining.
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem', marginTop: '2rem'}}>
+  <img src="/img/screenshots/screenshot_6.png" alt="Full Interface Example" />
+  <img src="/img/screenshots/screenshot_7.png" alt="Settings Example" />
+</div>
+
+## Privacy & Performance
+
+- **Private**: We care about your privacy. TablissNG requires no unnecessary permissions and does not track you.
+- **Fast**: Optimized for speed, so your new tab opens instantly.
+- **Sync**: Your settings sync automatically between your devices via your browser account.
+- **Free**: 100% free and open source forever.
