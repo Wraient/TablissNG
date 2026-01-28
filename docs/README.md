@@ -1,41 +1,47 @@
-# Website
+# TablissNG Documentation
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+This is the source code for the TablissNG documentation and landing page, built using [Docusaurus v3](https://docusaurus.io/).
 
-## Installation
+## Shared Assets
 
-```bash
-yarn
-```
+To avoid duplication, several assets are synced from the root of the project during the build process:
+
+- `CHANGELOG.md`
+- `CONTRIBUTING.md`
+- `TRANSLATING.md`
+- `BUILDING.md`
+- Project screenshots and icons
+
+This is handled by the `sync-assets.js` script, which runs automatically before starting or building the site.
 
 ## Local Development
 
-```bash
-yarn start
-```
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+2. **Start the development server**:
+   ```bash
+   npm start
+   ```
+   This will run the asset sync and start the Docusaurus development server at [http://localhost:3000/TablissNG/docs/](http://localhost:3000/TablissNG/docs/).
 
 ## Build
 
+To generate the static site:
 ```bash
-yarn build
+npm run build
 ```
+The output will be located in the `build/` directory.
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+You can view all available scripts by running:
+```bash
+npm run
+```
 
 ## Deployment
 
-Using SSH:
+Deployment is handled automatically via GitHub Actions whenever changes are pushed to the `main` branch. The site is hosted at `https://bookcatkid.github.io/TablissNG/docs/`.
 
-```bash
-USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+The documentation build is part of a unified workflow that assembles both the main web preview and the documentation site into a single deployment.
