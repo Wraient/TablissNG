@@ -7,7 +7,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'TablissNG',
   tagline: 'A beautiful, customisable New Tab page',
-  favicon: 'img/icon.svg',
+  favicon: 'img/icons/icon.svg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -60,7 +60,7 @@ const config: Config = {
       title: 'TablissNG',
       logo: {
         alt: 'TablissNG Logo',
-        src: 'img/icon.svg',
+        src: 'img/icons/icon.svg',
       },
       items: [
         {
@@ -76,7 +76,7 @@ const config: Config = {
         },
         {
           href: 'https://bookcatkid.github.io/TablissNG/',
-          label: 'Open Extension',
+          label: 'Web Preview',
           position: 'left',
         },
         {
@@ -106,7 +106,7 @@ const config: Config = {
               to: '/gallery',
             },
             {
-              label: 'Open Extension',
+              label: 'Web Preview',
               href: 'https://bookcatkid.github.io/TablissNG/',
             },
           ],
