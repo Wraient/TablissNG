@@ -9,6 +9,10 @@ TablissNG is unable to load or save settings. This is most commonly caused by pr
 
 ## Storage Error
 
+- **Check for known bugs**
+  - Sometimes a browser update or a bug in TablissNG can cause storage issues.
+  - Check the **[GitHub Issues](https://github.com/BookCatKid/TablissNG/issues)** to see if others are reporting the same problem. You can also open a new issue if the bug hasn't been reported yet.
+
 - **Check you are not in private or incognito browsing mode**
   - This is important when using the web version of TablissNG.
   - This includes permanent private modes like Firefox's "Never remember history" settings.
