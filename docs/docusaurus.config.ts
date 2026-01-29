@@ -39,6 +39,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: "./sidebars.ts",
+          routeBasePath: "/",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/BookCatKid/TablissNG/tree/main/docs/",
@@ -91,11 +92,15 @@ const config: Config = {
           items: [
             {
               label: "Getting Started",
-              to: "/docs/intro",
+              to: "/intro",
             },
             {
               label: "Features",
-              to: "/docs/features",
+              to: "/features",
+            },
+            {
+              label: "Support",
+              to: "/support",
             },
             {
               label: "Gallery",
@@ -116,7 +121,7 @@ const config: Config = {
             },
             {
               label: "Contributing",
-              to: "/docs/community/contributing",
+              to: "/community/contributing",
             },
           ],
         },

@@ -28,22 +28,6 @@
   color: var(--ifm-color-content-secondary);
 }
 
-.storeButtons {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 2rem;
-}
-
-.storeButton {
-  transition: opacity 0.15s ease;
-}
-
-.storeButton:hover {
-  opacity: 0.8;
-}
-
 .buttons {
   display: flex;
   align-items: center;

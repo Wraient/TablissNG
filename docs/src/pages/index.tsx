@@ -4,6 +4,7 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
+import DownloadButtons from "@site/src/components/DownloadButtons";
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
@@ -20,41 +21,9 @@ function HomepageHeader() {
           className={styles.heroLogo}
         />
         <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
-        <div className={styles.storeButtons}>
-          <a
-            href="https://addons.mozilla.org/en-US/firefox/addon/tablissng/"
-            className={styles.storeButton}
-          >
-            <img
-              src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg"
-              height="50"
-            />
-          </a>
-          <a
-            href="https://chromewebstore.google.com/detail/tabliss-a-beautiful-new-t/dlaogejjiafeobgofajdlkkhjlignalk"
-            className={styles.storeButton}
-          >
-            <img
-              src="https://developer.chrome.com/static/docs/webstore/branding/image/HRs9MPufa1J1h5glNhut.png"
-              alt="Get the Extension on Chrome"
-              height="50"
-              style={{ border: "1px solid transparent", borderRadius: "6px" }}
-            />
-          </a>
-          <a
-            href="https://microsoftedge.microsoft.com/addons/detail/tablissng/mkaphhbkcccpgkfaifhhdfckagnkcmhm"
-            className={styles.storeButton}
-          >
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Get_it_from_Microsoft_Badge.svg/320px-Get_it_from_Microsoft_Badge.svg.png"
-              alt="Get the Extension on Edge"
-              height="50"
-              style={{ border: "1px solid transparent", borderRadius: "4px" }}
-            />
-          </a>
-        </div>
+        <DownloadButtons height={50} />
         <div className={styles.buttons} style={{ gap: "1rem" }}>
-          <Link className="button button--primary button--lg" to="/docs/intro">
+          <Link className="button button--primary button--lg" to="/intro">
             View Documentation
           </Link>
           <Link
