@@ -2,13 +2,14 @@
 sidebar_position: 5
 ---
 
-import DataLossWarning from '../../_data-loss-warning.mdx';
+import DataLossWarning from '../../\_data-loss-warning.mdx';
 
 # Safari Installation
 
 Due to Apple's developer program requirements, TablissNG is currently not available on the official Mac App Store. You can install it manually using Safari's developer tools.
 
 ### Manual Installation
+
 1. **Go to the [Releases page](https://github.com/BookCatKid/TablissNG/releases)**.
 2. Download `tabliss-safari.zip`.
 3. Unzip the file into a folder.

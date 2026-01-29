@@ -17,6 +17,7 @@ This is handled by the `sync-assets.js` script, which runs automatically before 
 ## Local Development
 
 1. **Install dependencies**:
+
    ```bash
    npm install
    ```
@@ -30,12 +31,15 @@ This is handled by the `sync-assets.js` script, which runs automatically before 
 ## Build
 
 To generate the static site:
+
 ```bash
 npm run build
 ```
+
 The output will be located in the `build/` directory.
 
 You can view all available scripts by running:
+
 ```bash
 npm run
 ```

@@ -2,14 +2,16 @@
 sidebar_position: 4
 ---
 
-import DataLossWarning from '../../_data-loss-warning.mdx';
+import DataLossWarning from '../../\_data-loss-warning.mdx';
 
 # Microsoft Edge Installation
 
 ### Method 1: Edge Add-ons (Recommended)
+
 Install directly from the [Microsoft Edge Add-ons store](https://microsoftedge.microsoft.com/addons/detail/tablissng/mkaphhbkcccpgkfaifhhdfckagnkcmhm) for automatic updates.
 
 ### Method 2: Manual Installation
+
 1. **Go to the [Releases page](https://github.com/BookCatKid/TablissNG/releases)**.
 2. Download `tabliss-chromium.zip`.
 3. Unzip the file into a folder.

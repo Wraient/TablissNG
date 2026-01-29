@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-import DataLossWarning from '../../_data-loss-warning.mdx';
+import DataLossWarning from '../../\_data-loss-warning.mdx';
 
 # Web Stores (Recommended)
 

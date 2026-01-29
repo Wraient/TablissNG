@@ -15,34 +15,37 @@ Set the custom font by typing its name followed by the OpenType feature tag, sep
 ```text
 Cambria:smcp
 ```
-*The example above will display the font using the Small Capitals set.*
+
+_The example above will display the font using the Small Capitals set._
 
 ### Multiple Features
+
 You can include multiple OpenType features by appending additional tags with an ampersand (`&`):
 
 ```text
 Cambria:smcp&onum
 ```
-*This adds "Oldstyle Figures" (onum) along with "Small Capitals" (smcp).*
+
+_This adds "Oldstyle Figures" (onum) along with "Small Capitals" (smcp)._
 
 ## Common OpenType Tags
 
-| Tag | Description |
-| :--- | :--- |
-| `clig` | Contextual Ligatures |
+| Tag    | Description                   |
+| :----- | :---------------------------- |
+| `clig` | Contextual Ligatures          |
 | `c2pc` | Petite Capitals From Capitals |
-| `dlig` | Discretionary Ligatures |
-| `frac` | Fractions |
-| `lnum` | Lining Figures |
-| `onum` | Oldstyle Figures |
-| `pcap` | Petite Capitals |
-| `pnum` | Proportional Figures |
-| `salt` | Stylistic Alternates |
-| `smcp` | Small Capitals |
-| `subs` | Subscript |
-| `sups` | Superscript |
-| `tnum` | Tabular Figures |
-| `zero` | Slashed Zero |
+| `dlig` | Discretionary Ligatures       |
+| `frac` | Fractions                     |
+| `lnum` | Lining Figures                |
+| `onum` | Oldstyle Figures              |
+| `pcap` | Petite Capitals               |
+| `pnum` | Proportional Figures          |
+| `salt` | Stylistic Alternates          |
+| `smcp` | Small Capitals                |
+| `subs` | Subscript                     |
+| `sups` | Superscript                   |
+| `tnum` | Tabular Figures               |
+| `zero` | Slashed Zero                  |
 
 ## Resources
 

@@ -13,6 +13,7 @@ Before you begin, ensure you have the following installed on your system:
 ## Setup
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/BookCatKid/TablissNG.git
    cd TablissNG
@@ -28,13 +29,17 @@ Before you begin, ensure you have the following installed on your system:
 To run TablissNG in development mode with hot reloading:
 
 ### Web Version (Browser Preview)
+
 This will start a local development server and open the web version in your browser.
+
 ```bash
 npm run dev
 ```
 
 ### Browser Extensions
+
 To develop for specific browsers with auto-rebuild on file changes:
+
 ```bash
 # Chromium (Chrome, Edge, Brave, etc.)
 npm run dev:chromium
@@ -45,6 +50,7 @@ npm run dev:firefox
 # Safari
 npm run dev:safari
 ```
+
 The output will be in the `dist/` directory. You can then load this as an "unpacked extension" in your browser.
 
 **Warning: Data Persistence Notice**
@@ -56,6 +62,7 @@ Installing manual or nightly builds alongside the store version can cause config
 To create a production-ready build for a specific platform:
 
 ### Extension Builds
+
 ```bash
 # Chromium (Chrome, Edge, Brave, etc.)
 npm run build:chromium
@@ -68,6 +75,7 @@ npm run build:safari
 ```
 
 ### Web Build
+
 ```bash
 npm run build
 ```
