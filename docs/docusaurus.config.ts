@@ -100,7 +100,7 @@ const config: Config = {
             },
             {
               label: "Support",
-              to: "/support",
+              to: "category/support",
             },
             {
               label: "Gallery",
