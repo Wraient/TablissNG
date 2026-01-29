@@ -5,8 +5,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'TablissNG',
-  tagline: 'A beautiful, customisable New Tab page',
+  title: 'TablissNG Docs',
+  tagline: 'A beautiful, customizable New Tab page',
   favicon: 'img/icons/icon.svg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -131,7 +131,6 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} TablissNG. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

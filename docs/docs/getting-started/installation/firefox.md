@@ -2,6 +2,8 @@
 sidebar_position: 2
 ---
 
+import DataLossWarning from '../../_data-loss-warning.mdx';
+
 # Firefox Installation
 
 ### Method 1: Firefox Add-ons (Recommended)
@@ -16,3 +18,5 @@ Install directly from the [Firefox Add-ons store](https://addons.mozilla.org/en-
 4. In Firefox, go to `about:addons`.
 5. Click the gear icon (⚙️) and select **"Install Add-on from File..."**.
 6. Select the downloaded `.xpi` file.
+
+<DataLossWarning />

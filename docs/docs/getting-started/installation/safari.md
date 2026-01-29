@@ -2,6 +2,8 @@
 sidebar_position: 5
 ---
 
+import DataLossWarning from '../../_data-loss-warning.mdx';
+
 # Safari Installation
 
 Due to Apple's developer program requirements, TablissNG is currently not available on the official Mac App Store. You can install it manually using Safari's developer tools.
@@ -10,7 +12,7 @@ Due to Apple's developer program requirements, TablissNG is currently not availa
 1. **Go to the [Releases page](https://github.com/BookCatKid/TablissNG/releases)**.
 2. Download `tabliss-safari.zip`.
 3. Unzip the file into a folder.
-4. Enable Safari's Develop menu: 
+4. Enable Safari's Develop menu:
    - Go to **Safari > Settings (or Preferences) > Advanced**.
    - Check the box **"Show features for web developers"** (or "Show Develop menu in menu bar").
 5. In the menu bar, go to **Develop > Add Temporary Extension...**.
@@ -21,3 +23,5 @@ Due to Apple's developer program requirements, TablissNG is currently not availa
 :::info
 Temporary extensions in Safari may need to be re-enabled after restarting the browser.
 :::
+
+<DataLossWarning />

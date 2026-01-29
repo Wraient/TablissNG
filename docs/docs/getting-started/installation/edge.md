@@ -2,6 +2,8 @@
 sidebar_position: 4
 ---
 
+import DataLossWarning from '../../_data-loss-warning.mdx';
+
 # Microsoft Edge Installation
 
 ### Method 1: Edge Add-ons (Recommended)
@@ -15,3 +17,5 @@ Install directly from the [Microsoft Edge Add-ons store](https://microsoftedge.m
 5. Enable **"Developer mode"** (usually in the bottom left or under a sidebar).
 6. Click **"Load unpacked"**.
 7. Select the unzipped folder.
+
+<DataLossWarning />

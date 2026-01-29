@@ -2,6 +2,8 @@
 sidebar_position: 3
 ---
 
+import DataLossWarning from '../../_data-loss-warning.mdx';
+
 # Chrome & Chromium Installation
 
 ### Method 1: Chrome Web Store (Recommended)
@@ -15,3 +17,5 @@ Install directly from the [Chrome Web Store](https://chromewebstore.google.com/d
 5. Enable **"Developer mode"** in the top right corner.
 6. Click **"Load unpacked"**.
 7. Select the folder where you unzipped the extension (ensure `manifest.json` is in the root of that folder).
+
+<DataLossWarning />

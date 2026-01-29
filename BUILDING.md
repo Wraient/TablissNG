@@ -47,6 +47,10 @@ npm run dev:safari
 ```
 The output will be in the `dist/` directory. You can then load this as an "unpacked extension" in your browser.
 
+**Warning: Data Persistence Notice**
+
+Installing manual or nightly builds alongside the store version can cause configuration conflicts. Switching back from a manual build to a store version often requires a full re-installation, which **will erase your settings and data** unless you have exported them. Always [export your settings](https://bookcatkid.github.io/TablissNG/docs/guides/backup-and-export) before switching versions.
+
 ## Building for Production
 
 To create a production-ready build for a specific platform:

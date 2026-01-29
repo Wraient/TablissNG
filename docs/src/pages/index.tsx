@@ -57,10 +57,9 @@ function HomepageHeader() {
 }
 
 export default function Home(): ReactNode {
-  const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`${siteConfig.title} Docs`}
+      title="Home"
       description="TablissNG - A beautiful, private, and customizable new tab page for your browser.">
       <HomepageHeader />
       <main>

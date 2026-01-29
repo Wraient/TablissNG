@@ -44,14 +44,14 @@ Stay productive with a variety of useful widgets:
 - **Custom HTML**: Add your own static HTML elements.
 - **Custom Text**: Display random text or affirmations from a list.
 - **GitHub Calendar**: Keep track of your contribution activity.
-- **Greeting**: Personalised greetings based on the time of day.
+- **Greeting**: Personalized greetings based on the time of day.
 - **IP Info**: Display your current IP address and location.
 - **Jokes**: Start your day with a laugh.
 - **Literature Clock**: The time told through literary quotes.
 - **Notes**: A simple notepad for your thoughts and ideas.
 - **Quick Links**: Custom shortcuts to your most-visited sites.
 - **Quotes**: Inspirational quotes from various categories.
-- **Search**: Search the web using your favourite engine (including custom ones).
+- **Search**: Search the web using your favorite engine (including custom ones).
 - **Time Since**: See how much time has passed since a specific event.
 - **Time**: Current time in multiple formats and timezones.
 - **Todo**: A simple list to keep track of your tasks.

@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Introduction
 
-TablissNG is a beautiful, customisable New Tab page for Firefox, Chrome, and Edge.
+TablissNG is a beautiful, customizable New Tab page for Firefox, Chrome, and Edge.
 
 It is a maintained fork of the original Tabliss project, bringing in new features, bug fixes, and keeping dependencies up to date.
 
