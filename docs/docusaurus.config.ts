@@ -6,6 +6,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
   title: "TablissNG Docs",
+  titleDelimiter: "·",
   tagline: "A beautiful, customizable New Tab page",
   favicon: "img/icons/icon.svg",
 
