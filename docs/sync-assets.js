@@ -15,6 +15,7 @@ const filesToSync = [
 const dirsToSync = [
   { from: "screenshots", to: "static/img/screenshots" },
   { from: "target/shared/icons", to: "static/img/icons" },
+  { from: "assets/badges", to: "static/img/badges" },
 ];
 
 function copyFile(from, to) {

@@ -24,6 +24,4 @@ yarn-error.log*
 /docs/community/contributing.md
 /docs/community/translating.md
 /docs/getting-started/building.md
-/static/img/logo.svg
-/static/img/screenshots/
-/static/img/icons/
+/static/img/
