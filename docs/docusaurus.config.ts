@@ -29,7 +29,8 @@ const config: Config = {
   customFields: {
     storeUrls: {
       firefox: "https://addons.mozilla.org/en-US/firefox/addon/tablissng/",
-      chrome: "https://chromewebstore.google.com/detail/tablissng/dlaogejjiafeobgofajdlkkhjlignalk",
+      chrome:
+        "https://chromewebstore.google.com/detail/tablissng/dlaogejjiafeobgofajdlkkhjlignalk",
       edge: "https://microsoftedge.microsoft.com/addons/detail/tablissng/mkaphhbkcccpgkfaifhhdfckagnkcmhm",
     },
   },

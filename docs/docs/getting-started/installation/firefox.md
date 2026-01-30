@@ -7,9 +7,9 @@ import DataLossWarning from '../../\_data-loss-warning.mdx';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 export const FirefoxLink = () => {
-  const {siteConfig} = useDocusaurusContext();
-  const {storeUrls} = siteConfig.customFields;
-  return <a href={storeUrls.firefox}>Firefox Add-ons store</a>;
+const {siteConfig} = useDocusaurusContext();
+const {storeUrls} = siteConfig.customFields;
+return <a href={storeUrls.firefox}>Firefox Add-ons store</a>;
 };
 
 # Firefox Installation

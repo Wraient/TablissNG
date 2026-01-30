@@ -7,9 +7,9 @@ import DataLossWarning from '../../\_data-loss-warning.mdx';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 export const ChromeLink = () => {
-  const {siteConfig} = useDocusaurusContext();
-  const {storeUrls} = siteConfig.customFields;
-  return <a href={storeUrls.chrome}>Chrome Web Store</a>;
+const {siteConfig} = useDocusaurusContext();
+const {storeUrls} = siteConfig.customFields;
+return <a href={storeUrls.chrome}>Chrome Web Store</a>;
 };
 
 # Chrome & Chromium Installation

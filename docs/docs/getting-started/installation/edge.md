@@ -7,9 +7,9 @@ import DataLossWarning from '../../\_data-loss-warning.mdx';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 export const EdgeLink = () => {
-  const {siteConfig} = useDocusaurusContext();
-  const {storeUrls} = siteConfig.customFields;
-  return <a href={storeUrls.edge}>Microsoft Edge Add-ons store</a>;
+const {siteConfig} = useDocusaurusContext();
+const {storeUrls} = siteConfig.customFields;
+return <a href={storeUrls.edge}>Microsoft Edge Add-ons store</a>;
 };
 
 # Microsoft Edge Installation
