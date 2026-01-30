@@ -78,6 +78,11 @@ const config: Config = {
           position: "left",
         },
         {
+          href: "https://github.com/users/BookCatKid/projects/3/views/1",
+          label: "Roadmap",
+          position: "left",
+        },
+        {
           href: "https://github.com/BookCatKid/TablissNG",
           position: "right",
           className: "header-github-link",
@@ -119,6 +124,10 @@ const config: Config = {
             {
               label: "GitHub Issues",
               href: "https://github.com/BookCatKid/TablissNG/issues",
+            },
+            {
+              label: "Roadmap",
+              href: "https://github.com/users/BookCatKid/projects/3/views/1",
             },
             {
               label: "Contributing",

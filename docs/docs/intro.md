@@ -27,4 +27,7 @@ For manual installation or other platforms, follow the [Installation Guide](./ge
 
 ## Contributing
 
-We love contributions! Check out our [Contributing Guide](./community/contributing.md) to see how you can help.
+We love contributions! Whether you're fixing a bug, adding a feature, or improving documentation, your help is welcome.
+
+- **[Contributing Guide](./community/contributing.md)**: Learn how to get involved.
+- **[Roadmap & Project Board](https://github.com/users/BookCatKid/projects/3/views/1)**: See what we're working on and find ideas for contributions.
