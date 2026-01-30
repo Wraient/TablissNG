@@ -1,20 +1,14 @@
 .features {
   padding: 4rem 0 2rem;
-  background: var(--ifm-background-color);
 }
 
 .featureCard {
   padding: 2rem;
   height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 .featureIcon {
   margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
   color: var(--ifm-color-primary);
 }
 

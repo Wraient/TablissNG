@@ -4,9 +4,8 @@
  */
 
 .heroBanner {
-  padding: 2rem 0 2rem;
+  padding: 2rem 0;
   text-align: center;
-  position: relative;
   background: var(--ifm-background-color);
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
 }
@@ -19,20 +18,17 @@
 
 .heroSubtitle {
   font-size: 1.25rem;
-  font-weight: 400;
   margin-bottom: 2rem;
   color: var(--ifm-color-content-secondary);
 }
 
 .buttons {
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
 .showcaseSection {
   padding: 2rem 0;
-  background: var(--ifm-background-color);
 }
 
 .showcase {
@@ -54,10 +50,6 @@
   .showcaseGrid {
     grid-template-columns: 1fr;
   }
-}
-
-.showcaseItem {
-  width: 100%;
 }
 
 .showcaseImage {
