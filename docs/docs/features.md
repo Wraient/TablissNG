@@ -8,6 +8,28 @@ TablissNG transforms your new tab page into something beautiful and uniquely you
 
 ![TablissNG Screenshot](/img/screenshots/screenshot_1.png)
 
+## Brief Overview of a Few Improvements Over Tabliss
+
+This list is by no means exhaustive. TablissNG includes many other tweaks, quality-of-life improvements, and features not detailed here.
+
+- Customization
+  - Support for custom search engines and browser defaults
+  - Many more style options in display/font settings (eg. scale, underline, text outline, custom css class)
+
+- Widgets
+  - Time Tracker, Bitcoin Mempool, Top Sites, Binary Clock, Bookmarks, Custom HTML.
+  - Enhancements: Daily Routine for Todos, Bible verses in Quotes, Markdown in Notes
+  - "Free Move" mode for dragging widgets
+
+- Backgrounds & Visuals
+  - Wikimedia Image of the Day, NASA APOD, Giphy Image of the Day
+  - Support for Videos, GIFs, and online image URLs
+  - Automatic night dimming and random gradients
+
+- Interface & Accessibility
+  - Full dark mode
+  - Complete translation support for all settings
+
 ## Backgrounds
 
 Choose from millions of backgrounds to brighten your day:
