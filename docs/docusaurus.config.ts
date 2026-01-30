@@ -91,7 +91,6 @@ const config: Config = {
       ],
     },
     footer: {
-      style: "dark",
       links: [
         {
           title: "Docs",
@@ -145,6 +144,7 @@ const config: Config = {
           ],
         },
       ],
+      copyright: `TablissNG is open source and licensed under GPL-3.0. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

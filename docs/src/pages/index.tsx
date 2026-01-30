@@ -21,7 +21,7 @@ function HomepageHeader() {
           className={styles.heroLogo}
         />
         <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
-        <DownloadButtons height={50} />
+        <DownloadButtons height={60} />
         <div className={styles.buttons} style={{ gap: "1rem" }}>
           <Link className="button button--primary button--lg" to="/intro">
             View Documentation
