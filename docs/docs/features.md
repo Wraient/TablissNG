@@ -12,29 +12,22 @@ TablissNG transforms your new tab page into something beautiful and uniquely you
 
 Choose from millions of backgrounds to brighten your day:
 
-<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem', marginBottom: '2rem'}}>
-  <img src="/img/screenshots/screenshot_2.png" alt="Background Example" />
-  <img src="/img/screenshots/screenshot_3.png" alt="Background Example" />
-</div>
-
 - **Astronomy Picture of the Day**: Daily astronomy pictures with scientific descriptions from NASA.
+  <img src="/TablissNG/docs/img/screenshots/backgrounds/apod_background.png" alt="NASA APOD Background" width="600" />
 - **Bing Daily Wallpaper**: The iconic daily images from Bing.
 - **Colour Gradient**: Beautiful, customisable gradients.
 - **Custom Upload**: Use your own images or videos for a personal touch.
 - **GIPHY**: Endless animated GIFs for a dynamic new tab.
+  <img src="/TablissNG/docs/img/screenshots/backgrounds/giphy_backgrounds.png" alt="GIPHY Backgrounds" width="600" />
 - **Online Image**: Provide a URL to display any image from the web.
 - **Solid Color**: Simple, clean, and minimalist backgrounds.
 - **Unsplash Photos**: Millions of high-quality, curated photographs.
+  <img src="/TablissNG/docs/img/screenshots/backgrounds/unsplash_background.png" alt="Unsplash Background" width="600" />
 - **Wikimedia Commons**: Daily image of the day from Wikimedia Commons.
 
 ## Widgets
 
 Stay productive with a variety of useful widgets:
-
-<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem', marginBottom: '2rem'}}>
-  <img src="/img/screenshots/screenshot_4.png" alt="Widget Example" />
-  <img src="/img/screenshots/screenshot_5.png" alt="Widget Example" />
-</div>
 
 - **Binary Clock**: Display the current time in binary format.
 - **Bitcoin Mempool**: Get the current block height and network info.

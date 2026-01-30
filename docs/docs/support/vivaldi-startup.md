@@ -18,6 +18,9 @@ To fix this, you can manually set your homepage to the TablissNG extension page:
 3. Select **Specific Page**.
 4. Enter the following URL:
    `chrome-extension://dlaogejjiafeobgofajdlkkhjlignalk/index.html`
+
+   <img src="/TablissNG/docs/img/screenshots/support/vivaldi_settings.png" alt="Vivaldi Settings Example" width="600" />
+
 5. Under **Startup with**, ensure it is set to **Homepage**.
 
 Now, when you start Vivaldi or click the Home button, TablissNG will load correctly.
