@@ -1,4 +1,5 @@
 ---
+title: Introduction
 sidebar_position: 1
 ---
 
@@ -10,12 +11,14 @@ TablissNG is a beautiful, customizable New Tab page for Firefox, Chrome, and Edg
 
 It is a maintained fork of the original Tabliss project, bringing in new features, bug fixes, and keeping dependencies up to date.
 
-## Features
+## A Few Features Over Tabliss
 
 - **Customization**: Support for custom search engines, browser defaults, and extensive style options.
 - **Widgets**: Time Tracker, Bitcoin Mempool, Top Sites, Binary Clock, Bookmarks, Custom HTML, and more.
 - **Backgrounds**: Wikimedia Image of the Day, NASA APOD, support for Videos, GIFs, and online image URLs.
 - **Interface**: Full dark mode and complete translation support.
+
+_[More here](./features#brief-overview-of-a-few-improvements-over-tabliss)_
 
 ## Getting Started
 

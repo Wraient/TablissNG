@@ -1,14 +1,22 @@
 ---
+title: Firefox Installation
 sidebar_position: 2
 ---
 
 import DataLossWarning from '../../\_data-loss-warning.mdx';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+
+export const FirefoxLink = () => {
+  const {siteConfig} = useDocusaurusContext();
+  const {storeUrls} = siteConfig.customFields;
+  return <a href={storeUrls.firefox}>Firefox Add-ons store</a>;
+};
 
 # Firefox Installation
 
 ### Method 1: Firefox Add-ons (Recommended)
 
-Install directly from the [Firefox Add-ons store](https://addons.mozilla.org/en-US/firefox/addon/tablissng/) for automatic updates.
+Install directly from the <FirefoxLink /> for automatic updates.
 
 ### Method 2: Manual Installation (.xpi)
 

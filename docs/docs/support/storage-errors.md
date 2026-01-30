@@ -19,7 +19,7 @@ TablissNG is unable to load or save settings. This is most commonly caused by pr
 
 - **Check you have plenty of disk space available on your device**
   - Browsers can delete storage if your disk space is low.
-  - Choosing the **Persist Setting** option in the settings menu will ask the browser not to clear your settings, even when disk space is low.
+  - Choosing the **Persist Settings** option in the settings menu will ask the browser not to clear your settings, even when disk space is low. The **Persist Settings** option is only useful on web builds.
 
 - **Check your browser profile is not corrupt**
   - **Firefox**: You can use the [Refresh Firefox](https://support.mozilla.org/en-US/kb/refresh-firefox-reset-add-ons-and-settings) option to reset.

@@ -50,7 +50,7 @@
 
 #### Safari
 
-For now the only way to install the safari extension is to install developer mode and install the unsigned version. I am not able to put it on the app store because to do that I would have to buy the **Apple Developer Licence** that costs **$99** a year!
+For now the only way to install the Safari extension is to install developer mode and install the unsigned version. I am not able to put it on the App Store because to do that I would have to buy the **Apple Developer Licence** that costs **$99** a year!
 
 1. Unzip the downloaded zip file into a folder
 2. Enable Safari's Develop menu: Safari > Settings (Preferences) > Advanced → check `Show features for web developers`

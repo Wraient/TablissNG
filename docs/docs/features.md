@@ -1,12 +1,15 @@
 ---
+title: Features Overview
 sidebar_position: 2
 ---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Features Overview
 
 TablissNG transforms your new tab page into something beautiful and uniquely yours.
 
-![TablissNG Screenshot](/img/screenshots/screenshot_1.png)
+<img src={useBaseUrl("/img/screenshots/screenshot_1.png")} alt="TablissNG Screenshot" />
 
 ## Brief Overview of a Few Improvements Over Tabliss
 
@@ -35,16 +38,16 @@ This list is by no means exhaustive. TablissNG includes many other tweaks, quali
 Choose from millions of backgrounds to brighten your day:
 
 - **Astronomy Picture of the Day**: Daily astronomy pictures with scientific descriptions from NASA.
-  <img src="/TablissNG/docs/img/screenshots/backgrounds/apod_background.png" alt="NASA APOD Background" width="600" />
+  <img src={useBaseUrl("/img/screenshots/backgrounds/apod_background.png")} alt="NASA APOD Background" width="600" />
 - **Bing Daily Wallpaper**: The iconic daily images from Bing.
 - **Colour Gradient**: Beautiful, customisable gradients.
 - **Custom Upload**: Use your own images or videos for a personal touch.
 - **GIPHY**: Endless animated GIFs for a dynamic new tab.
-  <img src="/TablissNG/docs/img/screenshots/backgrounds/giphy_backgrounds.png" alt="GIPHY Backgrounds" width="600" />
+  <img src={useBaseUrl("/img/screenshots/backgrounds/giphy_backgrounds.png")} alt="GIPHY Backgrounds" width="600" />
 - **Online Image**: Provide a URL to display any image from the web.
 - **Solid Color**: Simple, clean, and minimalist backgrounds.
 - **Unsplash Photos**: Millions of high-quality, curated photographs.
-  <img src="/TablissNG/docs/img/screenshots/backgrounds/unsplash_background.png" alt="Unsplash Background" width="600" />
+  <img src={useBaseUrl("/img/screenshots/backgrounds/unsplash_background.png")} alt="Unsplash Background" width="600" />
 - **Wikimedia Commons**: Daily image of the day from Wikimedia Commons.
 
 ## Widgets
@@ -73,11 +76,6 @@ Stay productive with a variety of useful widgets:
 - **Trello**: Integration with your Trello boards.
 - **Weather**: Real-time weather for your location.
 - **Work Hours**: Track your work progress and time remaining.
-
-<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem', marginTop: '2rem'}}>
-  <img src="/img/screenshots/screenshot_6.png" alt="Full Interface Example" />
-  <img src="/img/screenshots/screenshot_7.png" alt="Settings Example" />
-</div>
 
 ## Privacy & Performance
 

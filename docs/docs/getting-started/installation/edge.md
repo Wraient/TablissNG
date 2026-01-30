@@ -1,14 +1,22 @@
 ---
+title: Microsoft Edge Installation
 sidebar_position: 4
 ---
 
 import DataLossWarning from '../../\_data-loss-warning.mdx';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+
+export const EdgeLink = () => {
+  const {siteConfig} = useDocusaurusContext();
+  const {storeUrls} = siteConfig.customFields;
+  return <a href={storeUrls.edge}>Microsoft Edge Add-ons store</a>;
+};
 
 # Microsoft Edge Installation
 
 ### Method 1: Edge Add-ons (Recommended)
 
-Install directly from the [Microsoft Edge Add-ons store](https://microsoftedge.microsoft.com/addons/detail/tablissng/mkaphhbkcccpgkfaifhhdfckagnkcmhm) for automatic updates.
+Install directly from the <EdgeLink /> for automatic updates.
 
 ### Method 2: Manual Installation
 

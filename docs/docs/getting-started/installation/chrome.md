@@ -1,16 +1,28 @@
 ---
+title: Chrome & Chromium Installation
 sidebar_position: 3
 ---
 
 import DataLossWarning from '../../\_data-loss-warning.mdx';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+
+export const ChromeLink = () => {
+  const {siteConfig} = useDocusaurusContext();
+  const {storeUrls} = siteConfig.customFields;
+  return <a href={storeUrls.chrome}>Chrome Web Store</a>;
+};
 
 # Chrome & Chromium Installation
 
 ### Method 1: Chrome Web Store (Recommended)
 
-Install directly from the [Chrome Web Store](https://chromewebstore.google.com/detail/tabliss-a-beautiful-new-t/dlaogejjiafeobgofajdlkkhjlignalk) for automatic updates.
+Install directly from the <ChromeLink /> for automatic updates.
 
 ### Method 2: Manual Installation (Developer Mode)
+
+:::info key included in manifest
+A key is included in the manifest primarily for ease of testing the Trello widget. The key makes the extension install with the same ID every time like it does on firefox, even when manually installing it.
+:::
 
 1. **Go to the [Releases page](https://github.com/BookCatKid/TablissNG/releases)**.
 2. Download `tabliss-chromium.zip`.

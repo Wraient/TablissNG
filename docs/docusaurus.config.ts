@@ -26,6 +26,14 @@ const config: Config = {
   organizationName: "BookCatKid", // Usually your GitHub org/user name.
   projectName: "TablissNG", // Usually your repo name.
 
+  customFields: {
+    storeUrls: {
+      firefox: "https://addons.mozilla.org/en-US/firefox/addon/tablissng/",
+      chrome: "https://chromewebstore.google.com/detail/tablissng/dlaogejjiafeobgofajdlkkhjlignalk",
+      edge: "https://microsoftedge.microsoft.com/addons/detail/tablissng/mkaphhbkcccpgkfaifhhdfckagnkcmhm",
+    },
+  },
+
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".

@@ -1,4 +1,5 @@
 ---
+title: OpenType Features in Widgets
 sidebar_position: 2
 ---
 

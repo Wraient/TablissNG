@@ -1,4 +1,5 @@
 ---
+title: Web Stores (Recommended)
 sidebar_position: 1
 ---
 
