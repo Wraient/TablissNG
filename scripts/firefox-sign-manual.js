@@ -115,6 +115,15 @@ async function run() {
       );
     await fs.writeFile("README.md", readme);
 
+    let firefoxDoc = await fs.readFile("docs/docs/getting-started/installation/firefox.md", "utf-8");
+    firefoxDoc = firefoxDoc
+      .replace(
+        /href="https:\/\/github\.com\/BookCatKid\/TablissNG\/releases\/download\/nightly-auto\/.*\.xpi"/g,
+        `href="${downloadUrl}"`,
+      )
+      .replace(/\(Current version: `v\d+\.\d+\.\d+\.\d+`\)/g, `(Current version: \`v${version}\`)`);
+    await fs.writeFile("docs/docs/getting-started/installation/firefox.md", firefoxDoc);
+
     let install = await fs.readFile("INSTALL.md", "utf-8");
     await fs.writeFile(
       "INSTALL.md",

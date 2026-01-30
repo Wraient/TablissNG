@@ -29,3 +29,14 @@ Install directly from the <EdgeLink /> for automatic updates.
 7. Select the unzipped folder.
 
 <DataLossWarning />
+
+#### How to Update
+
+Standard installations via the **Microsoft Edge Add-ons store** update automatically.
+
+To force an update check:
+
+1. Open Edge and go to `edge://extensions/`.
+2. Ensure **Developer mode** is enabled (toggle in the sidebar or bottom left).
+3. Click the **Update** button in the top toolbar.
+4. This will trigger an update check for all sideloaded extensions.

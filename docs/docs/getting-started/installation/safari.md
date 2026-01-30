@@ -6,15 +6,22 @@ sidebar_position: 5
 
 Due to Apple's developer program requirements, TablissNG is currently not available on the official Mac App Store. You can install it manually using Safari's developer tools.
 
-### Manual Installation
+:::caution
+Unsigned Safari extensions can only be installed temporarily. This means that every time you restart your browser, the extension will be removed and will need to be reinstalled.
+:::
 
-1. **Go to the [Releases page](https://github.com/BookCatKid/TablissNG/releases)**.
-2. Download `tabliss-safari.zip`.
-3. Unzip the file into a folder.
-4. Enable Safari's Develop menu:
-   - Go to **Safari > Settings (or Preferences) > Advanced**.
+### Installation
+
+1. **Download the build**: Go to the [Releases page](https://github.com/BookCatKid/TablissNG/releases) and download `tabliss-safari.zip`.
+2. **Unzip**: Extract the contents to a permanent location on your Mac.
+3. **Enable Developer Menu**:
+   - Open Safari and go to **Safari > Settings** (or **Preferences**) in the menu bar.
+   - Navigate to the **Advanced** tab.
    - Check the box **"Show features for web developers"** (or "Show Develop menu in menu bar").
-5. In the menu bar, go to **Develop > Add Temporary Extension...**.
-6. Select the folder you unzipped.
-7. In the **Extensions** tab that appears, check the box next to TablissNG to enable it.
-8. Click **"Use for new windows and tabs"** if prompted.
+4. **Load Extension**:
+   - In the menu bar, go to **Develop > Add Temporary Extension...**.
+   - Select the folder you unzipped in step 2.
+5. **Enable**:
+   - In the **Extensions** settings window that appears, ensure TablissNG is checked.
+   - Click **"Use for new windows and tabs"** if prompted.
+   - If it's not working, go to the **General** tab in Settings and select **TablissNG** for the two **New windows open with** and **New tabs open with** options.

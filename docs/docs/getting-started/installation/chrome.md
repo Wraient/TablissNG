@@ -33,3 +33,14 @@ A key is included in the manifest primarily for ease of testing the Trello widge
 7. Select the folder where you unzipped the extension (ensure `manifest.json` is in the root of that folder).
 
 <DataLossWarning />
+
+#### How to Update
+
+Standard installations via the **Chrome Web Store** update automatically.
+
+To force an update check:
+
+1. Open Chrome and go to `chrome://extensions/`.
+2. Ensure **Developer mode** is enabled (toggle in the top right corner).
+3. Click the **Update** button in the top toolbar.
+4. This will check all manually loaded extensions for updates.
