@@ -2,8 +2,6 @@
 sidebar_position: 5
 ---
 
-import DataLossWarning from '../../\_data-loss-warning.mdx';
-
 # Safari Installation
 
 Due to Apple's developer program requirements, TablissNG is currently not available on the official Mac App Store. You can install it manually using Safari's developer tools.
@@ -20,9 +18,3 @@ Due to Apple's developer program requirements, TablissNG is currently not availa
 6. Select the folder you unzipped.
 7. In the **Extensions** tab that appears, check the box next to TablissNG to enable it.
 8. Click **"Use for new windows and tabs"** if prompted.
-
-:::info
-Temporary extensions in Safari may need to be re-enabled after restarting the browser.
-:::
-
-<DataLossWarning />
