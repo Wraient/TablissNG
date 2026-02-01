@@ -25,3 +25,5 @@ Unsigned Safari extensions can only be installed temporarily. This means that ev
    - In the **Extensions** settings window that appears, ensure TablissNG is checked.
    - Click **"Use for new windows and tabs"** if prompted.
    - If it's not working, go to the **General** tab in Settings and select **TablissNG** for the two **New windows open with** and **New tabs open with** options.
+
+_Note: The extension will be removed when you restart Safari. To get the absolute latest builds, you can download from [GitHub Actions](../../guides/github-artifacts)._
