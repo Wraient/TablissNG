@@ -150,7 +150,10 @@ async function run() {
       'git config user.email "github-actions[bot]@users.noreply.github.com"',
       { stdio: "inherit" },
     );
-    execSync("git add updates.json README.md INSTALL.md", { stdio: "inherit" });
+    execSync(
+      "git add updates.json README.md INSTALL.md docs/docs/getting-started/installation/firefox.md",
+      { stdio: "inherit" },
+    );
     execSync('git commit -m "chore: signed firefox nightly build"', {
       stdio: "inherit",
     });

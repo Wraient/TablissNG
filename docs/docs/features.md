@@ -17,7 +17,7 @@ This list is by no means exhaustive. TablissNG includes many other tweaks, quali
 
 - Customization
   - Support for custom search engines and browser defaults
-  - Many more style options in display/font settings (eg. scale, underline, text outline, custom css class)
+  - Many more style options in display/font settings (e.g. scale, underline, text outline, custom css class)
 
 - Widgets
   - Time Tracker, Bitcoin Mempool, Top Sites, Binary Clock, Bookmarks, Custom HTML.

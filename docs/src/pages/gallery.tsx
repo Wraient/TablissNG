@@ -33,7 +33,7 @@ export default function Gallery(): ReactNode {
             }}
           >
             {screenshots.map((src, index) => (
-              <div key={index} className={styles.showcaseItem}>
+              <div key={index}>
                 <img
                   src={useBaseUrl(`img/screenshots/${src}`)}
                   alt={`Tabliss Screenshot ${index + 1}`}

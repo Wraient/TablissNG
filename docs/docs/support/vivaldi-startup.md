@@ -11,7 +11,7 @@ Some Vivaldi users may experience an empty page when starting the browser, even 
 
 ### The Problem
 
-This is a known issue (Somebody reported it on my GitHub already [#92](https://github.com/BookCatKid/TablissNG/issues/92)) specifically affecting how Vivaldi handles extension-controlled start pages on initial launch.
+This is a known issue (somebody reported it on my GitHub already [#92](https://github.com/BookCatKid/TablissNG/issues/92)) specifically affecting how Vivaldi handles extension-controlled start pages on initial launch.
 
 ### The Solution (Workaround)
 
@@ -30,5 +30,5 @@ To fix this, you can manually set your homepage to the TablissNG extension page:
 Now, when you start Vivaldi or click the Home button, TablissNG will load correctly.
 
 :::info key included in manifest
-A key is included in the manifest primarily for ease of testing the Trello widget. The key makes the extension install with the same ID every time like it does on firefox, even when manually installing it. This is also why everybody will be able to specify the same `chrome-extension://` url.
+A key is included in the manifest primarily for ease of testing the Trello widget. The key makes the extension install with the same ID every time like it does on Firefox, even when manually installing it. This is also why everybody will be able to specify the same `chrome-extension://` URL.
 :::

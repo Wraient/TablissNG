@@ -164,11 +164,7 @@ jobs:
       - name: Prepare Signed Firefox XPI
         run: |
           XPI_FILE=$(find artifacts/tabliss-firefox-signed -name "*.xpi" | head -n 1)
-          if [ -n "$XPI_FILE" ]; then
-            cp "$XPI_FILE" tabliss-firefox.xpi
-          else
-            echo "Warning: Signed XPI not found"
-          fi
+          cp "$XPI_FILE" tabliss-firefox.xpi
       - name: Get version without v prefix
         id: version
         run: |

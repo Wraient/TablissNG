@@ -29,7 +29,7 @@ Use these methods if you want the absolute latest features (Nightly) or want to 
 ### Method 2: Manual Installation (Developer Mode)
 
 :::info key included in manifest
-A key is included in the manifest primarily for ease of testing the Trello widget. The key makes the extension install with the same ID every time like it does on firefox, even when manually installing it.
+A key is included in the manifest primarily for ease of testing the Trello widget. The key makes the extension install with the same ID every time like it does on Firefox, even when manually installing it.
 :::
 
 1. **Go to the [Releases page](https://github.com/BookCatKid/TablissNG/releases)**.
