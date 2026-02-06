@@ -145,6 +145,19 @@ const LinksSettings: FC<Props> = ({
           description="Links are numbered title"
         />
       </label>
+
+      <label>
+        <input
+          type="checkbox"
+          checked={data.centerLinks}
+          onChange={() => setData({ ...data, centerLinks: !data.centerLinks })}
+        />
+        <FormattedMessage
+          id="plugins.links.centerLinks"
+          defaultMessage="Center links in columns"
+          description="Center links in columns title"
+        />
+      </label>
       <hr />
 
       {sortedLinks.map((link, index) => {
@@ -168,6 +181,7 @@ const LinksSettings: FC<Props> = ({
                 : undefined
             }
             onRemove={() => dispatch(removeLink(originalIndex))}
+            cache={cache}
             setCache={setCache}
           />
         );
