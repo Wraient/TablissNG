@@ -11,12 +11,29 @@
   justify-content: center;
 }
 
+.Modal-container--center {
+  align-items: center;
+}
+
 .Modal {
   background: white;
   border-radius: 1rem 1rem 0 0;
-  padding: 2rem;
   min-width: 300px;
   max-width: 500px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.Modal-content {
+  overflow-y: auto;
+  flex: 1;
+  padding: 2rem;
+}
+
+.Modal-container--center .Modal {
+  border-radius: 1rem;
 }
 
 body.dark .Modal {
@@ -25,30 +42,11 @@ body.dark .Modal {
 }
 
 .Modal-footer {
+  padding: 1rem 2rem 2rem;
   text-align: center;
+  border-top: 1px solid #ecf0f1;
 }
 
-/* Add dark mode styles for any links inside modals */
-body.dark .Modal {
-  color: #ffffff;
-}
-
-/* Add dark mode styles for any inputs inside modals */
-body.dark .Modal input,
-body.dark .Modal select,
-body.dark .Modal textarea {
-  background-color: #2d2d2d;
-  border-color: #444;
-  color: #ffffff;
-}
-
-/* Add dark mode styles for any buttons inside modals */
-body.dark .Modal button {
-  background-color: #2d2d2d;
-  color: #ffffff;
-  border-color: #444;
-}
-
-body.dark .Modal button:hover {
-  background-color: #3a3a3a;
+body.dark .Modal-footer {
+  border-top-color: #2d2d2d;
 }
