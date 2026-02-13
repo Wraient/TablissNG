@@ -16,7 +16,7 @@ import { useKey } from "../../lib/db/react";
 import { useTheme } from "../../hooks";
 
 const Settings: React.FC = () => {
-  const { toggleSettings } = React.useContext(UiContext);
+  const { toggleSettings } = React.use(UiContext);
   const [settingsIconPosition] = useKey(db, "settingsIconPosition");
   const [autoHideSettings] = useKey(db, "autoHideSettings");
   const { isDark } = useTheme();
@@ -144,11 +144,11 @@ const Settings: React.FC = () => {
         >
           <span
             style={{
-              background: isDark ? "#2d2d2d" : "#f0f0f0",
+              background: "var(--bg-input)",
               padding: "0.3rem 0.8rem",
               borderRadius: "1rem",
               fontSize: "0.9rem",
-              color: isDark ? "#e0e0e0" : "#666",
+              color: "var(--text-main)",
               fontWeight: 500,
               display: "inline-flex",
               alignItems: "center",
