@@ -481,15 +481,7 @@ const System: React.FC = () => {
         </div>
       </div>
 
-      <label
-        style={{
-          alignItems: "center",
-          display: "grid",
-          gridGap: "0 0.5rem",
-          gridTemplateColumns: "1fr 1fr",
-          width: "100%",
-        }}
-      >
+      <label className="u-grid-2col">
         <span>
           <FormattedMessage
             id="settings.highlighting"
@@ -503,15 +495,7 @@ const System: React.FC = () => {
           onChange={(e) => setHighlighting(e.target.checked)}
         />
       </label>
-      <label
-        style={{
-          alignItems: "center",
-          display: "grid",
-          gridGap: "0 0.5rem",
-          gridTemplateColumns: "1fr 1fr",
-          width: "100%",
-        }}
-      >
+      <label className="u-grid-2col">
         <span>
           <FormattedMessage
             id="settings.hideIcon"
@@ -526,15 +510,7 @@ const System: React.FC = () => {
         />
       </label>
 
-      <label
-        style={{
-          alignItems: "center",
-          display: "grid",
-          gridGap: "0 0.5rem",
-          gridTemplateColumns: "1fr 1fr",
-          width: "100%",
-        }}
-      >
+      <label className="u-grid-2col">
         <span>
           <FormattedMessage
             id="settings.hideMenu"
