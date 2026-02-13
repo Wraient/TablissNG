@@ -16,7 +16,7 @@ import { useKey } from "../../lib/db/react";
 import { useTheme } from "../../hooks";
 
 const Settings: React.FC = () => {
-  const { toggleSettings } = React.use(UiContext);
+  const { toggleSettings } = React.useContext(UiContext);
   const [settingsIconPosition] = useKey(db, "settingsIconPosition");
   const [autoHideSettings] = useKey(db, "autoHideSettings");
   const { isDark } = useTheme();
