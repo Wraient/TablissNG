@@ -443,20 +443,23 @@ const System: React.FC = () => {
         </div>
       </label>
 
-      <label
+      <div
         style={{
           alignItems: "center",
           display: "grid",
           gridGap: "0 0.5rem",
           gridTemplateColumns: "1.7fr 1fr",
           width: "100%",
+          margin: "1rem auto",
         }}
       >
-        <FormattedMessage
-          id="settings.iconPosition"
-          defaultMessage="Settings Icon Position"
-          description="Settings icon position label"
-        />
+        <label>
+          <FormattedMessage
+            id="settings.iconPosition"
+            defaultMessage="Settings Icon Position"
+            description="Settings icon position label"
+          />
+        </label>
         <div className="PositionInput">
           <div
             style={{
@@ -476,7 +479,7 @@ const System: React.FC = () => {
             ))}
           </div>
         </div>
-      </label>
+      </div>
 
       <label
         style={{
