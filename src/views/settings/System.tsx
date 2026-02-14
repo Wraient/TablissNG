@@ -77,16 +77,7 @@ const System: React.FC = () => {
         />
       </h2>
 
-      <label
-        style={{
-          alignItems: "center",
-          display: "grid",
-          gridGap: "0 0.5rem",
-          gridTemplateColumns: "1fr 2fr",
-          width: "100%",
-          margin: 0,
-        }}
-      >
+      <label className="u-grid-2col-wide">
         <span>
           <FormattedMessage
             id="language"
@@ -242,16 +233,7 @@ const System: React.FC = () => {
         </select>
       </label>
 
-      <label
-        style={{
-          alignItems: "center",
-          display: "grid",
-          gridGap: "0 0.5rem",
-          gridTemplateColumns: "1fr 2fr",
-          width: "100%",
-          margin: 0,
-        }}
-      >
+      <label className="u-grid-2col-wide">
         <FormattedMessage
           id="timeZone"
           defaultMessage="Time zone"
@@ -260,16 +242,7 @@ const System: React.FC = () => {
         <TimeZoneInput timeZone={timeZone} onChange={setTimeZone} />
       </label>
 
-      <label
-        style={{
-          alignItems: "center",
-          display: "grid",
-          gridGap: "0 0.5rem",
-          gridTemplateColumns: "1fr 2fr",
-          width: "100%",
-          margin: 0,
-        }}
-      >
+      <label className="u-grid-2col-wide">
         <span>
           <FormattedMessage
             id="settings.theme"
@@ -307,16 +280,7 @@ const System: React.FC = () => {
         </select>
       </label>
 
-      <label
-        style={{
-          alignItems: "baseline",
-          display: "grid",
-          gridGap: "0 0.5rem",
-          gridTemplateColumns: "1fr 2fr",
-          width: "100%",
-          margin: 0,
-        }}
-      >
+      <label className="u-grid-2col-wide">
         <span>
           <FormattedMessage
             id="settings.favicon"
@@ -443,16 +407,7 @@ const System: React.FC = () => {
         </div>
       </label>
 
-      <div
-        style={{
-          alignItems: "center",
-          display: "grid",
-          gridGap: "0 0.5rem",
-          gridTemplateColumns: "1.7fr 1fr",
-          width: "100%",
-          margin: "1rem auto",
-        }}
-      >
+      <div className="u-grid-2col-icon-position">
         <label>
           <FormattedMessage
             id="settings.iconPosition"
@@ -461,13 +416,7 @@ const System: React.FC = () => {
           />
         </label>
         <div className="PositionInput">
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, 35px)",
-              gridTemplateRows: "repeat(2, 35px)",
-            }}
-          >
+          <div className="u-grid-2x2-compact">
             {positions.map((position) => (
               <IconButton
                 key={position.value}
