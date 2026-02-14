@@ -47,6 +47,7 @@ const System: React.FC = () => {
     "autoHideSettings",
   );
   const [favicon, setFavicon] = useKey(db, "favicon");
+  const [accent, setAccent] = useKey(db, "accent");
   const systemIsDark = useSystemTheme();
 
   function setHighlighting(checked: boolean) {
@@ -77,16 +78,7 @@ const System: React.FC = () => {
         />
       </h2>
 
-      <label
-        style={{
-          alignItems: "center",
-          display: "grid",
-          gridGap: "0 0.5rem",
-          gridTemplateColumns: "1fr 2fr",
-          width: "100%",
-          margin: 0,
-        }}
-      >
+      <label className="u-grid-2col-wide">
         <span>
           <FormattedMessage
             id="language"
@@ -242,16 +234,7 @@ const System: React.FC = () => {
         </select>
       </label>
 
-      <label
-        style={{
-          alignItems: "center",
-          display: "grid",
-          gridGap: "0 0.5rem",
-          gridTemplateColumns: "1fr 2fr",
-          width: "100%",
-          margin: 0,
-        }}
-      >
+      <label className="u-grid-2col-wide">
         <FormattedMessage
           id="timeZone"
           defaultMessage="Time zone"
@@ -260,16 +243,7 @@ const System: React.FC = () => {
         <TimeZoneInput timeZone={timeZone} onChange={setTimeZone} />
       </label>
 
-      <label
-        style={{
-          alignItems: "center",
-          display: "grid",
-          gridGap: "0 0.5rem",
-          gridTemplateColumns: "1fr 2fr",
-          width: "100%",
-          margin: 0,
-        }}
-      >
+      <label className="u-grid-2col-wide">
         <span>
           <FormattedMessage
             id="settings.theme"
@@ -307,16 +281,36 @@ const System: React.FC = () => {
         </select>
       </label>
 
-      <label
-        style={{
-          alignItems: "baseline",
-          display: "grid",
-          gridGap: "0 0.5rem",
-          gridTemplateColumns: "1fr 2fr",
-          width: "100%",
-          margin: 0,
-        }}
-      >
+      <label className="u-grid-2col-wide">
+        <span>
+          <FormattedMessage
+            id="settings.accentColor"
+            defaultMessage="Accent Color"
+            description="Global accent color picker label"
+          />
+        </span>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <input
+            type="color"
+            value={accent}
+            onChange={(e) => setAccent(e.target.value)}
+          />
+          <button
+            type="button"
+            className="button button--primary"
+            style={{ fontSize: "0.85em" }}
+            onClick={() => setAccent("#3498db")}
+          >
+            <FormattedMessage
+              id="settings.accentColor.reset"
+              defaultMessage="Reset"
+              description="Reset accent color to default"
+            />
+          </button>
+        </div>
+      </label>
+
+      <label className="u-grid-2col-wide">
         <span>
           <FormattedMessage
             id="settings.favicon"
@@ -443,28 +437,16 @@ const System: React.FC = () => {
         </div>
       </label>
 
-      <label
-        style={{
-          alignItems: "center",
-          display: "grid",
-          gridGap: "0 0.5rem",
-          gridTemplateColumns: "1.7fr 1fr",
-          width: "100%",
-        }}
-      >
-        <FormattedMessage
-          id="settings.iconPosition"
-          defaultMessage="Settings Icon Position"
-          description="Settings icon position label"
-        />
+      <div className="u-grid-2col-icon-position">
+        <label>
+          <FormattedMessage
+            id="settings.iconPosition"
+            defaultMessage="Settings Icon Position"
+            description="Settings icon position label"
+          />
+        </label>
         <div className="PositionInput">
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, 35px)",
-              gridTemplateRows: "repeat(2, 35px)",
-            }}
-          >
+          <div className="u-grid-2x2-compact">
             {positions.map((position) => (
               <IconButton
                 key={position.value}
@@ -476,17 +458,9 @@ const System: React.FC = () => {
             ))}
           </div>
         </div>
-      </label>
+      </div>
 
-      <label
-        style={{
-          alignItems: "center",
-          display: "grid",
-          gridGap: "0 0.5rem",
-          gridTemplateColumns: "1fr 1fr",
-          width: "100%",
-        }}
-      >
+      <label className="u-grid-2col">
         <span>
           <FormattedMessage
             id="settings.highlighting"
@@ -500,15 +474,7 @@ const System: React.FC = () => {
           onChange={(e) => setHighlighting(e.target.checked)}
         />
       </label>
-      <label
-        style={{
-          alignItems: "center",
-          display: "grid",
-          gridGap: "0 0.5rem",
-          gridTemplateColumns: "1fr 1fr",
-          width: "100%",
-        }}
-      >
+      <label className="u-grid-2col">
         <span>
           <FormattedMessage
             id="settings.hideIcon"
@@ -523,15 +489,7 @@ const System: React.FC = () => {
         />
       </label>
 
-      <label
-        style={{
-          alignItems: "center",
-          display: "grid",
-          gridGap: "0 0.5rem",
-          gridTemplateColumns: "1fr 1fr",
-          width: "100%",
-        }}
-      >
+      <label className="u-grid-2col">
         <span>
           <FormattedMessage
             id="settings.hideMenu"
