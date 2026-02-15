@@ -106,6 +106,10 @@ export const addWidget = (key: string): void => {
 export const removeWidget = (id: string): void => {
   DB.put(db, `widget/${id}`, null);
   DB.del(db, `data/${id}`);
+  // Delete profile-scoped cache entry
+  const activeProfileId = DB.get(db, "activeProfileId");
+  DB.del(cache, `${activeProfileId}/${id}`);
+  // Delete legacy unscoped cache entry for backward compatibility
   DB.del(cache, id);
 };
 
@@ -252,6 +256,12 @@ export const deleteProfile = (id: string): void => {
   if (id === activeId) {
     console.error("Cannot delete active profile");
     return;
+  }
+
+  // Clean up cache entries scoped to this profile
+  const cachePrefix = `${id}/`;
+  for (const [key] of DB.prefix(cache, cachePrefix)) {
+    DB.del(cache, key);
   }
 
   const profiles = { ...DB.get(db, "profiles") };
