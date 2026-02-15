@@ -260,7 +260,9 @@ export const deleteProfile = (id: string): void => {
 
   // Clean up cache entries scoped to this profile
   const cachePrefix = `${id}/`;
-  for (const [key] of DB.prefix(cache, cachePrefix)) {
+  for (const [key] of DB.prefix(cache, cachePrefix) as Iterable<
+    [string, unknown]
+  >) {
     DB.del(cache, key);
   }
 

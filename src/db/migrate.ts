@@ -43,7 +43,9 @@ const migrateCacheKeys = (): void => {
 
   const toMigrate: [string, unknown][] = [];
 
-  for (const [key, val] of DB.prefix(cache, "")) {
+  for (const [key, val] of DB.prefix(cache, "") as Iterable<
+    [string, unknown]
+  >) {
     // Skip keys that are already profile-scoped (contain a slash)
     if (!key.includes("/")) {
       toMigrate.push([key, val]);
@@ -108,7 +110,9 @@ const clearDangling = (): void => {
   for (const [key] of DB.prefix(db, "data/")) {
     if (!used.has(key.substring(5))) DB.del(db, key);
   }
-  for (const [key] of DB.prefix(cache, `${activeProfileId}/`)) {
+  for (const [key] of DB.prefix(cache, `${activeProfileId}/`) as Iterable<
+    [string, unknown]
+  >) {
     const pluginId = key.substring(activeProfileId.length + 1);
     if (!used.has(pluginId)) DB.del(cache, key);
   }
