@@ -15,19 +15,20 @@ import js from "./js";
 import links from "./links";
 import literatureClock from "./literatureClock";
 import message from "./message";
+import minigames from "./minigames";
 import notes from "./notes";
 import palette from "./palette";
 import quote from "./quote";
 import search from "./search";
 import since from "./since";
+import tallyCounter from "./tallyCounter";
 import time from "./time";
+import timeTracker from "./timeTracker";
 import todo from "./todo";
 import topSites from "./topSites";
+import trello from "./trello";
 import weather from "./weather";
 import workHours from "./workHours";
-import timeTracker from "./timeTracker";
-import trello from "./trello";
-import tallyCounter from "./tallyCounter";
 
 export const widgetConfigs = [
   // nba,
@@ -44,17 +45,18 @@ export const widgetConfigs = [
   links,
   literatureClock,
   message,
+  minigames,
   notes,
   palette,
   quote,
   search,
   since,
+  tallyCounter,
   time,
+  timeTracker,
   todo,
   weather,
   workHours,
-  timeTracker,
-  tallyCounter,
 ];
 
 if (BUILD_TARGET === "web") {
