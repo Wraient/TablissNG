@@ -98,37 +98,37 @@ export const timingMessages = defineMessages({
 
 export const weekdayFullMessages = defineMessages({
   sunday: {
-    id: "plugins.workHours.day.sunday",
+    id: "time.weekday.full.sunday",
     defaultMessage: "Sunday",
     description: "Sunday full day name",
   },
   monday: {
-    id: "plugins.workHours.day.monday",
+    id: "time.weekday.full.monday",
     defaultMessage: "Monday",
     description: "Monday full day name",
   },
   tuesday: {
-    id: "plugins.workHours.day.tuesday",
+    id: "time.weekday.full.tuesday",
     defaultMessage: "Tuesday",
     description: "Tuesday full day name",
   },
   wednesday: {
-    id: "plugins.workHours.day.wednesday",
+    id: "time.weekday.full.wednesday",
     defaultMessage: "Wednesday",
     description: "Wednesday full day name",
   },
   thursday: {
-    id: "plugins.workHours.day.thursday",
+    id: "time.weekday.full.thursday",
     defaultMessage: "Thursday",
     description: "Thursday full day name",
   },
   friday: {
-    id: "plugins.workHours.day.friday",
+    id: "time.weekday.full.friday",
     defaultMessage: "Friday",
     description: "Friday full day name",
   },
   saturday: {
-    id: "plugins.workHours.day.saturday",
+    id: "time.weekday.full.saturday",
     defaultMessage: "Saturday",
     description: "Saturday full day name",
   },
@@ -136,62 +136,62 @@ export const weekdayFullMessages = defineMessages({
 
 export const monthShortMessages = defineMessages({
   jan: {
-    id: "plugins.github.month.jan",
+    id: "time.month.short.jan",
     defaultMessage: "Jan",
     description: "January short name for GitHub calendar",
   },
   feb: {
-    id: "plugins.github.month.feb",
+    id: "time.month.short.feb",
     defaultMessage: "Feb",
     description: "February short name for GitHub calendar",
   },
   mar: {
-    id: "plugins.github.month.mar",
+    id: "time.month.short.mar",
     defaultMessage: "Mar",
     description: "March short name for GitHub calendar",
   },
   apr: {
-    id: "plugins.github.month.apr",
+    id: "time.month.short.apr",
     defaultMessage: "Apr",
     description: "April short name for GitHub calendar",
   },
   may: {
-    id: "plugins.github.month.may",
+    id: "time.month.short.may",
     defaultMessage: "May",
     description: "May short name for GitHub calendar",
   },
   jun: {
-    id: "plugins.github.month.jun",
+    id: "time.month.short.jun",
     defaultMessage: "Jun",
     description: "June short name for GitHub calendar",
   },
   jul: {
-    id: "plugins.github.month.jul",
+    id: "time.month.short.jul",
     defaultMessage: "Jul",
     description: "July short name for GitHub calendar",
   },
   aug: {
-    id: "plugins.github.month.aug",
+    id: "time.month.short.aug",
     defaultMessage: "Aug",
     description: "August short name for GitHub calendar",
   },
   sep: {
-    id: "plugins.github.month.sep",
+    id: "time.month.short.sep",
     defaultMessage: "Sep",
     description: "September short name for GitHub calendar",
   },
   oct: {
-    id: "plugins.github.month.oct",
+    id: "time.month.short.oct",
     defaultMessage: "Oct",
     description: "October short name for GitHub calendar",
   },
   nov: {
-    id: "plugins.github.month.nov",
+    id: "time.month.short.nov",
     defaultMessage: "Nov",
     description: "November short name for GitHub calendar",
   },
   dec: {
-    id: "plugins.github.month.dec",
+    id: "time.month.short.dec",
     defaultMessage: "Dec",
     description: "December short name for GitHub calendar",
   },
@@ -199,37 +199,37 @@ export const monthShortMessages = defineMessages({
 
 export const weekdayShortMessages = defineMessages({
   sun: {
-    id: "plugins.github.weekday.sun",
+    id: "time.weekday.short.sun",
     defaultMessage: "Sun",
     description: "Sunday short name for GitHub calendar",
   },
   mon: {
-    id: "plugins.github.weekday.mon",
+    id: "time.weekday.short.mon",
     defaultMessage: "Mon",
     description: "Monday short name for GitHub calendar",
   },
   tue: {
-    id: "plugins.github.weekday.tue",
+    id: "time.weekday.short.tue",
     defaultMessage: "Tue",
     description: "Tuesday short name for GitHub calendar",
   },
   wed: {
-    id: "plugins.github.weekday.wed",
+    id: "time.weekday.short.wed",
     defaultMessage: "Wed",
     description: "Wednesday short name for GitHub calendar",
   },
   thu: {
-    id: "plugins.github.weekday.thu",
+    id: "time.weekday.short.thu",
     defaultMessage: "Thu",
     description: "Thursday short name for GitHub calendar",
   },
   fri: {
-    id: "plugins.github.weekday.fri",
+    id: "time.weekday.short.fri",
     defaultMessage: "Fri",
     description: "Friday short name for GitHub calendar",
   },
   sat: {
-    id: "plugins.github.weekday.sat",
+    id: "time.weekday.short.sat",
     defaultMessage: "Sat",
     description: "Saturday short name for GitHub calendar",
   },
