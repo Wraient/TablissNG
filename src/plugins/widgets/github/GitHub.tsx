@@ -2,22 +2,43 @@ import { FC } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 import { useIntl } from "react-intl";
 import "./GitHub.sass";
-import { useFormatMessages } from "../../../hooks/useFormatMessages";
 import { useTheme } from "../../../hooks/useTheme";
 import {
-  monthMessages,
-  weekdayMessages,
-  legendMessages,
-  messages,
-  tooltipMessages,
-} from "./messages";
+  monthShortMessages,
+  weekdayShortMessages,
+} from "../../../locales/messages";
+import { legendMessages, messages, tooltipMessages } from "./messages";
 import { Props, defaultData } from "./types";
 
 const GitHubCalendarWidget: FC<Props> = ({ data = defaultData }) => {
   const intl = useIntl();
-  const months = useFormatMessages(monthMessages);
-  const weekdays = useFormatMessages(weekdayMessages);
-  const legend = useFormatMessages(legendMessages);
+  const months = {
+    jan: intl.formatMessage(monthShortMessages.jan),
+    feb: intl.formatMessage(monthShortMessages.feb),
+    mar: intl.formatMessage(monthShortMessages.mar),
+    apr: intl.formatMessage(monthShortMessages.apr),
+    may: intl.formatMessage(monthShortMessages.may),
+    jun: intl.formatMessage(monthShortMessages.jun),
+    jul: intl.formatMessage(monthShortMessages.jul),
+    aug: intl.formatMessage(monthShortMessages.aug),
+    sep: intl.formatMessage(monthShortMessages.sep),
+    oct: intl.formatMessage(monthShortMessages.oct),
+    nov: intl.formatMessage(monthShortMessages.nov),
+    dec: intl.formatMessage(monthShortMessages.dec),
+  };
+  const weekdays = {
+    sun: intl.formatMessage(weekdayShortMessages.sun),
+    mon: intl.formatMessage(weekdayShortMessages.mon),
+    tue: intl.formatMessage(weekdayShortMessages.tue),
+    wed: intl.formatMessage(weekdayShortMessages.wed),
+    thu: intl.formatMessage(weekdayShortMessages.thu),
+    fri: intl.formatMessage(weekdayShortMessages.fri),
+    sat: intl.formatMessage(weekdayShortMessages.sat),
+  };
+  const legend = {
+    less: intl.formatMessage(legendMessages.less),
+    more: intl.formatMessage(legendMessages.more),
+  };
   const { isDark } = useTheme();
 
   if (!data.username) return null;
