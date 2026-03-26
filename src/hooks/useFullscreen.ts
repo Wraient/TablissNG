@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { usePushError } from "../api";
+import { usePushError } from "../contexts/error";
 
 function areWeFullscreen() {
   return Boolean(document.fullscreenElement);

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { usePushError } from "../../../api";
+import { usePushError } from "../../../contexts/error";
 import { getIpInfo } from "./api";
 import { defaultData, Props } from "./types";
 

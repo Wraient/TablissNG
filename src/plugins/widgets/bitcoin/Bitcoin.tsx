@@ -2,7 +2,7 @@ import * as React from "react";
 import { formatDistanceToNowStrict, fromUnixTime } from "date-fns";
 import { db } from "../../../db/state";
 import { useValue } from "../../../lib/db/react";
-import { usePushError } from "../../../api";
+import { usePushError } from "../../../contexts/error";
 import { formatBytes, MINUTES } from "../../../utils";
 import { getBlocks } from "./api";
 import { defaultData, Props } from "./types";

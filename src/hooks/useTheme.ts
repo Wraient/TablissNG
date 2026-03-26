@@ -1,6 +1,6 @@
 import { useValue } from "../lib/db/react";
 import { db } from "../db/state";
-import { useSystemTheme } from "./";
+import { useSystemTheme } from "./useSystemTheme";
 
 export function useTheme() {
   const preference = useValue(db, "themePreference");
