@@ -4,11 +4,12 @@ import { defineMessages, useIntl } from "react-intl";
 import { Icon } from "@iconify/react";
 import { Link, Cache } from "./types";
 import { isSpecialUrl, normalizeUrl } from "../../../utils";
+import { useDeferredFavicon } from "../../../hooks";
 
 const getDomain = (url: string): string | null => {
   try {
     return new URL(url).hostname;
-  } catch (e) {
+  } catch {
     return null;
   }
 };
@@ -22,7 +23,14 @@ const parseSvg = (svgString: string, width?: number, height?: number) => {
 
     svg.setAttribute("width", `${width ?? 24}`);
     svg.setAttribute("height", `${height ?? 24}`);
-    return <span dangerouslySetInnerHTML={{ __html: svg.outerHTML }} />;
+    return (
+      <img
+        alt=""
+        height={height ?? 24}
+        src={`data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg.outerHTML)}`}
+        width={width ?? 24}
+      />
+    );
   } catch {
     return null;
   }
@@ -85,6 +93,19 @@ export const Display: FC<Props> = ({
     return intl.formatMessage(messages.standardHint);
   }, [intl, number, keyboardShortcut]);
   const domain = useMemo(() => getDomain(normalizedUrl), [normalizedUrl]);
+
+  const faviconRawSrc = useMemo(() => {
+    if (!domain) return "";
+    if (icon === "_favicon_duckduckgo") {
+      return `https://icons.duckduckgo.com/ip3/${domain}.ico`;
+    } else if (icon === "_favicon_google" || icon === "_favicon") {
+      return `https://www.google.com/s2/favicons?domain=${domain}&sz=${iconSize ?? 256}`;
+    } else if (icon === "_favicon_favicone") {
+      return `https://favicone.com/${domain}?s=${iconSize ?? 256}`;
+    }
+    return "";
+  }, [icon, domain, iconSize]);
+  const deferredFaviconSrc = useDeferredFavicon(faviconRawSrc);
   const parsedSvg = useMemo(
     () => (SvgString ? parseSvg(SvgString, customWidth, customHeight) : null),
     [SvgString, customWidth, customHeight],
@@ -133,30 +154,27 @@ export const Display: FC<Props> = ({
       title={title}
     >
       {linksNumbered ? <span className="LinkNumber">{number} </span> : null}
-      {icon === "_favicon_duckduckgo" && domain ? (
+      {(icon === "_favicon_duckduckgo" ||
+        icon === "_favicon_google" ||
+        icon === "_favicon" ||
+        icon === "_favicon_favicone") &&
+      domain ? (
         <i>
-          <img
-            alt={domain}
-            src={`https://icons.duckduckgo.com/ip3/${domain}.ico`}
-            style={{ width: iconSize, height: iconSize }}
-          />
-        </i>
-      ) : (icon === "_favicon_google" && domain) ||
-        (icon === "_favicon" && domain) ? (
-        <i>
-          <img
-            alt={domain}
-            src={`https://www.google.com/s2/favicons?domain=${domain}&sz=${iconSize ?? 256}`}
-            style={{ width: iconSize, height: iconSize }}
-          />
-        </i>
-      ) : icon === "_favicon_favicone" && domain ? (
-        <i>
-          <img
-            alt={domain}
-            src={`https://favicone.com/${domain}?s=${iconSize ?? 256}`}
-            style={{ width: iconSize, height: iconSize }}
-          />
+          {deferredFaviconSrc ? (
+            <img
+              alt={domain}
+              src={deferredFaviconSrc}
+              style={{ width: iconSize, height: iconSize }}
+            />
+          ) : (
+            <span
+              style={{
+                display: "inline-block",
+                width: iconSize,
+                height: iconSize,
+              }}
+            />
+          )}
         </i>
       ) : icon === "_custom_iconify" && IconString ? (
         <i>
