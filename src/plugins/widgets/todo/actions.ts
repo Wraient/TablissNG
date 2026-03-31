@@ -7,6 +7,7 @@ export function addTodo(contents = "") {
       contents,
       id: generateId(),
       completed: false,
+      completedAt: null,
     },
   } as const;
 }
@@ -32,8 +33,16 @@ export function updateTodo(id: string, contents: string) {
   } as const;
 }
 
+export function reorderTodo(index: number, to: number) {
+  return {
+    type: "REORDER_TODO",
+    data: { index, to },
+  } as const;
+}
+
 export type Action =
   | ReturnType<typeof addTodo>
   | ReturnType<typeof removeTodo>
   | ReturnType<typeof toggleTodo>
-  | ReturnType<typeof updateTodo>;
+  | ReturnType<typeof updateTodo>
+  | ReturnType<typeof reorderTodo>;

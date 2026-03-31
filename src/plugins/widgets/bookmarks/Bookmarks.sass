@@ -1,0 +1,47 @@
+.Bookmarks
+  &:not(.quick-links)
+    text-align: left
+    padding-right: 10px
+
+  .folder, .bookmark
+    i, img
+      margin-top: 0.1em
+      margin-right: 0.5em
+      display: inline-block
+      vertical-align: text-bottom
+
+    img
+      object-fit: contain
+
+  .folder
+    margin-top: 0.6em
+    display: flex
+    overflow: hidden
+    &:hover
+      opacity: 0.8
+    &.expanded
+      i
+        transform: rotate(90deg)
+    &.no-rotate
+      i
+        transform: none !important
+      cursor: default
+
+  .bookmark
+    margin-top: 0.2em
+    display: flex
+    overflow: hidden
+    &:hover
+      opacity: 0.8
+
+  .request-permission
+    background-color: var(--bg-secondary)
+    color: var(--text-heading)
+    border: 2px solid var(--text-heading)
+    margin: 0.6em 0
+    border-radius: 8px
+    cursor: pointer
+    font-weight: 500
+    padding: 10px 12px
+    text-align: center
+    transition: all 200ms

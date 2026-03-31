@@ -1,4 +1,5 @@
 import { API } from "../../types";
+import { HOURS } from "../../../utils";
 
 export type Quote = {
   author?: string;
@@ -7,7 +8,8 @@ export type Quote = {
 };
 
 type Data = {
-  category?: string;
+  category: string;
+  timeout: number;
 };
 
 type Cache = Quote;
@@ -15,5 +17,6 @@ type Cache = Quote;
 export type Props = API<Data, Cache>;
 
 export const defaultData: Data = {
-  category: "inspire",
+  category: "quotable",
+  timeout: 1 * HOURS,
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 type UiState = {
   errors: boolean;
@@ -15,7 +15,7 @@ type UiContext = UiState & {
 
 export const UiContext = React.createContext({} as unknown as UiContext);
 
-const UiProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
+const UiProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [state, setState] = React.useState<UiState>({
     errors: false,
     pending: 0,

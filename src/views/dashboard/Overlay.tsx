@@ -1,12 +1,12 @@
-import React from "react";
-import { defineMessages } from "react-intl";
+import * as React from "react";
+import { defineMessages, useIntl } from "react-intl";
 import { ErrorContext } from "../../contexts/error";
 import { UiContext } from "../../contexts/ui";
 import { toggleFocus } from "../../db/action";
 import { db } from "../../db/state";
-import { useFormatMessages, useFullscreen, useKeyPress } from "../../hooks";
-import { useValue } from "../../lib/db/react";
-import { Icon } from "../shared";
+import { useFullscreen, useKeyPress } from "../../hooks";
+import { useValue, useKey } from "../../lib/db/react";
+import { Icon } from "@iconify/react";
 import "./Overlay.sass";
 
 const messages = defineMessages({
@@ -39,51 +39,61 @@ const messages = defineMessages({
 });
 
 const Overlay: React.FC = () => {
-  const translated = useFormatMessages(messages);
+  const intl = useIntl();
   const focus = useValue(db, "focus");
   const { errors } = React.useContext(ErrorContext);
   const { pending, toggleErrors, toggleSettings } = React.useContext(UiContext);
+  const [hideSettingsIcon] = useKey(db, "hideSettingsIcon");
+  const [settingsIconPosition] = useKey(db, "settingsIconPosition");
 
   useKeyPress(toggleFocus, ["w"]);
   useKeyPress(toggleSettings, ["s"]);
 
-  // Hooks inside a condition? Works because the condition always resolves the same
   const [isFullscreen, handleToggleFullscreen] = useFullscreen();
-  if (handleToggleFullscreen) useKeyPress(handleToggleFullscreen, ["f"]);
+  useKeyPress(handleToggleFullscreen || null, ["f"]);
 
   return (
-    <div className="Overlay">
-      <a onClick={toggleSettings} title={`${translated.settingsHint} (S)`}>
-        <Icon name="settings" />
+    <div className={`Overlay ${settingsIconPosition}`}>
+      <a
+        onClick={toggleSettings}
+        title={`${intl.formatMessage(messages.settingsHint)} (S)`}
+        className={hideSettingsIcon ? "on-hover" : ""}
+      >
+        <Icon icon="feather:settings" />
       </a>
 
       {errors.length > 0 ? (
-        <a onClick={toggleErrors} title={translated.errorHint}>
-          <Icon name="alert-triangle" />
+        <a
+          onClick={toggleErrors}
+          title={intl.formatMessage(messages.errorHint)}
+        >
+          <Icon icon="feather:alert-triangle" />
         </a>
       ) : null}
 
       {pending > 0 ? (
-        <span title={translated.loadingHint}>
-          <Icon name="zap" />
+        <span title={intl.formatMessage(messages.loadingHint)}>
+          <Icon icon="feather:zap" />
         </span>
       ) : null}
 
       <a
         className={focus ? "" : "on-hover"}
         onClick={toggleFocus}
-        title={`${translated.focusHint} (W)`}
+        title={`${intl.formatMessage(messages.focusHint)} (W)`}
       >
-        <Icon name={focus ? "eye-off" : "eye"} />
+        <Icon icon={`feather:${focus ? "eye-off" : "eye"}`} />
       </a>
 
       {handleToggleFullscreen ? (
         <a
           className="on-hover"
           onClick={handleToggleFullscreen}
-          title={`${translated.fullscreenHint} (F)`}
+          title={`${intl.formatMessage(messages.fullscreenHint)} (F)`}
         >
-          <Icon name={isFullscreen ? "minimize-2" : "maximize-2"} />
+          <Icon
+            icon={`feather:${isFullscreen ? "minimize-2" : "maximize-2"}`}
+          />
         </a>
       ) : null}
     </div>

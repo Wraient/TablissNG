@@ -1,9 +1,10 @@
 .Settings .Widget
     border: none
     border-radius: 0.5rem
-    background: #ecf0f1
+    background: var(--bg-secondary)
     margin: 1em 0
     padding: 1em
+    color: var(--text-main)
 
     h4
         margin: 0
@@ -12,6 +13,12 @@
         button
             float: right
             margin: -0.25em 0 0 0.5em
+            background: var(--bg-button)
+            color: var(--text-heading)
+            border-color: var(--border-main)
+
+            &:hover
+                background: var(--border-main)
 
         h4
             cursor: pointer
@@ -19,8 +26,5 @@
     .settings
         margin: 1.5rem 0
 
-    p:last-child 
+    p:last-child
         margin-bottom: 0
-
-    .button--icon
-        background-color: white

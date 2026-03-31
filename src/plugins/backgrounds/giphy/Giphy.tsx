@@ -1,41 +1,52 @@
-import React from "react";
-import { useObjectUrl } from "../../../hooks";
-import Backdrop from "../../../views/shared/Backdrop";
-import { getGif } from "./api";
-import Credit from "./Credit";
-import "./Giphy.sass";
+import * as React from "react";
+import { useBackgroundRotation } from "../../../hooks";
+import BaseBackground from "../base/BaseBackground";
+import { getGifs } from "./api";
+import giphyLogo from "./giphy-logo.png";
 import { defaultData, Props } from "./types";
 
 const Giphy: React.FC<Props> = ({
   cache,
   data = defaultData,
   setCache,
+  setData,
   loader,
 }) => {
-  const [gif, setGif] = React.useState(cache);
-  const mounted = React.useRef(false);
-  React.useEffect(() => {
-    const config = { tag: data.tag, nsfw: data.nsfw };
-    getGif(config, loader).then(setCache);
-    if (mounted.current || !gif) getGif(config, loader).then(setGif);
-    mounted.current = true;
-  }, [data.tag, data.nsfw]);
+  const { item, go, handlePause } = useBackgroundRotation({
+    fetch: () => getGifs(data, loader),
+    cacheObj: { cache, setCache },
+    data,
+    setData,
+    loader,
+    deps: [data.by, data.tag, data.nsfw],
+  });
 
-  const url = useObjectUrl(gif && gif.data);
+  const url = item?.url || null;
 
-  if (!gif || !url) return null;
+  if (!item || !url) return null;
+
+  const leftInfo = [
+    {
+      label: (
+        <img src={giphyLogo} alt="Powered by GIPHY" width={101} height={36} />
+      ),
+      url: item.link || "https://giphy.com/",
+    },
+  ];
 
   return (
-    <div className="Giphy fullscreen">
-      <Backdrop
-        className="gif fullscreen"
-        style={{
-          backgroundImage: `url(${url})`,
-          backgroundSize: data.expand ? "cover" : undefined,
-        }}
-      />
-      <Credit link={gif.link} />
-    </div>
+    <BaseBackground
+      containerClassName="Giphy fullscreen"
+      url={url}
+      paused={data.paused ?? false}
+      onPause={handlePause}
+      onPrev={go(-1)}
+      onNext={go(1)}
+      showControls={true}
+      controlsOnHover={!data.showControls}
+      showInfo={true}
+      leftInfo={leftInfo}
+    />
   );
 };
 

@@ -1,72 +1,128 @@
-import React, { FC } from "react";
+import { FC } from "react";
+import { FormattedMessage, useIntl } from "react-intl";
 import LocationInput from "./LocationInput";
 import { defaultData, Props } from "./types";
+import { pluginMessages } from "../../../locales/messages";
 
-const WeatherSettings: FC<Props> = ({ data = defaultData, setData }) => (
-  <div className="WeatherSettings">
-    <LocationInput
-      latitude={data.latitude}
-      longitude={data.longitude}
-      onChange={(location) => setData({ ...data, ...location })}
-    />
+const WeatherSettings: FC<Props> = ({ data = defaultData, setData }) => {
+  const intl = useIntl();
+  return (
+    <div className="WeatherSettings">
+      <LocationInput
+        latitude={data.latitude}
+        longitude={data.longitude}
+        onChange={(location) => setData({ ...data, ...location })}
+      />
 
-    {data.latitude && data.latitude ? (
-      <>
-        <label>
-          Name
-          <input
-            type="text"
-            value={data.name || ""}
-            placeholder="Optional name"
-            onChange={(event) =>
-              setData({ ...data, name: event.target.value || undefined })
-            }
-          />
-        </label>
+      <label>
+        <input
+          type="checkbox"
+          checked={data.autoUpdate || false}
+          onChange={(event) =>
+            setData({ ...data, autoUpdate: event.target.checked })
+          }
+        />{" "}
+        <FormattedMessage
+          id="plugins.weather.autoUpdate"
+          defaultMessage="Follow location"
+          description="Follow location automatically title"
+        />
+      </label>
 
-        <hr />
+      {data.latitude && data.longitude ? (
+        <>
+          <label>
+            <FormattedMessage
+              id="plugins.weather.locationName"
+              defaultMessage="Location display name"
+              description="Location name title"
+            />
 
-        <label>
-          <input
-            type="checkbox"
-            checked={data.showDetails}
-            onChange={() =>
-              setData({ ...data, showDetails: !data.showDetails })
-            }
-          />{" "}
-          Show extended details
-        </label>
+            <input
+              type="text"
+              value={data.name || ""}
+              placeholder={intl.formatMessage(pluginMessages.namePlaceholder)}
+              onChange={(event) =>
+                setData({ ...data, name: event.target.value || undefined })
+              }
+            />
+          </label>
 
-        <label>
-          <input
-            type="radio"
-            checked={data.units === "si"}
-            onChange={() => setData({ ...data, units: "si" })}
-          />{" "}
-          Metric units
-        </label>
+          <hr />
 
-        <label>
-          <input
-            type="radio"
-            checked={data.units === "us"}
-            onChange={() => setData({ ...data, units: "us" })}
-          />{" "}
-          Imperial units
-        </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={data.showDetails}
+              onChange={(event) =>
+                setData({ ...data, showDetails: event.target.checked })
+              }
+            />{" "}
+            <FormattedMessage
+              id="plugins.weather.showDetails"
+              defaultMessage="Show extended details"
+              description="Show extended details title"
+            />
+          </label>
 
-        <p>
-          <a
-            href="https://open-meteo.com/"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Weather data by Open-Meteo.com
-          </a>
-        </p>
-      </>
-    ) : null}
-  </div>
-);
+          <label>
+            <input
+              type="checkbox"
+              checked={data.showCity}
+              onChange={(event) =>
+                setData({ ...data, showCity: event.target.checked })
+              }
+            />{" "}
+            <FormattedMessage
+              id="plugins.weather.showCity"
+              defaultMessage="Show city display name"
+              description="Show city display name title"
+            />
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              checked={data.units === "si"}
+              onChange={() => setData({ ...data, units: "si" })}
+            />{" "}
+            <FormattedMessage
+              id="plugins.weather.metricUnits"
+              defaultMessage="Metric units"
+              description="Metric units title"
+            />
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              checked={data.units === "us"}
+              onChange={() => setData({ ...data, units: "us" })}
+            />{" "}
+            <FormattedMessage
+              id="plugins.weather.imperialUnits"
+              defaultMessage="Imperial units"
+              description="Imperial units title"
+            />
+          </label>
+
+          <p>
+            <a
+              href="https://open-meteo.com/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <FormattedMessage
+                id="plugins.weather.dataBy"
+                defaultMessage="Weather data by Open-Meteo.com"
+                description="Weather data title"
+              />
+            </a>
+          </p>
+        </>
+      ) : null}
+    </div>
+  );
+};
 
 export default WeatherSettings;

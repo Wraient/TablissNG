@@ -1,31 +1,110 @@
-import React, { FC, useEffect } from "react";
-import GitHubCalendar from "github-calendar";
+import { FC } from "react";
+import { GitHubCalendar } from "react-github-calendar";
+import { useIntl } from "react-intl";
+import "./GitHub.sass";
+import { useFormatMessages } from "../../../hooks/useFormatMessages";
+import { useTheme } from "../../../hooks/useTheme";
+import {
+  monthMessages,
+  weekdayMessages,
+  legendMessages,
+  messages,
+  tooltipMessages,
+} from "./messages";
 import { Props, defaultData } from "./types";
 
-import "github-calendar/dist/github-calendar.css";
-import "./github-calendar.css";
+const GitHubCalendarWidget: FC<Props> = ({ data = defaultData }) => {
+  const intl = useIntl();
+  const months = useFormatMessages(monthMessages);
+  const weekdays = useFormatMessages(weekdayMessages);
+  const legend = useFormatMessages(legendMessages);
+  const { isDark } = useTheme();
 
-// TODO: Inherit size and colour
+  if (!data.username) return null;
 
-const GitHubCalendarWidget: FC<Props> = ({ data = defaultData, loader }) => {
-  useEffect(() => {
-    loader.push();
-    GitHubCalendar(".GitHubCalendar", data.username, {
-      responsive: false,
-      global_stats: data.showSummary,
-    }).finally(() => {
-      loader.pop();
-    });
-  }, [data.username, data.showSummary]);
+  // Localization for the calendar
+  const labels = {
+    months: [
+      months.jan,
+      months.feb,
+      months.mar,
+      months.apr,
+      months.may,
+      months.jun,
+      months.jul,
+      months.aug,
+      months.sep,
+      months.oct,
+      months.nov,
+      months.dec,
+    ],
+    weekdays: [
+      weekdays.sun,
+      weekdays.mon,
+      weekdays.tue,
+      weekdays.wed,
+      weekdays.thu,
+      weekdays.fri,
+      weekdays.sat,
+    ],
+    totalCount: intl
+      .formatMessage(messages.totalCount)
+      .replace("[count]", "{{count}}")
+      .replace("[year]", "{{year}}"),
+    legend: {
+      less: legend.less,
+      more: legend.more,
+    },
+  };
 
   return (
-    <div className="GitHub">
-      <a
-        href={"https://github.com/" + data.username}
-        rel="noopener noreferrer"
-        className="GitHubCalendar"
+    <a
+      className="GitHub"
+      href={
+        data.clickAction !== "none"
+          ? `https://github.com/${data.clickAction === "profile" ? data.username : ""}`
+          : undefined
+      }
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        cursor: data.clickAction === "none" ? "default" : "pointer",
+        textDecoration: "none",
+      }}
+    >
+      <GitHubCalendar
+        showColorLegend={data.showColorLegend}
+        showMonthLabels={data.showMonthLabels}
+        showTotalCount={data.showTotalCount}
+        username={data.username}
+        labels={labels}
+        colorScheme={isDark ? "dark" : "light"}
+        theme={{
+          light: ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
+          dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
+        }}
+        tooltips={
+          data.showTooltips
+            ? {
+                activity: {
+                  text: (activity) => {
+                    if (activity.count === 0) {
+                      return intl.formatMessage(tooltipMessages.noActivity, {
+                        date: activity.date,
+                      });
+                    }
+
+                    return intl.formatMessage(tooltipMessages.activity, {
+                      count: activity.count,
+                      date: activity.date,
+                    });
+                  },
+                },
+              }
+            : undefined
+        }
       />
-    </div>
+    </a>
   );
 };
 

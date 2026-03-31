@@ -1,11 +1,25 @@
 import { Config } from "../../types";
+import { defineMessages } from "react-intl";
 import Weather from "./Weather";
 import WeatherSettings from "./WeatherSettings";
 
+const messages = defineMessages({
+  name: {
+    id: "plugins.weather.name",
+    defaultMessage: "Weather",
+    description: "Name of the Weather widget",
+  },
+  description: {
+    id: "plugins.weather.description",
+    defaultMessage: "Display current weather conditions for your location.",
+    description: "Description of the Weather widget",
+  },
+});
+
 const config: Config = {
   key: "widget/weather",
-  name: "Weather",
-  description: "Add a window to see outside.",
+  name: messages.name,
+  description: messages.description,
   dashboardComponent: Weather,
   settingsComponent: WeatherSettings,
 };

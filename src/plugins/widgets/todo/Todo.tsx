@@ -1,8 +1,19 @@
-import React, { FC } from "react";
+import { FC, useEffect } from "react";
 
-import { useKeyPress, useSavedReducer, useToggle } from "../../../hooks";
+import {
+  useKeyPress,
+  useSavedReducer,
+  useToggle,
+  useTime,
+} from "../../../hooks";
 import { DownIcon, Icon, UpIcon, ExpandIcon } from "../../../views/shared";
-import { addTodo, removeTodo, toggleTodo, updateTodo } from "./actions";
+import {
+  addTodo,
+  removeTodo,
+  reorderTodo,
+  toggleTodo,
+  updateTodo,
+} from "./actions";
 import { reducer, State } from "./reducer";
 import TodoList from "./TodoList";
 import { defaultData, Props } from "./types";
@@ -10,6 +21,7 @@ import { defaultData, Props } from "./types";
 const Todo: FC<Props> = ({ data = defaultData, setData }) => {
   const [showCompleted, toggleShowCompleted] = useToggle();
   const [showMore, toggleShowMore] = useToggle();
+  const time = useTime();
 
   const setItems = (items: State) => setData({ ...data, items });
   const dispatch = useSavedReducer(reducer, data.items, setItems);
@@ -26,13 +38,29 @@ const Todo: FC<Props> = ({ data = defaultData, setData }) => {
     [keyBind.toUpperCase(), keyBind.toLowerCase()],
   );
 
+  useEffect(() => {
+    if (data.dailyRoutine) {
+      const today = new Date(time);
+      today.setHours(0, 0, 0, 0);
+      for (const item of data.items) {
+        if (item.completed && item.completedAt) {
+          if (new Date(item.completedAt).getTime() < today.getTime()) {
+            dispatch(toggleTodo(item.id));
+          }
+        }
+      }
+    }
+  }, [data.items, data.dailyRoutine, time]);
+
   return (
     <div className="Todo">
       <TodoList
         items={items}
+        allItems={data.items}
         onToggle={(...args) => dispatch(toggleTodo(...args))}
         onUpdate={(...args) => dispatch(updateTodo(...args))}
         onRemove={(...args) => dispatch(removeTodo(...args))}
+        onReorder={(...args) => dispatch(reorderTodo(...args))}
         show={show}
       />
 

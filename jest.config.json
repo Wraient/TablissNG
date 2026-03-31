@@ -1,3 +1,7 @@
 {
-  "rootDir": "dist/test"
+  "rootDir": "dist/test",
+  "transform": {
+    "^.+\\.(t|j)sx?$": ["@swc/jest"]
+  },
+  "transformIgnorePatterns": ["node_modules/(?!(nanoid)/)"]
 }

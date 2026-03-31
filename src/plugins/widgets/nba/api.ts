@@ -1,15 +1,12 @@
 import { startOfDay } from "date-fns";
-import { format, utcToZonedTime, zonedTimeToUtc } from "date-fns-tz";
+import { format, toZonedTime } from "date-fns-tz";
 
 import { API } from "../../types";
 import { gameQuery as query } from "./query";
 
 function getEstString(date: Date) {
-  const dateUTC = zonedTimeToUtc(
-    startOfDay(date),
-    Intl.DateTimeFormat().resolvedOptions().timeZone,
-  );
-  const dateEST = utcToZonedTime(dateUTC, "EST");
+  const dateUTC = startOfDay(date); // Ensure it's the start of the day
+  const dateEST = toZonedTime(dateUTC, "America/New_York"); // Convert to EST/EDT
   return format(dateEST, "yyyyMMdd");
 }
 

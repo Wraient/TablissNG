@@ -1,14 +1,28 @@
-import React from "react";
+import * as React from "react";
 import { defineMessages, useIntl } from "react-intl";
 import { usePushError } from "../api";
 import { UiContext } from "../contexts/ui";
 import { migrate } from "../db/migrate";
-import { cacheStorage, dbStorage } from "../db/state";
+import { cacheStorage, dbStorage, db } from "../db/state";
 import { Stream } from "../lib";
-import { Dashboard } from "./dashboard";
+import { useValue } from "../lib/db/react";
+import Dashboard from "./dashboard";
 import { Settings } from "./settings";
 import Errors from "./shared/Errors";
 import StoreError from "./shared/StoreError";
+import { useSystemTheme, useFavicon } from "../hooks";
+
+function setHighlighting() {
+  const checked = db.cache.get("highlightingEnabled");
+  const element = document.querySelector(".Widgets") as HTMLElement;
+  if (element) {
+    if (checked || checked === undefined) {
+      element.style.userSelect = "auto";
+    } else {
+      element.style.userSelect = "none";
+    }
+  }
+}
 
 const messages = defineMessages({
   pageTitle: {
@@ -28,6 +42,24 @@ const Root: React.FC = () => {
   // Wait for storage to be ready before displaying
   const [ready, setReady] = React.useState(false);
   const [error, setError] = React.useState(false);
+  const themePreference = useValue(db, "themePreference");
+  const systemIsDark = useSystemTheme();
+  const accent = useValue(db, "accent");
+
+  React.useEffect(() => {
+    const isDark =
+      themePreference === "system" ? systemIsDark : themePreference === "dark";
+    document.body.className = isDark ? "dark" : "";
+  }, [themePreference, systemIsDark]);
+
+  // Update CSS variable when accent color changes
+  React.useEffect(() => {
+    if (accent) {
+      document.documentElement.style.setProperty("--accent-color", accent);
+    }
+  }, [accent]);
+
+  useFavicon();
 
   const pushError = usePushError();
   const handleError =
@@ -80,6 +112,9 @@ const Root: React.FC = () => {
     subscriptions.then(() => {
       setReady(true);
       migrate();
+      setTimeout(() => {
+        setHighlighting();
+      }, 1);
     });
 
     return () => {

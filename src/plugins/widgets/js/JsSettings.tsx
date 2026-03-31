@@ -1,6 +1,7 @@
-import React, { FC, useState } from "react";
-
+import { FC, useState } from "react";
+import { FormattedMessage } from "react-intl";
 import { Props, defaultData } from "./types";
+import { pluginMessages } from "../../../locales/messages";
 
 const JsSettings: FC<Props> = ({ data = defaultData, setData }) => {
   const [input, setInput] = useState(data.input);
@@ -9,22 +10,32 @@ const JsSettings: FC<Props> = ({ data = defaultData, setData }) => {
   return (
     <div className="JsSettings">
       <label>
-        JavaScript Snippet
+        <FormattedMessage
+          id="plugins.js.jsSnippet"
+          defaultMessage="JavaScript Snippet"
+          description="JavaScript Snippet title"
+        />
         <textarea
-          rows={3}
-          style={{ fontFamily: "monospace" }}
+          rows={20}
+          style={{ resize: "vertical", fontFamily: "monospace" }}
           value={input}
           onChange={(event) => setInput(event.target.value)}
         />
       </label>
 
-      <button onClick={handleSave}>Apply</button>
+      <button onClick={handleSave} className="button button--primary">
+        <FormattedMessage {...pluginMessages.apply} />
+      </button>
 
       <p className="info">
-        Warning: this functionality is intended for advanced users. Custom
-        scripts may break at any time. The snippet will run once after the
-        dashboard has loaded. Be careful of persisting event listeners when
-        editing the snippet.
+        <FormattedMessage
+          id="plugins.js.Warning"
+          defaultMessage="Warning: this functionality is intended for advanced users. Custom
+          scripts may break at any time. The snippet will run once after the
+          dashboard has loaded. Be careful of persisting event listeners when
+          editing the snippet."
+          description="JavaScript warning title"
+        />
       </p>
     </div>
   );

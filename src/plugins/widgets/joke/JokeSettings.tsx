@@ -1,64 +1,101 @@
-import React from "react";
+import * as React from "react";
+import { FormattedMessage } from "react-intl";
 import { MINUTES, HOURS } from "../../../utils";
-
 import categories from "./categories";
 import { Props, defaultData, JokeAPICategory } from "./types";
+import { pluginMessages, timingMessages } from "../../../locales/messages";
 
 function updateSelectedCategories(
-  existingCategories: Set<JokeAPICategory>,
+  existingCategories: JokeAPICategory[],
   updatedCategory: JokeAPICategory,
   checked: boolean,
-): Set<JokeAPICategory> {
+): JokeAPICategory[] {
   const isAnyCategoryChecked = updatedCategory === "any" && checked;
-  const isLastItemBeingUnchecked = !checked && existingCategories.size === 1;
+  const isLastItemBeingUnchecked = !checked && existingCategories.length === 1;
 
   if (isLastItemBeingUnchecked) {
     return existingCategories;
   }
 
   if (isAnyCategoryChecked) {
-    return new Set(["any"]);
+    return ["any"];
   }
 
-  const categories = new Set(existingCategories);
+  const categories = [...existingCategories];
 
-  categories.delete("any");
+  // Remove "any" if it exists
+  const anyIndex = categories.indexOf("any");
+  if (anyIndex !== -1) {
+    categories.splice(anyIndex, 1);
+  }
 
-  checked
-    ? categories.add(updatedCategory)
-    : categories.delete(updatedCategory);
+  if (checked) {
+    if (!categories.includes(updatedCategory)) {
+      categories.push(updatedCategory);
+    }
+  } else {
+    const index = categories.indexOf(updatedCategory);
+    if (index !== -1) {
+      categories.splice(index, 1);
+    }
+  }
 
-  return categories;
+  return categories.length === 0 ? existingCategories : categories;
 }
 
 const JokeSettings: React.FC<Props> = ({ data = defaultData, setData }) => {
   return (
     <div className="JokeSettings">
-      <h5>Daily Joke</h5>
+      <h5>
+        <FormattedMessage
+          id="plugins.joke.dailyJoke"
+          defaultMessage="Daily Joke"
+          description="Daily Joke title"
+        />
+      </h5>
 
       <label>
-        Show a new joke
+        <FormattedMessage
+          id="plugins.joke.showANewJoke"
+          defaultMessage="Show a new joke"
+          description="Show a new joke title"
+        />
         <select
           value={data.timeout}
           onChange={(event) =>
             setData({ ...data, timeout: Number(event.target.value) })
           }
         >
-          <option value={5 * MINUTES}>Every 5 minutes</option>
-          <option value={15 * MINUTES}>Every 15 minutes</option>
-          <option value={HOURS}>Every hour</option>
-          <option value={24 * HOURS}>Every day</option>
-          <option value={7 * 24 * HOURS}>Every week</option>
+          <option value={5 * MINUTES}>
+            <FormattedMessage {...timingMessages.every5min} />
+          </option>
+          <option value={15 * MINUTES}>
+            <FormattedMessage {...timingMessages.every15min} />
+          </option>
+          <option value={HOURS}>
+            <FormattedMessage {...timingMessages.everyHour} />
+          </option>
+          <option value={24 * HOURS}>
+            <FormattedMessage {...timingMessages.everyDay} />
+          </option>
+          <option value={7 * 24 * HOURS}>
+            <FormattedMessage {...timingMessages.everyWeek} />
+          </option>
         </select>
       </label>
+
       <label>
-        Category
+        <FormattedMessage
+          id="plugins.joke.category"
+          defaultMessage="Category"
+          description="Category title"
+        />
         {categories.map((category) => {
           return (
             <label key={category.key}>
               <input
                 type="checkbox"
-                checked={data.categories.has(category.key)}
+                checked={data.categories.includes(category.key)}
                 onChange={(event) => {
                   const categories = updateSelectedCategories(
                     data.categories,
@@ -69,14 +106,52 @@ const JokeSettings: React.FC<Props> = ({ data = defaultData, setData }) => {
                   setData({ ...data, categories });
                 }}
               />{" "}
-              {category.name}
+              <FormattedMessage
+                id={category.name}
+                defaultMessage={
+                  category.key.charAt(0).toUpperCase() + category.key.slice(1)
+                }
+              />
             </label>
           );
         })}
       </label>
 
+      <label>
+        <FormattedMessage
+          id="plugins.joke.keybind"
+          defaultMessage="Reveal answer keybind"
+          description="Reveal answer keybind title"
+        />
+        <input
+          type="text"
+          maxLength={1}
+          onChange={(event) =>
+            setData({ ...data, keyBind: event.target.value })
+          }
+          value={data.keyBind}
+        />
+      </label>
+
+      <label>
+        <FormattedMessage
+          id="plugins.joke.maxLength"
+          defaultMessage="Max preview length"
+          description="Maximum length of joke to show on preview"
+        />
+        <input
+          type="number"
+          min="0"
+          onChange={(event) =>
+            setData({ ...data, maxPreviewLength: Number(event.target.value) })
+          }
+          placeholder="Maximum length of joke to show on preview"
+          value={data.maxPreviewLength}
+        />
+      </label>
+
       <p>
-        Powered by{" "}
+        <FormattedMessage {...pluginMessages.poweredBy} />{" "}
         <a
           href="https://jokeapi.dev/"
           target="_blank"

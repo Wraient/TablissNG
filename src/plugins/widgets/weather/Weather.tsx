@@ -1,12 +1,41 @@
-import React from "react";
-import { defineMessages } from "react-intl";
-import { useCachedEffect, useFormatMessages, useTime } from "../../../hooks";
+import { useEffect } from "react";
+import * as React from "react";
+import { defineMessages, useIntl } from "react-intl";
+import { useCachedEffect, useTime } from "../../../hooks";
 import { HOURS } from "../../../utils";
-import { Icon } from "../../../views/shared";
-import { getForecast } from "./api";
+import { Icon } from "@iconify/react";
+import { getForecast, requestLocation } from "./api";
 import { findCurrent, weatherCodes } from "./conditions";
 import { defaultData, Props } from "./types";
 import "./Weather.sass";
+
+const messages = defineMessages({
+  high: {
+    id: "plugins.weather.high",
+    description: "High for temperature high",
+    defaultMessage: "High",
+  },
+  low: {
+    id: "plugins.weather.low",
+    description: "Low for temperature low",
+    defaultMessage: "Low",
+  },
+  toggleDetails: {
+    id: "plugins.weather.toggleDetails",
+    description: "Tooltip to toggle weather details",
+    defaultMessage: "Toggle weather details",
+  },
+  apparent: {
+    id: "plugins.weather.apparent",
+    description: "Apparent/Feels like tempurature",
+    defaultMessage: "Feels like",
+  },
+  humidity: {
+    id: "plugins.weather.humidity",
+    description: "Humidity",
+    defaultMessage: "Humidity",
+  },
+});
 
 const Weather: React.FC<Props> = ({
   cache,
@@ -16,7 +45,24 @@ const Weather: React.FC<Props> = ({
   setData,
 }) => {
   const time = useTime("absolute");
-  const translated = useFormatMessages(messages);
+  const intl = useIntl();
+
+  useEffect(() => {
+    if (data.autoUpdate) {
+      requestLocation()
+        .then((coords) => {
+          if (
+            coords.latitude !== data.latitude ||
+            coords.longitude !== data.longitude
+          ) {
+            setData({ ...data, ...coords });
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  }, [data.autoUpdate, data.latitude, data.longitude]);
 
   // Cache weather data for 6 hours
   useCachedEffect(
@@ -24,7 +70,7 @@ const Weather: React.FC<Props> = ({
       getForecast(data, loader).then(setCache);
     },
     cache ? cache.timestamp + 6 * HOURS : 0,
-    [data.latitude, data.latitude, data.units],
+    [data.latitude, data.longitude, data.units],
   );
 
   const conditions =
@@ -40,10 +86,10 @@ const Weather: React.FC<Props> = ({
       <div
         className="summary"
         onClick={() => setData({ ...data, showDetails: !data.showDetails })}
-        title="Toggle weather details"
+        title={intl.formatMessage(messages.toggleDetails)}
       >
-        {data.name ? <span>{data.name}</span> : null}
-        <Icon name={weatherCodes[conditions.weatherCode]} />
+        {data.name && data.showCity ? <span>{data.name}</span> : null}
+        <Icon icon={`feather:` + weatherCodes[conditions.weatherCode]} />
         <span className="temperature">
           {Math.round(conditions.temperature)}˚
         </span>
@@ -53,40 +99,16 @@ const Weather: React.FC<Props> = ({
         <div className="details">
           <dl>
             <dt>{Math.round(conditions.apparentTemperature)}˚</dt>
-            <dd>{translated.apparent}</dd>
+            <dd>{intl.formatMessage(messages.apparent)}</dd>
           </dl>
           <dl>
             <dt>{conditions.humidity}%</dt>
-            <dd>{translated.humidity}</dd>
+            <dd>{intl.formatMessage(messages.humidity)}</dd>
           </dl>
         </div>
       ) : null}
     </div>
   );
 };
-
-// Translation messages
-const messages = defineMessages({
-  high: {
-    id: "plugins.weather.high",
-    description: "High for temperature high",
-    defaultMessage: "High",
-  },
-  low: {
-    id: "plugins.weather.low",
-    description: "Low for temperature low",
-    defaultMessage: "Low",
-  },
-  apparent: {
-    id: "plugins.weather.apparent",
-    description: "Apparent/Feels like tempurature",
-    defaultMessage: "Feels like",
-  },
-  humidity: {
-    id: "plugins.weather.humidity",
-    description: "Humidity",
-    defaultMessage: "Humidity",
-  },
-});
 
 export default Weather;

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { withErrorBoundary } from "react-error-boundary";
 import { capture as captureException } from "../../errorHandler";
 import { useApi } from "../../hooks";
@@ -19,5 +19,8 @@ const Plugin: React.FC<Props> = ({ id, component: Component }) => {
 
 export default withErrorBoundary(Plugin, {
   FallbackComponent: Crashed,
-  onError: captureException,
+  onError: (error: unknown, _info: any) => {
+    const err = error instanceof Error ? error : new Error(String(error));
+    captureException(err);
+  },
 });

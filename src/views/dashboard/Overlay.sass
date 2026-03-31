@@ -1,12 +1,29 @@
 .Overlay
+    display: flex
     position: absolute
-    top: 0
-    left: 0
     margin: 0.5rem
     padding: 0.5rem
     border-radius: 1.25rem
     transition: all 0.25s ease-out
     font-size: 1.1rem
+
+    &.topLeft
+        top: 0
+        left: 0
+
+    &.topRight
+        top: 0
+        right: 0
+        flex-direction: row-reverse
+
+    &.bottomLeft
+        bottom: 0
+        left: 0
+
+    &.bottomRight
+        bottom: 0
+        right: 0
+        flex-direction: row-reverse
 
     .on-hover
         opacity: 0
@@ -14,20 +31,18 @@
 
     &:hover
         opacity: 1
-        background-color: rgba(0, 0, 0, 0.65)
+        background-color: var(--bg-overlay)
 
         .on-hover
             opacity: 1
 
         svg
-            color: #3498db
+            color: var(--accent-color)
             filter: none
 
     a, span
         margin: 0 0.25em
+        display: inline-flex
 
     svg, i
         transition: stroke 0.25s ease-out
-
-.light .Overlay:hover
-    background-color: rgba(255, 255, 255, 0.65)

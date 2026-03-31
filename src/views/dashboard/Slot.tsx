@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { WidgetPosition, WidgetState } from "../../db/state";
 import { getConfig } from "../../plugins";
 import Plugin from "../shared/Plugin";
@@ -13,7 +13,7 @@ type Props = {
 const Slot: React.FC<Props> = ({ position, widgets }) => (
   <div className={`Slot ${position}`}>
     {widgets.map(({ display, id, key }) => (
-      <Widget key={id} {...display}>
+      <Widget key={id} id={id} {...display}>
         <Plugin id={id} component={getConfig(key).dashboardComponent} />
       </Widget>
     ))}

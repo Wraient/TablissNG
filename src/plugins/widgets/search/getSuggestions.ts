@@ -1,3 +1,50 @@
+export type WikipediaSuggestion = {
+  id: number;
+  key: string;
+  title: string;
+  excerpt: string;
+  matched_title: string;
+  anchor: string | null;
+  description: string;
+  thumbnail: {
+    mimetype: string;
+    width: number;
+    height: number;
+    duration: number | null;
+    url: string;
+  } | null;
+};
+
+export type WikipediaSuggestionResult = {
+  title: string;
+  description?: string;
+  excerpt?: string;
+  thumbnailUrl?: string;
+};
+
+export async function getWikipediaSuggestions(
+  query: string,
+  url: string,
+): Promise<WikipediaSuggestionResult[]> {
+  if (query === "") return [];
+  const response = await fetch(url);
+  if (!response.ok)
+    throw new Error(
+      `Failed to fetch suggestions wikipedia suggetsions from ${url}`,
+    );
+  const data = await response.json();
+  if (!data.pages || !Array.isArray(data.pages)) return [];
+  return data.pages.map((page: WikipediaSuggestion) => ({
+    title: page.title,
+    description: page.description,
+    excerpt: page.excerpt,
+    thumbnailUrl: page.thumbnail
+      ? page.thumbnail.url.startsWith("http")
+        ? page.thumbnail.url
+        : `https:${page.thumbnail.url}`
+      : undefined,
+  }));
+}
 // For mounting the result
 declare global {
   interface Window {

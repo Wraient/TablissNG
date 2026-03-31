@@ -2,13 +2,10 @@ import { JokeAPICategory, JokeAPIResponse } from "./types";
 
 const url = "https://v2.jokeapi.dev/joke";
 
-export async function getJoke(
-  categories: Set<JokeAPICategory>,
-  locale: string,
-) {
+export async function getJoke(categories: JokeAPICategory[], locale: string) {
   const languageUrlParameter = `lang=${locale}`;
   const safeModeUrlParameter = "safe-mode";
-  const categoriesUrlParameter = Array.from(categories).join(",");
+  const categoriesUrlParameter = categories.join(",");
 
   const res = await fetch(
     // Note: We will always ask jokeapi to return safe jokes for everyone.

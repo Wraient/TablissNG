@@ -1,13 +1,21 @@
 import { API } from "../../types";
 
 type Data = {
-  username: string;
-  showSummary: boolean;
+  username?: string;
+  showColorLegend: boolean;
+  showMonthLabels: boolean;
+  showTotalCount: boolean;
+  showTooltips: boolean;
+  clickAction: "none" | "github" | "profile";
 };
 
 export type Props = API<Data>;
 
 export const defaultData: Data = {
   username: "",
-  showSummary: false,
+  showColorLegend: false,
+  showMonthLabels: false,
+  showTotalCount: false,
+  showTooltips: true,
+  clickAction: "none",
 };

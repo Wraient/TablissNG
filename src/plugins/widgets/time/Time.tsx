@@ -1,19 +1,21 @@
-import React, { FC } from "react";
+import { FC, useRef } from "react";
 import { FormattedDate } from "react-intl";
-
 import { useTime } from "../../../hooks";
 import Analogue from "./Analogue";
 import Digital from "./Digital";
 import { Props, defaultData } from "./types";
 import "./Time.sass";
-import { utcToZonedTime } from "date-fns-tz";
+import { toZonedTime } from "date-fns-tz";
 
 const Time: FC<Props> = ({ data = defaultData }) => {
   const {
     hour12,
     mode,
     name,
+    colorCircles,
     showDate,
+    hideTime,
+    showHours = true,
     showMinutes,
     showSeconds,
     timeZone,
@@ -21,33 +23,52 @@ const Time: FC<Props> = ({ data = defaultData }) => {
   } = data;
   let time = useTime(timeZone ? "absolute" : "zoned");
 
+  const h3Ref = useRef<HTMLHeadingElement | null>(null);
+  const color =
+    (h3Ref.current && window.getComputedStyle(h3Ref.current).color) || "white";
+
   if (timeZone) {
-    time = utcToZonedTime(time, timeZone);
+    time = toZonedTime(time, timeZone);
   }
 
   return (
     <div className="Time">
-      {mode === "analogue" ? (
-        <Analogue
-          time={time}
-          showMinutes={showMinutes}
-          showSeconds={showSeconds}
-        />
-      ) : (
-        <Digital
-          time={time}
-          hour12={hour12}
-          showMinutes={showMinutes}
-          showSeconds={showSeconds}
-          showDayPeriod={showDayPeriod}
-        />
+      {!hideTime && (
+        <>
+          {mode === "analogue" ? (
+            <Analogue
+              time={time}
+              showHours={showHours}
+              showMinutes={showMinutes}
+              showSeconds={showSeconds}
+              color={color}
+              colorCircles={colorCircles}
+            />
+          ) : (
+            <Digital
+              time={time}
+              hour12={hour12}
+              showHours={showHours}
+              showMinutes={showMinutes}
+              showSeconds={showSeconds}
+              showDayPeriod={showDayPeriod}
+            />
+          )}
+        </>
       )}
+
       {name && <h2>{name}</h2>}
 
       {showDate && (
         <>
-          <hr />
-          <h3>
+          {(!hideTime || name) && (
+            <hr
+              style={{
+                borderColor: color,
+              }}
+            />
+          )}
+          <h3 ref={h3Ref}>
             <FormattedDate
               value={time}
               day="numeric"

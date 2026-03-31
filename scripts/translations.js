@@ -1,6 +1,5 @@
 const fs = require("fs");
-const { promisify } = require("util");
-const glob = promisify(require("glob"));
+const { glob } = require("glob");
 const manageTranslations = require("react-intl-translations-manager").default;
 const parser = require("typescript-react-intl").default;
 
@@ -9,6 +8,7 @@ const parser = require("typescript-react-intl").default;
 // Then run `npm run translations` to create your language files!
 const languages = [
   "ar",
+  "be",
   "ca-ES",
   "cs",
   "de",
@@ -43,6 +43,7 @@ const languages = [
   "ro",
   "ru",
   "sk",
+  "sq",
   "sr",
   "sv",
   "ta",

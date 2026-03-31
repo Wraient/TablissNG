@@ -1,5 +1,6 @@
 import { pick } from "in-browser-language";
 import ar from "./lang/ar.json";
+import be from "./lang/be.json";
 import caES from "./lang/ca-ES.json";
 import cs from "./lang/cs.json";
 import de from "./lang/de.json";
@@ -30,6 +31,7 @@ import no from "./lang/no.json";
 import ro from "./lang/ro.json";
 import ru from "./lang/ru.json";
 import sk from "./lang/sk.json";
+import sq from "./lang/sq.json";
 import sr from "./lang/sr.json";
 import sv from "./lang/sv.json";
 import pl from "./lang/pl.json";
@@ -45,6 +47,7 @@ import uk from "./lang/uk.json";
 
 export const messages: Record<string, Record<string, string>> = {
   ar: ar,
+  be: be,
   "ca-ES": caES,
   cs: cs,
   de: de,
@@ -76,6 +79,7 @@ export const messages: Record<string, Record<string, string>> = {
   ro: ro,
   ru: ru,
   sk: sk,
+  sq: sq,
   sr: sr,
   sv: sv,
   pl: pl,

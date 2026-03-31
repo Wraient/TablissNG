@@ -1,14 +1,23 @@
-import React from "react";
-import { FormattedMessage } from "react-intl";
+import React, { useMemo } from "react";
+import { FormattedMessage, useIntl } from "react-intl";
 import { addWidget, removeWidget, reorderWidget } from "../../db/action";
 import { selectWidgets } from "../../db/select";
 import { db } from "../../db/state";
 import { useSelector } from "../../lib/db/react";
-import { widgetConfigs } from "../../plugins";
 import Widget from "./Widget";
+import { widgetConfigs } from "../../plugins/plugins";
 
 const Widgets: React.FC = () => {
   const widgets = useSelector(db, selectWidgets);
+  const intl = useIntl();
+
+  const sortedWidgetConfigs = useMemo(() => {
+    return [...widgetConfigs].sort((a, b) => {
+      const nameA = intl.formatMessage(a.name);
+      const nameB = intl.formatMessage(b.name);
+      return nameA.localeCompare(nameB);
+    });
+  }, [intl]);
 
   return (
     <div>
@@ -27,11 +36,15 @@ const Widgets: React.FC = () => {
           className="primary"
         >
           <option disabled value="">
-            Add a new widget
+            <FormattedMessage
+              id="add.new.widget"
+              defaultMessage="Add a new widget"
+              description="Add a new widget button text"
+            />
           </option>
-          {widgetConfigs.map((plugin) => (
+          {sortedWidgetConfigs.map((plugin) => (
             <option key={plugin.key} value={plugin.key}>
-              {plugin.name}
+              {intl.formatMessage(plugin.name)}
             </option>
           ))}
         </select>

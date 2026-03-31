@@ -5,6 +5,8 @@ export type Data = {
   from: string;
   to: string;
   type: "linear-gradient" | "radial-gradient";
+  isRandom: boolean;
+  currentGradientName?: string;
 };
 
 export type Props = API<Data>;
@@ -14,4 +16,6 @@ export const defaultData: Data = {
   from: "#3498db",
   to: "#9b59b6",
   type: "linear-gradient",
+  isRandom: false,
+  currentGradientName: undefined,
 };

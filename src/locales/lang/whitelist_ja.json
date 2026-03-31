@@ -1,5 +1,5 @@
 [
-  "plugins.unsplash.photoLink",
+  "widgets",
   "background",
-  "widgets"
+  "plugins.unsplash.photoLink"
 ]

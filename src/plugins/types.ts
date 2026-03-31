@@ -1,4 +1,5 @@
 import { ComponentType } from "react";
+import { MessageDescriptor } from "react-intl";
 
 export type Cache<Shape = unknown> = {
   /**
@@ -14,7 +15,7 @@ export type Cache<Shape = unknown> = {
 export type Data<Shape = unknown> = {
   /**
    * A permanent (and synced) data store for storing small items and settings for the plugin.
-   * Note, the total Tabliss can store here is 100KB across all plugins.
+   * Note, the total Tabliss can store here is 100KB across all plugins, and each plugin can store up to 8KB of data.
    */
   data?: Shape;
   /**
@@ -39,8 +40,8 @@ export interface API<D = unknown, C = unknown> extends Data<D>, Cache<C> {
 /** Plugin config object type. */
 export type Config = {
   readonly key: string;
-  readonly name: string;
-  readonly description: string;
+  readonly name: MessageDescriptor;
+  readonly description: MessageDescriptor;
   readonly dashboardComponent: ComponentType<API<any, any>>;
   readonly settingsComponent?: ComponentType<API<any, any>>;
   readonly supportsBackdrop?: boolean;

@@ -1,7 +1,8 @@
-import React from "react";
+import * as React from "react";
+import { FormattedMessage } from "react-intl";
 import { WidgetPosition } from "../../db/state";
 import { Icon, IconButton } from "../shared";
-import "./PositionInput.css";
+import "./PositionInput.sass";
 
 const positions = [
   {
@@ -22,7 +23,7 @@ const positions = [
   },
   {
     value: "middleCentre",
-    icon: "move",
+    icon: "crosshair",
   },
   {
     value: "middleRight",
@@ -40,6 +41,10 @@ const positions = [
     value: "bottomRight",
     icon: "arrow-down-right",
   },
+  {
+    value: "free",
+    icon: "move",
+  },
 ] as const;
 
 type Props = {
@@ -49,17 +54,24 @@ type Props = {
 
 const PositionInput: React.FC<Props> = ({ value, onChange }) => (
   <div className="PositionInput">
-    <label>Position</label>
+    <label>
+      <FormattedMessage
+        id="settings.position"
+        defaultMessage="Position"
+        description="Position title"
+      />
+    </label>
 
     <div className="grid">
       {positions.map((position) => (
-        <IconButton
-          key={position.value}
-          onClick={() => onChange(position.value)}
-          primary={value === position.value}
-        >
-          <Icon name={position.icon} />
-        </IconButton>
+        <div key={position.value} className="PositionInput-buttonContainer">
+          <IconButton
+            onClick={() => onChange(position.value)}
+            primary={value === position.value}
+          >
+            <Icon name={position.icon} />
+          </IconButton>
+        </div>
       ))}
     </div>
   </div>

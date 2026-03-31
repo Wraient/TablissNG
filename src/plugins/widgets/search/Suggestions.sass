@@ -5,14 +5,63 @@
     width: 100%
     background: rgba(0, 0, 0, 0.5)
     border-radius: 0 0 1rem 1rem
+    overflow: hidden
 
     input
         color: inherit
         cursor: pointer
+        padding: 0.5em 1em
+        width: 100%
+        text-align: left
+        font-size: 1em
+
+    .suggestion-item
+        text-align: left
+        display: flex
+        gap: 0.75em
+        padding: 0.5em 1em
+        cursor: pointer
+        width: 100%
+        font-size: 1.1rem
+        &:hover, &.active
+            background: rgba(255,255,255,0.2)
+
+        .suggestion-thumb
+            width: 30px
+            height: 30px
+            object-fit: cover
+            border-radius: 0.25em
+            align-self: center
+
+        .suggestion-content
+            display: flex
+            flex-direction: column
+            justify-content: space-between
+            padding: 0.2em 0
+
+            .suggestion-title
+                white-space: normal
+                word-break: break-word
+
+            .suggestion-desc
+                font-size: 0.8em
+                color: #b0b0b0
+                white-space: normal
+                word-break: break-word
 
     .active
         text-decoration: underline
 
-.light
+.Search.style-transparent-rounded
     .Suggestions
-        background: rgba(255, 255, 255, 0.5)
+        margin-top: -0.5rem
+        top: 100%
+        border-radius: 1.5rem
+        backdrop-filter: blur(10px)
+
+.Search.style-minimal-outlined
+    .Suggestions
+        margin-top: -0.5rem
+        top: 100%
+        border-radius: 4px
+        background: rgba(20, 20, 20, 0.9)

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { IntlProvider as ReactIntlProvider } from "react-intl";
 import { db } from "../db/state";
 import { useValue } from "../lib/db/react";
@@ -11,7 +11,7 @@ import {
 
 const defaultMessages: LocaleMessages = baseMessages;
 
-const IntlProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
+const IntlProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const locale = useValue(db, "locale");
   const [messages, setMessages] = React.useState<LocaleMessages>(defaultMessages);
 

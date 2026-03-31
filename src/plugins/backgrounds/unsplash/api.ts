@@ -20,6 +20,10 @@ export const fetchImages = async ({
     Authorization: `Client-ID ${UNSPLASH_API_KEY}`,
   });
 
+  if (!UNSPLASH_API_KEY) {
+    throw new Error("You must set the UNSPLASH_API_KEY environment variable.");
+  }
+
   params.set("count", "10");
 
   switch (by) {
@@ -28,7 +32,10 @@ export const fetchImages = async ({
       break;
 
     case "topics":
-      params.set("topics", topics);
+      params.set(
+        "topics",
+        (Array.isArray(topics) ? topics : [topics]).join(","),
+      );
       params.set("orientation", "landscape");
       break;
 
@@ -45,17 +52,35 @@ export const fetchImages = async ({
   const res = await fetch(`${url}?${params}`, { headers, cache: "no-cache" });
   const body = await res.json();
 
-  // TODO: validate types
+  if (res.status != 200) {
+    const empty: Image[] = [
+      {
+        src: "",
+        credit: {
+          imageLink: "",
+          location: undefined,
+          userName: "",
+          userLink: "",
+        },
+      },
+    ];
+    return empty;
+  }
 
-  return body.map((item: any) => ({
-    src: item.urls.raw,
-    credit: {
-      imageLink: item.links.html,
-      location: item.location ? item.location.name : null,
-      userName: item.user.name,
-      userLink: item.user.links.html,
-    },
-  }));
+  if (Array.isArray(body)) {
+    return body.map((item: any) => ({
+      src: item.urls.raw,
+      credit: {
+        imageLink: item.links.html,
+        location: item.location ? item.location.name : null,
+        userName: item.user.name,
+        userLink: item.user.links.html,
+      },
+    }));
+  } else {
+    console.error("Expected an array, but received:", body);
+    return [];
+  }
 };
 
 /**
@@ -63,6 +88,7 @@ export const fetchImages = async ({
  * TODO: allow quality to be adjustable, possibly in combination with size
  */
 export const buildLink = (src: string): string => {
+  if (!src) return "";
   const url = new URL(src);
   url.searchParams.set("q", "85");
   url.searchParams.set(
