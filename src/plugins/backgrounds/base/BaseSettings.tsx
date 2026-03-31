@@ -74,11 +74,7 @@ const BaseSettings = <T extends BaseSettingsData>({
           <FormattedMessage {...timingMessages.everyDay} />
         </option>
         <option value="604800">
-          <FormattedMessage
-            id="plugins.everyWeek"
-            defaultMessage="Every week"
-            description="Every week title"
-          />
+          <FormattedMessage {...timingMessages.everyWeek} />
         </option>
       </select>
     </label>
