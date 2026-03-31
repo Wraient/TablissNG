@@ -3,7 +3,7 @@ import * as React from "react";
 import { defineMessages, useIntl } from "react-intl";
 import { Icon } from "@iconify/react";
 import { Link, Cache } from "./types";
-import { isSpecialUrl, normalizeUrl } from "../../../utils";
+import { getFaviconUrl, isSpecialUrl, normalizeUrl } from "../../../utils";
 import { useDeferredFavicon } from "../../../hooks";
 
 const getDomain = (url: string): string | null => {
@@ -94,17 +94,10 @@ export const Display: FC<Props> = ({
   }, [intl, number, keyboardShortcut]);
   const domain = useMemo(() => getDomain(normalizedUrl), [normalizedUrl]);
 
-  const faviconRawSrc = useMemo(() => {
-    if (!domain) return "";
-    if (icon === "_favicon_duckduckgo") {
-      return `https://icons.duckduckgo.com/ip3/${domain}.ico`;
-    } else if (icon === "_favicon_google" || icon === "_favicon") {
-      return `https://www.google.com/s2/favicons?domain=${domain}&sz=${iconSize ?? 256}`;
-    } else if (icon === "_favicon_favicone") {
-      return `https://favicone.com/${domain}?s=${iconSize ?? 256}`;
-    }
-    return "";
-  }, [icon, domain, iconSize]);
+  const faviconRawSrc = useMemo(
+    () => getFaviconUrl(icon, domain, iconSize ?? 256),
+    [icon, domain, iconSize],
+  );
   const deferredFaviconSrc = useDeferredFavicon(faviconRawSrc);
   const parsedSvg = useMemo(
     () => (SvgString ? parseSvg(SvgString, customWidth, customHeight) : null),

@@ -7,6 +7,7 @@ import { BookmarkTreeNode } from "./types";
 import { cleanTitle, truncateText } from "../topSites/TopSites";
 import { Display } from "../links/Display";
 import { useDeferredFavicon } from "../../../hooks";
+import { getFaviconUrl } from "../../../utils";
 
 type NodeProps = {
   node: BookmarkTreeNode;
@@ -65,14 +66,7 @@ const Node: FC<NodeProps> = ({
   const cls = isFolder ? "folder" : "bookmark";
 
   const domain = node.url ? new URL(node.url).hostname : "";
-  const faviconRawSrc =
-    iconProvider === "_favicon_duckduckgo"
-      ? `https://icons.duckduckgo.com/ip3/${domain}.ico`
-      : iconProvider === "_favicon_google"
-        ? `https://www.google.com/s2/favicons?domain=${domain}&sz=256`
-        : iconProvider === "_favicon_favicone"
-          ? `https://favicone.com/${domain}?s=256`
-          : "";
+  const faviconRawSrc = getFaviconUrl(iconProvider, domain, 256);
   const deferredFaviconSrc = useDeferredFavicon(faviconRawSrc);
 
   // Skip rendering if this is the root node in auto-expanded mode

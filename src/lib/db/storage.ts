@@ -48,8 +48,17 @@ export const indexeddb = (
 
       const finishLoading = () => {
         if (keysDone && valsDone) {
+          const changeCount = Math.min(keys.length, vals.length);
+
+          if (DEV && keys.length !== vals.length) {
+            console.warn(
+              "Storage: IndexedDB restore saw mismatched key/value counts",
+              { keys: keys.length, values: vals.length },
+            );
+          }
+
           DB.atomic(db, (updateTrx) => {
-            keys.forEach((key, index) => {
+            keys.slice(0, changeCount).forEach((key, index) => {
               if (typeof key === "string") {
                 DB.put(updateTrx, key, vals[index]);
               }

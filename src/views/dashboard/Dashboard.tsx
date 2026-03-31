@@ -2,6 +2,7 @@ import * as React from "react";
 import { useTheme } from "../../hooks";
 import { useKey } from "../../lib/db/react";
 import { db } from "../../db/state";
+import { runWhenIdle } from "../../utils";
 import Background from "./Background";
 import "./Dashboard.sass";
 import Overlay from "./Overlay";
@@ -14,25 +15,10 @@ const Dashboard: React.FC = () => {
   const [showWidgets, setShowWidgets] = React.useState(false);
 
   React.useEffect(() => {
-    let timeoutId: number | null = null;
-    if (typeof window.requestIdleCallback === "function") {
-      timeoutId = window.requestIdleCallback(() => setShowWidgets(true), {
-        timeout: 2000,
-      });
-    } else {
-      timeoutId = window.setTimeout(() => setShowWidgets(true), 100);
-    }
-    return () => {
-      if (timeoutId === null) {
-        return;
-      }
-
-      if (typeof window.cancelIdleCallback === "function") {
-        window.cancelIdleCallback(timeoutId);
-      } else {
-        clearTimeout(timeoutId);
-      }
-    };
+    return runWhenIdle(() => setShowWidgets(true), {
+      delay: 100,
+      timeout: 2000,
+    });
   }, []);
 
   return (
