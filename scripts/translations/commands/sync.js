@@ -27,7 +27,7 @@ function formatChangeLine(label, count, ids) {
 
 function mergeLanguage(defaultMessages, existingMessages, whitelistedIds) {
   const merged = {};
-  const changes = { added: [], updated: [], removed: [] };
+  const changes = { added: [], updated: [], removed: [], trimmed: [] };
 
   for (const id of Object.keys(defaultMessages).sort()) {
     const defaultMessage = defaultMessages[id];
@@ -44,6 +44,9 @@ function mergeLanguage(defaultMessages, existingMessages, whitelistedIds) {
 
     const existingMessage = existingMessages[id];
     if (typeof existingMessage === "string" && existingMessage.length > 0) {
+      if (existingMessage !== existingMessage.trim()) {
+        changes.trimmed.push(id);
+      }
       merged[id] = existingMessage;
     } else {
       merged[id] = defaultMessage;
@@ -85,6 +88,15 @@ function runSync(context) {
   const extractedCount = Object.keys(defaultMessages).length;
   logInfo(context, `  Found ${extractedCount} message(s) in source.\n`);
 
+  const sourceWhitespace = Object.entries(defaultMessages)
+    .filter(([, msg]) => msg !== msg.trim())
+    .map(([id]) => id);
+  if (sourceWhitespace.length > 0) {
+    console.warn(
+      `  ⚠ Source messages with leading/trailing whitespace: ${sourceWhitespace.join(", ")}`,
+    );
+  }
+
   const languageFiles = listLanguageFiles();
   logInfo(context, `⟳ Syncing ${languageFiles.length} language file(s)...\n`);
 
@@ -109,6 +121,11 @@ function runSync(context) {
     const existingString = fs.existsSync(languagePath)
       ? fs.readFileSync(languagePath, "utf8")
       : null;
+    if (changes.trimmed.length > 0) {
+      console.warn(
+        `  ⚠ ${languageFile}: values with leading/trailing whitespace: ${changes.trimmed.join(", ")}`,
+      );
+    }
     if (mergedString !== existingString) {
       fs.writeFileSync(languagePath, mergedString);
       logInfo(context, `  ${languageFile}: (sorted)`);

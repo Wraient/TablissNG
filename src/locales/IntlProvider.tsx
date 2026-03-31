@@ -9,7 +9,7 @@ import {
   type LocaleMessages,
 } from "./locales";
 
-const defaultMessages: LocaleMessages = baseMessages;
+const defaultMessages: LocaleMessages = DEV ? {} : baseMessages;
 
 const IntlProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const locale = useValue(db, "locale");
@@ -20,7 +20,7 @@ const IntlProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
     let cancelled = false;
     void loadMessages(locale).then((nextMessages) => {
       if (!cancelled) {
-        setMessages({ ...baseMessages, ...nextMessages });
+        setMessages(DEV ? nextMessages : { ...baseMessages, ...nextMessages });
       }
     });
 
