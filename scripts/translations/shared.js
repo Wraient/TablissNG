@@ -1,3 +1,4 @@
+const { execFileSync } = require("child_process");
 const fs = require("fs");
 const path = require("path");
 
@@ -130,6 +131,39 @@ function validateMessageObject(obj, filename) {
   return true;
 }
 
+function extractMessages() {
+  const formatjsBin = path.join(rootDir, "node_modules", ".bin", "formatjs");
+  if (!fs.existsSync(formatjsBin)) {
+    console.error(
+      "\n✗ Missing FormatJS CLI binary: node_modules/.bin/formatjs",
+    );
+    console.error(
+      "  Run `npm install` from the repository root, then try again.",
+    );
+    process.exit(1);
+  }
+
+  const args = [
+    "extract",
+    "src/**/*.{ts,tsx}",
+    "--ignore",
+    "**/*.d.ts",
+    "--out-file",
+    "src/locales/extractedMessages/messages.json",
+  ];
+
+  try {
+    execFileSync(formatjsBin, args, {
+      cwd: rootDir,
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    });
+  } catch (err) {
+    console.error(`\n✗ Failed to extract messages: ${err.message}`);
+    process.exit(1);
+  }
+}
+
 module.exports = {
   localesDir,
   extractedMessagesPath,
@@ -137,6 +171,7 @@ module.exports = {
   writeJson,
   writeJsonIfChanged,
   normalizeExtractedMessages,
+  extractMessages,
   listLanguageFiles,
   getWhitelistedIds,
   formatSummaryLine,
