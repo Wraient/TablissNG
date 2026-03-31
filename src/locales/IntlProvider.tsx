@@ -13,7 +13,8 @@ const defaultMessages: LocaleMessages = baseMessages;
 
 const IntlProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const locale = useValue(db, "locale");
-  const [messages, setMessages] = React.useState<LocaleMessages>(defaultMessages);
+  const [messages, setMessages] =
+    React.useState<LocaleMessages>(defaultMessages);
 
   React.useEffect(() => {
     let cancelled = false;

@@ -13,7 +13,6 @@ const {
   logInfo,
   validateMessageObject,
   sortKeys,
-  writeJsonIfChanged,
 } = require("../shared");
 
 const rootDir = path.resolve(__dirname, "..", "..", "..");
@@ -21,8 +20,12 @@ const rootDir = path.resolve(__dirname, "..", "..", "..");
 function extractMessages() {
   const formatjsBin = path.join(rootDir, "node_modules", ".bin", "formatjs");
   if (!fs.existsSync(formatjsBin)) {
-    console.error("\n✗ Missing FormatJS CLI binary: node_modules/.bin/formatjs");
-    console.error("  Run `npm install` from the repository root, then try again.");
+    console.error(
+      "\n✗ Missing FormatJS CLI binary: node_modules/.bin/formatjs",
+    );
+    console.error(
+      "  Run `npm install` from the repository root, then try again.",
+    );
     process.exit(1);
   }
 
@@ -50,7 +53,10 @@ function extractMessages() {
 function formatChangeLine(label, count, ids) {
   if (count === 0) return "";
   const preview = ids.slice(0, 10);
-  const suffix = ids.length > preview.length ? `, ... (+${ids.length - preview.length} more)` : "";
+  const suffix =
+    ids.length > preview.length
+      ? `, ... (+${ids.length - preview.length} more)`
+      : "";
   return `    ${label} ${count} ${count === 1 ? "key" : "keys"}: ${preview.join(", ")}${suffix}`;
 }
 
@@ -102,7 +108,11 @@ function runSync(context) {
   extractMessages();
 
   const extractedRaw = readJson(extractedMessagesPath, {});
-  if (!extractedRaw || typeof extractedRaw !== "object" || Array.isArray(extractedRaw)) {
+  if (
+    !extractedRaw ||
+    typeof extractedRaw !== "object" ||
+    Array.isArray(extractedRaw)
+  ) {
     console.error("✗ Extracted messages file is not a valid JSON object.");
     process.exit(1);
   }
@@ -120,36 +130,42 @@ function runSync(context) {
   for (const languageFile of languageFiles) {
     const languagePath = path.join(localesDir, languageFile);
     const existingMessages = readJson(languagePath, {});
-
     if (!validateMessageObject(existingMessages, languageFile)) {
       continue;
     }
-
     const whitelistedIds = getWhitelistedIds(languageFile);
     const { merged, changes } = mergeLanguage(
       defaultMessages,
       existingMessages,
       whitelistedIds,
     );
-
-    const hasChanges =
-      changes.added.length > 0 ||
-      changes.updated.length > 0 ||
-      changes.removed.length > 0;
-
-    if (hasChanges) {
-      writeJsonIfChanged(languagePath, merged, context);
-      logInfo(context, `  ${languageFile}:`);
+    // Always write if key order or values changed
+    const mergedString = JSON.stringify(merged, null, 2) + "\n";
+    const existingString = fs.existsSync(languagePath)
+      ? fs.readFileSync(languagePath, "utf8")
+      : null;
+    if (mergedString !== existingString) {
+      fs.writeFileSync(languagePath, mergedString);
+      logInfo(context, `  ${languageFile}: (sorted)`);
       if (changes.added.length > 0) {
-        logInfo(context, formatChangeLine("+", changes.added.length, changes.added));
+        logInfo(
+          context,
+          formatChangeLine("+", changes.added.length, changes.added),
+        );
         totalAdded += changes.added.length;
       }
       if (changes.updated.length > 0) {
-        logInfo(context, formatChangeLine("~", changes.updated.length, changes.updated));
+        logInfo(
+          context,
+          formatChangeLine("~", changes.updated.length, changes.updated),
+        );
         totalUpdated += changes.updated.length;
       }
       if (changes.removed.length > 0) {
-        logInfo(context, formatChangeLine("-", changes.removed.length, changes.removed));
+        logInfo(
+          context,
+          formatChangeLine("-", changes.removed.length, changes.removed),
+        );
         totalRemoved += changes.removed.length;
       }
     }

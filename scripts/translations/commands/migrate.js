@@ -17,7 +17,11 @@ const {
 function getDefaultMessagesSafe() {
   if (!fs.existsSync(extractedMessagesPath)) return {};
   const extractedRaw = readJson(extractedMessagesPath, {});
-  if (!extractedRaw || typeof extractedRaw !== "object" || Array.isArray(extractedRaw)) {
+  if (
+    !extractedRaw ||
+    typeof extractedRaw !== "object" ||
+    Array.isArray(extractedRaw)
+  ) {
     return {};
   }
   return normalizeExtractedMessages(extractedRaw);
@@ -26,7 +30,9 @@ function getDefaultMessagesSafe() {
 function validateAndParseMigrationPair(pair) {
   const separatorIndex = pair.indexOf("=");
   if (separatorIndex <= 0 || separatorIndex === pair.length - 1) {
-    console.error(`✗ Invalid migration pair: "${pair}". Expected format old.id=new.id`);
+    console.error(
+      `✗ Invalid migration pair: "${pair}". Expected format old.id=new.id`,
+    );
     return null;
   }
 
@@ -93,7 +99,9 @@ function parseMigrateArgs(args) {
   }
 
   if (pairArgs.length === 0) {
-    console.error("✗ No migration pairs provided. Pass one or more old.id=new.id mappings.");
+    console.error(
+      "✗ No migration pairs provided. Pass one or more old.id=new.id mappings.",
+    );
     process.exit(1);
   }
 

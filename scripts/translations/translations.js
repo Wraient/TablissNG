@@ -5,29 +5,29 @@ const { runMigrate, parseMigrateArgs } = require("./commands/migrate");
 const { runCompile } = require("./commands/compile");
 
 function parseGlobalOptions(argv) {
-	const options = { dryRun: false, quiet: false };
-	const args = [];
+  const options = { dryRun: false, quiet: false };
+  const args = [];
 
-	for (const arg of argv) {
-		if (arg === "--dry-run") {
-			options.dryRun = true;
-			continue;
-		}
-		if (arg === "--quiet") {
-			options.quiet = true;
-			continue;
-		}
-		args.push(arg);
-	}
+  for (const arg of argv) {
+    if (arg === "--dry-run") {
+      options.dryRun = true;
+      continue;
+    }
+    if (arg === "--quiet") {
+      options.quiet = true;
+      continue;
+    }
+    args.push(arg);
+  }
 
-	return {
-		options,
-		args,
-	};
+  return {
+    options,
+    args,
+  };
 }
 
 function printUsage() {
-	console.log(`Usage: node scripts/translations/translations.js [options] [command] [args...]
+  console.log(`Usage: node scripts/translations/translations.js [options] [command] [args...]
 
 Global Options:
 	--dry-run           Preview changes without writing to files

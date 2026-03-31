@@ -17,7 +17,9 @@ function readJson(filePath, fallback) {
   try {
     return JSON.parse(raw);
   } catch (err) {
-    console.error(`  ✗ Failed to parse ${path.basename(filePath)}: ${err.message}`);
+    console.error(
+      `  ✗ Failed to parse ${path.basename(filePath)}: ${err.message}`,
+    );
     return fallback;
   }
 }
@@ -36,7 +38,9 @@ function writeJson(filePath, value, context) {
 
 function writeJsonIfChanged(filePath, value, context) {
   const content = toJsonContent(value);
-  const existing = fs.existsSync(filePath) ? fs.readFileSync(filePath, "utf8") : null;
+  const existing = fs.existsSync(filePath)
+    ? fs.readFileSync(filePath, "utf8")
+    : null;
   if (existing === content) {
     return false;
   }
@@ -61,7 +65,14 @@ function normalizeExtractedMessages(extracted) {
       extracted.flatMap((message) => {
         const id = message?.id;
         if (!id) return [];
-        return [[id, typeof message.defaultMessage === "string" ? message.defaultMessage : ""]];
+        return [
+          [
+            id,
+            typeof message.defaultMessage === "string"
+              ? message.defaultMessage
+              : "",
+          ],
+        ];
       }),
     );
   }

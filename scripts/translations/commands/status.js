@@ -10,7 +10,11 @@ const {
   getWhitelistedIds,
 } = require("../shared");
 
-function getUntranslatedKeys(defaultMessages, existingMessages, whitelistedIds) {
+function getUntranslatedKeys(
+  defaultMessages,
+  existingMessages,
+  whitelistedIds,
+) {
   const untranslated = [];
   for (const id of Object.keys(defaultMessages).sort()) {
     if (whitelistedIds.has(id)) continue;
@@ -28,7 +32,9 @@ function getUntranslatedKeys(defaultMessages, existingMessages, whitelistedIds) 
 
 function runStatus(targetLang, context) {
   if (!fs.existsSync(extractedMessagesPath)) {
-    console.log("No extracted messages found. Run `npm run translations` first.\n");
+    console.log(
+      "No extracted messages found. Run `npm run translations` first.\n",
+    );
     process.exit(1);
   }
   const defaultMessages = normalizeExtractedMessages(
@@ -68,7 +74,9 @@ function runStatus(targetLang, context) {
         console.log("\nNo untranslated keys.");
       }
 
-      console.log(`\n${languageFile}: ${translated}/${total} (${pct}%) translated`);
+      console.log(
+        `\n${languageFile}: ${translated}/${total} (${pct}%) translated`,
+      );
       continue;
     }
 

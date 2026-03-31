@@ -12,7 +12,12 @@ const {
 } = require("../shared");
 
 const rootDir = path.resolve(__dirname, "..", "..", "..");
-const compiledLocalesDir = path.join(rootDir, "src", "locales", "lang.compiled");
+const compiledLocalesDir = path.join(
+  rootDir,
+  "src",
+  "locales",
+  "lang.compiled",
+);
 const extractedMessagesPath = path.join(
   rootDir,
   "src",
@@ -24,8 +29,12 @@ const extractedMessagesPath = path.join(
 function extractMessages() {
   const formatjsBin = path.join(rootDir, "node_modules", ".bin", "formatjs");
   if (!fs.existsSync(formatjsBin)) {
-    console.error("\n✗ Missing FormatJS CLI binary: node_modules/.bin/formatjs");
-    console.error("  Run `npm install` from the repository root, then try again.");
+    console.error(
+      "\n✗ Missing FormatJS CLI binary: node_modules/.bin/formatjs",
+    );
+    console.error(
+      "  Run `npm install` from the repository root, then try again.",
+    );
     process.exit(1);
   }
 
@@ -108,7 +117,9 @@ function runCompile(context) {
   const languageFiles = listLanguageFiles();
 
   if (!context.quiet) {
-    console.log(`⟳ Compiling ${languageFiles.length} locale file(s) for production...\n`);
+    console.log(
+      `⟳ Compiling ${languageFiles.length} locale file(s) for production...\n`,
+    );
   }
 
   ensureCleanCompiledDirectory();
