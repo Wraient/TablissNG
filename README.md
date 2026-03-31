@@ -102,7 +102,10 @@ npm install
 - `npm run dev` — Start a local development server
 - `npm run build` — Build the project
 - `npm run test` — Run tests
-- `npm run translations` — Manage translation files (see TRANSLATING.md)
+- `npm run translations` — Extract and sync translation files (see [TRANSLATING.md](TRANSLATING.md) for details)
+- `npm run translations:status` — Show translation status (pass language via `--`, e.g. `npm run translations:status -- fr`)
+- `npm run translations:create` — Create a new locale file (pass language via `--`, e.g. `npm run translations:create -- de-AT`)
+- `npm run translations:migrate` — Migrate renamed translation keys (pass mappings via `--`, e.g. `npm run translations:migrate -- old.id=new.id`)
 - `npm run lint:fix` — Run ESLint with --fix (or just `npm run lint` for checking)
 - `npm run prettier` — Run Prettier with --write (or npm run `prettier:check` for checking)
 - `npm run deps:update` — Run interactive dependency update tool (or `npm run deps:check` to just check for updates and unused dependencies)

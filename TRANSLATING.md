@@ -1,21 +1,80 @@
-# Adding Translations
+# Translation Guide
 
-This document gives you a step by step guide for how to add your own translations to Tabliss!
+This guide covers how to add a new language, update existing translations, and migrate renamed translation keys.
 
-1. Fork and checkout the repository
-2. Run `npm install` to download the dependencies
-3. Add your language code to the languages array in `scripts/translations.js`
-4. Run `npm run translations` to generate your language files in `src/locales/lang`
-5. With the help of the default messages and descriptions, edit the JSON file with your translated messages
-6. Import your new translations into the `src/locales/locales.ts` file
-7. Finally, add your language to the select dropdown in `src/views/settings/System.tsx`
-8. Commit your updated files
-9. Submit a Pull Request back to the Tabliss repository!
+## Quick Start
 
-You can test your changes at anytime by running a local development build of Tabliss with `npm run dev`.
+1. Install dependencies:
+   `npm install`
+2. Sync extracted messages into locale files:
+   `npm run translations`
+3. Edit your language file in `src/locales/lang`.
+4. Verify status:
+   `npm run translations:status -- <lang>`
+5. Run app locally to test:
+   `npm run dev`
 
-### About Whitelist Files
+## Where Files Live
 
-In the `src/locales/lang` directory, you'll find files named like `whitelist_fr.json`, `whitelist_en-CA.json`, etc. These whitelist files tell the translation system which strings should be kept in English and don't need translation for each language.
+- Locale files: `src/locales/lang/<lang>.json`
+- Whitelist files: `src/locales/lang/whitelist_<lang>.json`
+- Locale registry: `src/locales/locales.ts`
+- Language dropdown: `src/views/settings/System.tsx`
 
-For example, if `widgets` appears in `whitelist_fr.json`, the system won't prompt you to translate "widgets" into French - it will keep the English word. This is useful if the work does not change in your language or its a word that should remain in English across all languages.
+## Commands
+
+- Sync/extract all messages:
+  `npm run translations`
+- Show status for all locales:
+  `npm run translations:status`
+- Show status for one locale:
+  `npm run translations:status -- fr`
+- Create a new locale file:
+  `npm run translations:create -- de-AT`
+- Migrate renamed keys (all locales):
+  `npm run translations:migrate -- old.id=new.id`
+- Migrate renamed keys (one locale):
+  `npm run translations:migrate -- es old.id=new.id`
+
+You can pass multiple migration mappings in one command:
+
+`npm run translations:migrate -- old.one=new.one old.two=new.two`
+
+## Adding a New Language
+
+1. Create locale file from extracted defaults:
+   `npm run translations:create -- <lang>`
+2. Add locale metadata in `src/locales/locales.ts`.
+3. Ensure it appears in the language selector in `src/views/settings/System.tsx`.
+4. Translate values in `src/locales/lang/<lang>.json`.
+5. Run `npm run translations` to normalize and sort keys.
+6. Check progress with `npm run translations:status -- <lang>`.
+
+## Updating Existing Translations
+
+1. Run `npm run translations`.
+2. Edit target locale file(s) in `src/locales/lang`.
+3. Re-run `npm run translations`.
+4. Verify with `npm run translations:status -- <lang>`.
+
+## Migrating Renamed Keys
+
+When IDs are renamed in code, preserve existing translated values with the migrate command.
+
+Example:
+
+`npm run translations:migrate -- plugins.github.month.jan=time.month.short.jan`
+
+Then run:
+
+`npm run translations`
+
+This updates locale files to the new IDs and keeps extracted files in sync.
+
+## Whitelist Files
+
+Whitelist files (`whitelist_<lang>.json`) define keys that should remain in English for that locale.
+
+Example:
+
+If `widgets` is in `whitelist_fr.json`, French keeps the English word "widgets".
