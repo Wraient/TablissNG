@@ -22,6 +22,7 @@ const config = {
     path: path.resolve("dist", buildTarget),
     publicPath: "/",
     filename: isWeb ? "[name].[contenthash:12].js" : "[name].js",
+    chunkFilename: isWeb ? "[name].[contenthash:12].js" : "[name].js",
   },
   mode: isProduction ? "production" : "development",
   resolve: {
