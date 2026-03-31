@@ -17,9 +17,9 @@ This guide covers how to add a new language, update existing translations, and m
 ## Where Files Live
 
 - Locale files: `src/locales/lang/<lang>.json`
+- Compiled locale files (build artifact): `src/locales/lang.compiled/<lang>.json`
 - Whitelist files: `src/locales/lang/whitelist_<lang>.json`
-- Locale registry: `src/locales/locales.ts`
-- Language dropdown: `src/views/settings/System.tsx`
+- Locale registry (single source of truth): `src/locales/registry.ts`
 
 ## Commands
 
@@ -29,6 +29,8 @@ This guide covers how to add a new language, update existing translations, and m
   `npm run translations:status`
 - Show status for one locale:
   `npm run translations:status -- fr`
+- Compile stripped/minified locale artifacts for production:
+  `npm run translations:compile`
 - Create a new locale file:
   `npm run translations:create -- de-AT`
 - Migrate renamed keys (all locales):
@@ -44,8 +46,8 @@ You can pass multiple migration mappings in one command:
 
 1. Create locale file from extracted defaults:
    `npm run translations:create -- <lang>`
-2. Add locale metadata in `src/locales/locales.ts`.
-3. Ensure it appears in the language selector in `src/views/settings/System.tsx`.
+2. Add locale metadata in `src/locales/registry.ts`.
+3. Ensure locale aliases are correct in `src/locales/registry.ts` if needed (example: `zh` -> `zh-CN`).
 4. Translate values in `src/locales/lang/<lang>.json`.
 5. Run `npm run translations` to normalize and sort keys.
 6. Check progress with `npm run translations:status -- <lang>`.
@@ -78,3 +80,5 @@ Whitelist files (`whitelist_<lang>.json`) define keys that should remain in Engl
 Example:
 
 If `widgets` is in `whitelist_fr.json`, French keeps the English word "widgets".
+
+Production builds automatically run `npm run translations:compile` and load compiled locale artifacts.

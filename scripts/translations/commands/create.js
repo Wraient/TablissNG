@@ -11,7 +11,9 @@ const {
 
 function runCreate(langCode, context) {
   if (!langCode || langCode.length === 0) {
-    console.error("✗ Please provide a language code, e.g.: node scripts/translations/translations.js create de-AT");
+    console.error(
+      "✗ Please provide a language code, e.g.: node scripts/translations/translations.js create de-AT",
+    );
     process.exit(1);
   }
 
@@ -25,7 +27,9 @@ function runCreate(langCode, context) {
   }
 
   if (!fs.existsSync(extractedMessagesPath)) {
-    console.log("No extracted messages found. Run `npm run translations` first.\n");
+    console.log(
+      "No extracted messages found. Run `npm run translations` first.\n",
+    );
     process.exit(1);
   }
   const defaultMessages = normalizeExtractedMessages(
@@ -39,9 +43,13 @@ function runCreate(langCode, context) {
   writeJson(langPath, seeded, context);
 
   if (context.dryRun) {
-    console.log(`⊘ DRY RUN: Would create ${langFile} with ${Object.keys(seeded).length} keys.`);
+    console.log(
+      `⊘ DRY RUN: Would create ${langFile} with ${Object.keys(seeded).length} keys.`,
+    );
   } else {
-    console.log(`✓ Created ${langFile} with ${Object.keys(seeded).length} keys.`);
+    console.log(
+      `✓ Created ${langFile} with ${Object.keys(seeded).length} keys.`,
+    );
   }
 
   if (!fs.existsSync(whitelistPath)) {
@@ -54,10 +62,12 @@ function runCreate(langCode, context) {
   }
 
   console.log("\nNext steps:");
-  console.log("  1. Add the locale to src/locales/locales.ts localeOptions/localeLoaders");
+  console.log("  1. Add the locale to src/locales/registry.ts");
   console.log(`  2. Translate the strings in src/locales/lang/${langFile}`);
   console.log(`  3. Add any kept-English keys to whitelist_${langCode}.json`);
-  console.log(`  4. Use 'npm run translations:status -- ${langCode}' to track progress`);
+  console.log(
+    `  4. Use 'npm run translations:status -- ${langCode}' to track progress`,
+  );
 }
 
 module.exports = { runCreate };

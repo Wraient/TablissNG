@@ -92,7 +92,8 @@ All production builds are located in the `dist/` directory, organized by platfor
 - `npm run typecheck`: Run TypeScript type checking.
 - `npm run translations`: Extract and sync translation files.
 - `npm run translations:status`: Show translation status (`npm run translations:status -- fr`).
-- `npm run translations:create`: Create a new locale file (`npm run translations:create -- de-AT`).
+- `npm run translations:create`: Create a new locale file (`npm run translations:create -- de-AT`) and add the locale to `src/locales/registry.ts`.
+- `npm run translations:compile`: Build production locale artifacts in `src/locales/lang.compiled`.
 - `npm run translations:migrate`: Migrate renamed translation keys (`npm run translations:migrate -- old.id=new.id`).
 - `npm run sign:firefox`: Manually sign the Firefox extension (requires credentials, mostly for gh workflows).
 - `npm run deps:check`: Check for outdated dependencies using `npm-check`.
