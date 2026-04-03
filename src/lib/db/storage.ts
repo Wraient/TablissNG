@@ -73,7 +73,7 @@ export const indexeddb = (
               if (DEV) console.log("Storage: saving changes:", changesArr);
 
               const writeTrx = conn.transaction("changes", "readwrite");
-              writeTrx.oncomplete = () => {};
+              writeTrx.oncomplete = () => {}; // nice
               writeTrx.onerror = (error) =>
                 Stream.publish(
                   errors,
