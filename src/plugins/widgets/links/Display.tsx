@@ -1,6 +1,5 @@
 import { Icon } from "@iconify/react";
-import { FC, useMemo } from "react";
-import * as React from "react";
+import { type FC, type MouseEvent, useMemo } from "react";
 import { defineMessages, useIntl } from "react-intl";
 
 import { isSpecialUrl, normalizeUrl } from "../../../utils";
@@ -91,7 +90,7 @@ export const Display: FC<Props> = ({
     [SvgString, customWidth, customHeight],
   );
 
-  const handleClick = async (e: React.MouseEvent) => {
+  const handleClick = async (e: MouseEvent) => {
     if (
       BUILD_TARGET !== "web" &&
       (useExtensionTabs || isSpecialUrl(normalizedUrl))

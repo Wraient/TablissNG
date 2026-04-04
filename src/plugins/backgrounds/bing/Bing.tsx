@@ -1,21 +1,16 @@
 import "./Bing.sass";
 
-import * as React from "react";
+import { type FC, useEffect, useRef, useState } from "react";
 
 import BaseBackground from "../base/BaseBackground";
 import { getImage } from "./api";
 import { defaultData, Props } from "./types";
 
-const Bing: React.FC<Props> = ({
-  cache,
-  data = defaultData,
-  loader,
-  setCache,
-}) => {
-  const [image, setImage] = React.useState(cache);
-  const mounted = React.useRef(false);
+const Bing: FC<Props> = ({ cache, data = defaultData, loader, setCache }) => {
+  const [image, setImage] = useState(cache);
+  const mounted = useRef(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const imagePromise = getImage(data, loader);
     imagePromise.then(setCache).catch(() => {});
     if (mounted.current || !image) {

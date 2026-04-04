@@ -1,5 +1,4 @@
-import { FC, useEffect, useState } from "react";
-import * as React from "react";
+import { type FC, type JSX, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
 import { BookmarkTreeNode } from "../bookmarks/types";
@@ -78,7 +77,7 @@ const ImportBookmarks: FC<Props> = ({ onImport }) => {
     }
   };
 
-  const folderOptions: React.JSX.Element[] = [];
+  const folderOptions: JSX.Element[] = [];
   const descendTree = (tree: BookmarkTreeNode | undefined, pad: string) => {
     if (!tree || tree.url) return;
 

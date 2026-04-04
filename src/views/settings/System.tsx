@@ -1,4 +1,4 @@
-import * as React from "react";
+import type { FC } from "react";
 import { defineMessages, FormattedMessage, useIntl } from "react-intl";
 
 import { db, FaviconMode } from "../../db/state";
@@ -37,7 +37,7 @@ const positions = [
   },
 ] as const;
 
-const System: React.FC = () => {
+const System: FC = () => {
   const intl = useIntl();
   const [locale, setLocale] = useKey(db, "locale");
   const [timeZone, setTimeZone] = useKey(db, "timeZone");

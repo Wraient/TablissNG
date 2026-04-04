@@ -1,6 +1,6 @@
 import "./Widget.sass";
 
-import * as React from "react";
+import type { FC } from "react";
 import { defineMessages, FormattedMessage, useIntl } from "react-intl";
 
 import { setWidgetDisplay } from "../../db/action";
@@ -49,12 +49,7 @@ interface Props {
   onRemove: () => void;
 }
 
-const Widget: React.FC<Props> = ({
-  plugin,
-  onMoveDown,
-  onMoveUp,
-  onRemove,
-}) => {
+const Widget: FC<Props> = ({ plugin, onMoveDown, onMoveUp, onRemove }) => {
   const [isOpen, toggleIsOpen] = useToggle(onRemove === undefined);
   const intl = useIntl();
 

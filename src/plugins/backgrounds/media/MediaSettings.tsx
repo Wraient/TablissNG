@@ -1,7 +1,7 @@
 import "./MediaSettings.sass";
 
 import { useState } from "react";
-import * as React from "react";
+import { type FC } from "react";
 import { defineMessages, FormattedMessage, useIntl } from "react-intl";
 
 import { useObjectUrls } from "../../../hooks";
@@ -18,7 +18,7 @@ const messages = defineMessages({
   },
 });
 
-const ImageSettings: React.FC<Props> = ({
+const ImageSettings: FC<Props> = ({
   cache = defaultCache,
   setCache,
   data = defaultData,

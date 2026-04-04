@@ -1,8 +1,12 @@
 import "./Search.sass";
 
 import { Icon } from "@iconify/react";
+import type {
+  ChangeEvent,
+  FormEvent,
+  KeyboardEvent as ReactKeyboardEvent,
+} from "react";
 import { FC, useRef, useState } from "react";
-import * as React from "react";
 import { defineMessages, useIntl } from "react-intl";
 
 import { useKeyPress } from "../../../hooks";
@@ -38,7 +42,7 @@ const Search: FC<Props> = ({ data = defaultData }) => {
 
   const keyBind = data.keyBind ?? "G";
   useKeyPress(
-    (event: KeyboardEvent) => {
+    (event: globalThis.KeyboardEvent) => {
       event.preventDefault();
       if (searchInput.current) {
         searchInput.current.focus();
@@ -47,7 +51,7 @@ const Search: FC<Props> = ({ data = defaultData }) => {
     [keyBind.toUpperCase(), keyBind.toLowerCase()],
   );
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     previousValue.current = event.target.value;
 
     if (data.suggestionsEngine === "wikipedia") {
@@ -68,7 +72,7 @@ const Search: FC<Props> = ({ data = defaultData }) => {
     }
   };
 
-  const handleKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyUp = (event: ReactKeyboardEvent<HTMLInputElement>) => {
     if (!suggestions) {
       return;
     }
@@ -119,7 +123,7 @@ const Search: FC<Props> = ({ data = defaultData }) => {
     search();
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     search();
   };

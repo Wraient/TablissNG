@@ -1,6 +1,6 @@
 import "./Notes.sass";
 
-import * as React from "react";
+import type { FC } from "react";
 import { FormattedMessage } from "react-intl";
 
 import { Icon, IconButton } from "../../../views/shared";
@@ -22,10 +22,7 @@ const alignments = [
   },
 ] as const;
 
-const NotesSettings: React.FC<API<Data>> = ({
-  data = defaultData,
-  setData,
-}) => {
+const NotesSettings: FC<API<Data>> = ({ data = defaultData, setData }) => {
   return (
     <div className="NotesSettings">
       <label>

@@ -1,8 +1,8 @@
 import "./Weather.sass";
 
 import { Icon } from "@iconify/react";
+import type { FC } from "react";
 import { useEffect } from "react";
-import * as React from "react";
 import { defineMessages, useIntl } from "react-intl";
 
 import { useCachedEffect, useTime } from "../../../hooks";
@@ -39,7 +39,7 @@ const messages = defineMessages({
   },
 });
 
-const Weather: React.FC<Props> = ({
+const Weather: FC<Props> = ({
   cache,
   data = defaultData,
   loader,

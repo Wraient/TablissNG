@@ -2,7 +2,7 @@ import "./Settings.sass";
 
 import { Icon } from "@iconify/react";
 import { useEffect, useRef, useState } from "react";
-import * as React from "react";
+import { type FC, memo, useContext, useMemo } from "react";
 import GitHubButton from "react-github-btn";
 import { defineMessages, FormattedMessage, useIntl } from "react-intl";
 
@@ -32,8 +32,8 @@ const messages = defineMessages({
   },
 });
 
-const Settings: React.FC = () => {
-  const { toggleSettings } = React.useContext(UiContext);
+const Settings: FC = () => {
+  const { toggleSettings } = useContext(UiContext);
   const [settingsIconPosition] = useKey(db, "settingsIconPosition");
   const [autoHideSettings] = useKey(db, "autoHideSettings");
   const { isDark } = useTheme();
@@ -231,7 +231,7 @@ const Settings: React.FC = () => {
             />
           </h4>
 
-          {React.useMemo(
+          {useMemo(
             () => (
               <div
                 style={{
@@ -338,4 +338,4 @@ const Settings: React.FC = () => {
   );
 };
 
-export default React.memo(Settings);
+export default memo(Settings);

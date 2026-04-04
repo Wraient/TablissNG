@@ -1,4 +1,4 @@
-import * as React from "react";
+import type { FC } from "react";
 import { FormattedMessage } from "react-intl";
 
 import { pluginMessages, timingMessages } from "../../../locales/messages";
@@ -44,7 +44,7 @@ function updateSelectedCategories(
   return categories.length === 0 ? existingCategories : categories;
 }
 
-const JokeSettings: React.FC<Props> = ({ data = defaultData, setData }) => {
+const JokeSettings: FC<Props> = ({ data = defaultData, setData }) => {
   return (
     <div className="JokeSettings">
       <h5>

@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import * as React from "react";
+import { type FC, useContext, useState } from "react";
 import { defineMessages, FormattedMessage, useIntl } from "react-intl";
 
 import { ErrorContext } from "../../contexts/error";
@@ -28,11 +28,11 @@ type Props = {
   onClose: () => void;
 };
 
-const Errors: React.FC<Props> = ({ onClose }) => {
-  const { errors } = React.useContext(ErrorContext);
+const Errors: FC<Props> = ({ onClose }) => {
+  const { errors } = useContext(ErrorContext);
   const intl = useIntl();
-  const [copied, setCopied] = React.useState(false);
-  const [copyFailed, setCopyFailed] = React.useState(false);
+  const [copied, setCopied] = useState(false);
+  const [copyFailed, setCopyFailed] = useState(false);
 
   const handleCopy = () => {
     if (!navigator.clipboard?.writeText) {

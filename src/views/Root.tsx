@@ -1,4 +1,4 @@
-import * as React from "react";
+import { type FC, StrictMode } from "react";
 
 import ErrorProvider from "../contexts/error";
 import TimeProvider from "../contexts/time";
@@ -6,8 +6,8 @@ import UiProvider from "../contexts/ui";
 import IntlProvider from "../locales/IntlProvider";
 import App from "./App";
 
-const Root: React.FC = () => (
-  <React.StrictMode>
+const Root: FC = () => (
+  <StrictMode>
     <ErrorProvider>
       <UiProvider>
         <IntlProvider>
@@ -17,7 +17,7 @@ const Root: React.FC = () => (
         </IntlProvider>
       </UiProvider>
     </ErrorProvider>
-  </React.StrictMode>
+  </StrictMode>
 );
 
 export default Root;

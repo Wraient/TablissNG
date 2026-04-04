@@ -1,4 +1,4 @@
-import * as React from "react";
+import { type FC } from "react";
 import Select from "react-dropdown-select";
 import { defineMessages, FormattedMessage, useIntl } from "react-intl";
 
@@ -21,7 +21,7 @@ const messages = defineMessages({
   },
 });
 
-const UnsplashSettings: React.FC<Props> = ({ data = defaultData, setData }) => {
+const UnsplashSettings: FC<Props> = ({ data = defaultData, setData }) => {
   const intl = useIntl();
   return (
     <div className="UnsplashSettings">

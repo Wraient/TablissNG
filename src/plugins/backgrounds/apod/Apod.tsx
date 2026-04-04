@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import * as React from "react";
+import { type FC, useCallback, useEffect, useRef, useState } from "react";
 
 import { db } from "../../../db/state";
 import { useValue } from "../../../lib/db/react";
@@ -21,18 +21,13 @@ const isCacheFresh = (
   return cachedDate === format(new Date(), "yyyy-MM-dd");
 };
 
-const Apod: React.FC<Props> = ({
-  cache,
-  data = defaultData,
-  loader,
-  setCache,
-}) => {
-  const [picture, setPicture] = React.useState(cache);
-  const mounted = React.useRef(false);
+const Apod: FC<Props> = ({ cache, data = defaultData, loader, setCache }) => {
+  const [picture, setPicture] = useState(cache);
+  const mounted = useRef(false);
   const background = useValue(db, "background");
   const { scale = true, position } = background.display;
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isCacheFresh(cache, data)) return;
     const isUpdate = mounted.current;
     getPicture(data, loader).then((result) => {
@@ -42,7 +37,7 @@ const Apod: React.FC<Props> = ({
     mounted.current = true;
   }, [data.customDate, data.date]);
 
-  const extractYouTubeId = React.useCallback((url: string): string | null => {
+  const extractYouTubeId = useCallback((url: string): string | null => {
     const match = url.match(
       /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/,
     );

@@ -1,4 +1,4 @@
-import * as React from "react";
+import type { FC } from "react";
 import { defineMessages, FormattedMessage, useIntl } from "react-intl";
 
 import { capitalize } from "../../../utils";
@@ -24,7 +24,7 @@ const messages = defineMessages({
 
 const colors = ["mempool", "monochrome", "transparent"];
 
-const BitcoinSettings: React.FC<Props> = ({ data = defaultData, setData }) => {
+const BitcoinSettings: FC<Props> = ({ data = defaultData, setData }) => {
   const intl = useIntl();
 
   return (

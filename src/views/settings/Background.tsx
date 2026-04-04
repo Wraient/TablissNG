@@ -1,5 +1,5 @@
+import type { FC } from "react";
 import { useMemo } from "react";
-import * as React from "react";
 import { defineMessages, FormattedMessage, useIntl } from "react-intl";
 
 import { setBackground } from "../../db/action";
@@ -23,7 +23,7 @@ const messages = defineMessages({
   },
 });
 
-const Background: React.FC = () => {
+const Background: FC = () => {
   const [data, setData] = useKey(db, "background");
   const intl = useIntl();
   const plugin = getConfig(data.key);

@@ -1,7 +1,7 @@
 import "./ApodSettings.sass";
 
 import { format } from "date-fns";
-import * as React from "react";
+import { type FC } from "react";
 import { FormattedMessage } from "react-intl";
 
 import { backgroundMessages } from "../../../locales/messages";
@@ -10,7 +10,7 @@ import { ApodDate, defaultData, Props } from "./types";
 
 const maxDate = format(new Date(), "yyyy-MM-dd");
 
-const ApodSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
+const ApodSettings: FC<Props> = ({ data = defaultData, setData }) => (
   <div className="ApodSettings">
     <label>
       <FormattedMessage {...backgroundMessages.dateOfPicture} />

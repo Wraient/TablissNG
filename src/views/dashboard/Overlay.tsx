@@ -1,7 +1,7 @@
 import "./Overlay.sass";
 
 import { Icon } from "@iconify/react";
-import * as React from "react";
+import { type FC, useContext } from "react";
 import { defineMessages, useIntl } from "react-intl";
 
 import { ErrorContext } from "../../contexts/error";
@@ -40,11 +40,11 @@ const messages = defineMessages({
   },
 });
 
-const Overlay: React.FC = () => {
+const Overlay: FC = () => {
   const intl = useIntl();
   const focus = useValue(db, "focus");
-  const { errors } = React.useContext(ErrorContext);
-  const { pending, toggleErrors, toggleSettings } = React.useContext(UiContext);
+  const { errors } = useContext(ErrorContext);
+  const { pending, toggleErrors, toggleSettings } = useContext(UiContext);
   const [hideSettingsIcon] = useKey(db, "hideSettingsIcon");
   const [settingsIconPosition] = useKey(db, "settingsIconPosition");
 

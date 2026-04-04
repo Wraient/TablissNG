@@ -1,4 +1,4 @@
-import * as React from "react";
+import { type FC, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 
 import { useBackgroundRotation } from "../../../hooks";
@@ -18,7 +18,7 @@ const getLocationUrl = (location: string, source: string) => {
   return urls[source as keyof typeof urls] || "#";
 };
 
-const Unsplash: React.FC<Props> = ({
+const Unsplash: FC<Props> = ({
   cache,
   data = defaultData,
   loader,
@@ -32,7 +32,7 @@ const Unsplash: React.FC<Props> = ({
   }
 
   // Migrate old pause setting
-  React.useEffect(() => {
+  useEffect(() => {
     if (data.timeout === Number.MAX_SAFE_INTEGER) {
       setData({
         ...data,

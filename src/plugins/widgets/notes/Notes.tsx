@@ -1,7 +1,7 @@
 import "./Notes.sass";
 
 import { Icon } from "@iconify/react";
-import * as React from "react";
+import { type FC, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import ReactMarkdown from "react-markdown";
 
@@ -10,8 +10,8 @@ import { API } from "../../types";
 import { Data, defaultData } from "./data";
 import Input from "./Input";
 
-const Notes: React.FC<API<Data>> = ({ data = defaultData, setData }) => {
-  const [isEditing, setIsEditing] = React.useState(false);
+const Notes: FC<API<Data>> = ({ data = defaultData, setData }) => {
+  const [isEditing, setIsEditing] = useState(false);
 
   const keyBind = data.keyBind ?? "N";
   useKeyPress(

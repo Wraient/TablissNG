@@ -1,4 +1,4 @@
-import * as React from "react";
+import type { FC } from "react";
 import { defineMessages, FormattedMessage, useIntl } from "react-intl";
 
 import { WidgetDisplay as WidgetDisplayType } from "../../db/state";
@@ -23,7 +23,7 @@ const messages = defineMessages({
   },
 });
 
-const WidgetDisplay: React.FC<Props> = ({ display, onChange }) => {
+const WidgetDisplay: FC<Props> = ({ display, onChange }) => {
   const intl = useIntl();
 
   return (

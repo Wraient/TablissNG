@@ -1,10 +1,10 @@
 import "./Logo.sass";
 
-import * as React from "react";
+import type { FC } from "react";
 
 import tablissLogo from "./tabliss.svg";
 
-const Logo: React.FC = () => (
+const Logo: FC = () => (
   <h1 className="Logo">
     <i dangerouslySetInnerHTML={{ __html: tablissLogo }} />
   </h1>

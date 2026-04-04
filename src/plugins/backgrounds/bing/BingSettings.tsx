@@ -1,7 +1,7 @@
 import "./Bing.sass";
 
 import { format } from "date-fns";
-import * as React from "react";
+import { type FC } from "react";
 import { FormattedMessage } from "react-intl";
 
 import { backgroundMessages } from "../../../locales/messages";
@@ -26,7 +26,7 @@ const locales = [
   "ROW/en",
 ];
 
-const BingSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
+const BingSettings: FC<Props> = ({ data = defaultData, setData }) => (
   <div className="BingSettings">
     <label>
       <FormattedMessage {...backgroundMessages.dateOfPicture} />

@@ -1,7 +1,7 @@
 import "./Bitcoin.sass";
 
 import { formatDistanceToNowStrict, fromUnixTime } from "date-fns";
-import * as React from "react";
+import { type FC, useEffect } from "react";
 
 import { usePushError } from "../../../api";
 import { db } from "../../../db/state";
@@ -23,7 +23,7 @@ const formatDistance = (unixTime: number, locale: string) => {
   return rtf.format(-amount, unit as Intl.RelativeTimeFormatUnit);
 };
 
-const BitcoinWidget: React.FC<Props> = ({
+const BitcoinWidget: FC<Props> = ({
   cache,
   data = defaultData,
   setCache,
@@ -32,7 +32,7 @@ const BitcoinWidget: React.FC<Props> = ({
   const pushError = usePushError();
   const locale = useValue(db, "locale");
 
-  React.useEffect(() => {
+  useEffect(() => {
     getBlocks(loader).then(setCache).catch(pushError);
 
     const timer = setInterval(

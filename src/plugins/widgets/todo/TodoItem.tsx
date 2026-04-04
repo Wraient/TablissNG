@@ -1,7 +1,7 @@
 import "./TodoItem.sass";
 
+import type { DragEvent } from "react";
 import { FC, useLayoutEffect, useRef, useState } from "react";
-import * as React from "react";
 
 import { useKeyPress } from "../../../hooks";
 import { Icon, RemoveIcon } from "../../../views/shared";
@@ -13,8 +13,8 @@ interface Props {
   onUpdate(contents: string): void;
   onDelete(): void;
   onDragStart(): void;
-  onDragOver(e: React.DragEvent): void;
-  onDrop(e: React.DragEvent): void;
+  onDragOver(e: DragEvent): void;
+  onDrop(e: DragEvent): void;
   onDragEnd(): void;
   dropIndicator: "above" | "below" | null;
 }

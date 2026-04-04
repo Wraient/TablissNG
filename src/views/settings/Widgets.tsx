@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { type FC, useMemo } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 import { addWidget, removeWidget, reorderWidget } from "../../db/action";
@@ -8,7 +8,7 @@ import { useSelector } from "../../lib/db/react";
 import { widgetConfigs } from "../../plugins/plugins";
 import Widget from "./Widget";
 
-const Widgets: React.FC = () => {
+const Widgets: FC = () => {
   const widgets = useSelector(db, selectWidgets);
   const intl = useIntl();
 
