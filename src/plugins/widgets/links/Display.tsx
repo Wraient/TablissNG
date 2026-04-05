@@ -1,10 +1,12 @@
-import { FC, useMemo } from "react";
-import * as React from "react";
-import { defineMessages, useIntl } from "react-intl";
 import { Icon } from "@iconify/react";
 import { Link, Cache } from "./types";
 import { getFaviconUrl, isSpecialUrl, normalizeUrl } from "../../../utils";
 import { useDeferredFavicon } from "../../../hooks";
+import { type FC, type MouseEvent, useMemo } from "react";
+import { defineMessages, useIntl } from "react-intl";
+
+import { isSpecialUrl, normalizeUrl } from "../../../utils";
+import { Cache, Link } from "./types";
 
 const getDomain = (url: string): string | null => {
   try {
@@ -104,7 +106,7 @@ export const Display: FC<Props> = ({
     [SvgString, customWidth, customHeight],
   );
 
-  const handleClick = async (e: React.MouseEvent) => {
+  const handleClick = async (e: MouseEvent) => {
     if (
       BUILD_TARGET !== "web" &&
       (useExtensionTabs || isSpecialUrl(normalizedUrl))
