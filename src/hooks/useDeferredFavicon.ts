@@ -17,5 +17,5 @@ export function useDeferredFavicon(src: string): string {
     });
   }, [src]);
 
-  return deferredSrc === src ? deferredSrc : "";
+  return deferredSrc;
 }

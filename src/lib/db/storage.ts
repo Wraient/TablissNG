@@ -50,7 +50,7 @@ export const indexeddb = (
         if (keysDone && valsDone) {
           const changeCount = Math.min(keys.length, vals.length);
 
-          if (DEV && keys.length !== vals.length) {
+          if (keys.length !== vals.length) {
             console.warn(
               "Storage: IndexedDB restore saw mismatched key/value counts",
               { keys: keys.length, values: vals.length },
@@ -61,6 +61,11 @@ export const indexeddb = (
             keys.slice(0, changeCount).forEach((key, index) => {
               if (typeof key === "string") {
                 DB.put(updateTrx, key, vals[index]);
+              } else {
+                console.warn(
+                  "Storage: IndexedDB restore skipping non-string key",
+                  key,
+                );
               }
             });
           });

@@ -45,13 +45,7 @@ export function runWhenIdle(
   if (typeof window.requestIdleCallback === "function") {
     const handle = window.requestIdleCallback(callback, { timeout });
 
-    return () => {
-      if (typeof window.cancelIdleCallback === "function") {
-        window.cancelIdleCallback(handle);
-      } else {
-        clearTimeout(handle);
-      }
-    };
+    return () => window.cancelIdleCallback(handle);
   }
 
   const handle = window.setTimeout(callback, delay);
