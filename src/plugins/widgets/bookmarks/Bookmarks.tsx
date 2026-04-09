@@ -3,10 +3,10 @@ import "../links/Links.sass";
 
 import { FC, useEffect, useState } from "react";
 
-import Icon from "../../../views/shared/icons/Icon";
-import { Display } from "../links/Display";
 import { useDeferredFavicon } from "../../../hooks";
 import { getFaviconUrl } from "../../../utils";
+import Icon from "../../../views/shared/icons/Icon";
+import { Display } from "../links/Display";
 import { cleanTitle, truncateText } from "../topSites/TopSites";
 import { defaultData, Props } from "./types";
 import { BookmarkTreeNode } from "./types";

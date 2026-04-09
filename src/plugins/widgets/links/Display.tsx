@@ -1,11 +1,9 @@
 import { Icon } from "@iconify/react";
-import { Link, Cache } from "./types";
-import { getFaviconUrl, isSpecialUrl, normalizeUrl } from "../../../utils";
-import { useDeferredFavicon } from "../../../hooks";
 import { type FC, type MouseEvent, useMemo } from "react";
 import { defineMessages, useIntl } from "react-intl";
 
-import { isSpecialUrl, normalizeUrl } from "../../../utils";
+import { useDeferredFavicon } from "../../../hooks";
+import { getFaviconUrl, isSpecialUrl, normalizeUrl } from "../../../utils";
 import { Cache, Link } from "./types";
 
 const getDomain = (url: string): string | null => {
