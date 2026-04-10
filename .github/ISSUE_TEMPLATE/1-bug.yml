@@ -35,7 +35,7 @@ body:
   - type: input
     id: version
     attributes:
-      label: TablissNG Version
+      label: Extension Version
       description: e.g., v1.6.6 (found in settings)
     validations:
       required: true
