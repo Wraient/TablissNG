@@ -4,7 +4,11 @@ import { Cache, Loader } from "../plugins/types";
 import { wrap } from "../utils";
 import { RotatingCache, useRotatingCache } from "./useCache";
 
-type RotationData = { paused?: boolean; timeout?: number };
+type RotationData = {
+  paused?: boolean;
+  timeout?: number;
+  sortOrder?: "sequence" | "random";
+};
 
 type Options<T, D extends RotationData> = {
   fetch: () => Promise<T[]>;
@@ -70,7 +74,10 @@ export function useBackgroundRotation<
       if (!cache || cache.items.length === 0) return null;
 
       return () => {
-        const nextCursor = wrap(cache.cursor + amount, cache.items.length);
+        const isSortRandom = data?.sortOrder === "random";
+        const nextCursor = isSortRandom
+          ? Math.floor(Math.random() * cache.items.length)
+          : wrap(cache.cursor + amount, cache.items.length);
 
         cacheObj.setCache({
           ...cache,
@@ -79,7 +86,7 @@ export function useBackgroundRotation<
         });
       };
     },
-    [cacheObj],
+    [cacheObj, data],
   );
 
   const handlePause = useCallback(() => {
